@@ -1,2 +1,2 @@
 # AR_project
-AR project for display geological facts on mountain peaks
+AR project for displaying geological facts on mountain peaks
