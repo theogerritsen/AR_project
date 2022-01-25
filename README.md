@@ -19,6 +19,14 @@ Nous allons ici surtout nous concentrer sur la méthode "location based".
 
 ## Croquis de développement
 
+![proj1](img/readme/proj_1.png)
+
+![proj2](img/readme/proj_2.png)
+
+![proj3](img/readme/proj_3.png)
+
+![proj4](img/readme/proj_4.png)
+
 # Exemples de sentiers didactiques avec AR
 
 [Carcatchou](https://carcatchou.cn-froideville.ch/desktop.html) est une ballade à Froideville qui offre une expérience en réalité augmentée sur le thème de l'espace.
