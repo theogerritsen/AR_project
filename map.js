@@ -26,18 +26,23 @@ const osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 // ajout du marqueur personnalisé
 
 let iconePerso = L.icon({
-    iconUrl: '',
-    iconSize:[28, 41]
+    iconUrl: 'https://github.com/theogerritsen/AR_project/blob/main/assets/marker1.png?raw=true',
+    iconSize:[50, 50]
 });
 
 
 // ajout des arrets
 
-let arrets = new L.geoJson(lieux, {
-    onEachFeature: onEachFeature,
+let arrets = new L.geoJson(arret, {
     pointToLayer: function(feature, latlng){
         return L.marker(latlng, {icon: iconePerso});
     }
+}).addTo(mymap);
+
+L.geoJSON(sentier, {
+    "color": "#3081ff",
+    "weight": 7,
+    "dashArray": [0, 13]
 }).addTo(mymap);
 
 osmLayer.addTo(mymap);

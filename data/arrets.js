@@ -1,4 +1,4 @@
-var lieux = {
+var arret = {
     "type": "FeatureCollection",
     "name": "arrets",
     "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

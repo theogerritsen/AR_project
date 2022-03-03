@@ -71,8 +71,3 @@ var sentier = {
     ]
 }
 
-L.geoJSON(sentier, {
-    "color": "#3081ff",
-    "weight": 7,
-    "dashArray": [0, 13]
-}).addTo(mymap);
