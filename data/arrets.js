@@ -1,4 +1,4 @@
-var arret = {
+const arret = {
     "type": "FeatureCollection",
     "name": "arrets",
     "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -8,7 +8,7 @@ var arret = {
             "properties": { "id": 8 }, 
             "geometry": { 
                 "type": "Point", 
-                "coordinates": [ 6.63491889356168, 46.522855283767008 ] 
+                "coordinates": [6.63491889356168, 46.522855283767008] 
             } 
         },
         { 

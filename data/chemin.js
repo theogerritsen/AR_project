@@ -1,7 +1,4 @@
 var sentier = {
-    "type": "FeatureCollection",
-    "features": [
-    { 
         "type": "Feature", 
         "properties": {}, 
         "geometry": { 
@@ -66,8 +63,5 @@ var sentier = {
                 [6.626613460863731, 46.519426040973798], 
                 [6.626498700605489, 46.519170156614209]
             ] 
-        } 
-    } 
-    ]
-}
-
+        }
+    }
