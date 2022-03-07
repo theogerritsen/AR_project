@@ -21,7 +21,8 @@ const mymap = new mapboxgl.Map({
 mymap.fitBounds([
     [6.6240245,46.5184540],
     [6.6360568,46.5233845]
-])
+]);
+
  
 // Add geolocate control to the map.
 mymap.addControl(
@@ -44,13 +45,23 @@ mymap.addControl(new mapboxgl.NavigationControl());
 ////////// GESTION DES ARRETS /////////////////////////////////
 ////////////////////////////////////////////////////////////    
 
+
 // on lit chaque point de notre geoJSON qui correspond aux arrêts
+
+let n = 0
 
 for (const feature of arret.features) {
     console.log(feature)
+
+    // pour chaque feature trouvé dans notre geojson
+    // on incrémente n de 1
+    n++;
+    console.log(n)
     // pour chaque arret, on crée un nouveau div dans l'html
     const el = document.createElement('div');
     el.className = 'marker';
+
+    el.style.backgroundImage = "./assets/marqueurs_etapes" + n
 
     new mapboxgl.Marker(el, {
         anchor: 'bottom'
