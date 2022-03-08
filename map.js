@@ -24,18 +24,28 @@ mymap.fitBounds([
 ]);
 
  
-// Add geolocate control to the map.
-mymap.addControl(
-    new mapboxgl.GeolocateControl({
+// on insère nos informations de géolocalisation dans une variable
+let geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
-    // When active the map will receive updates to the device's location as it changes.
+    // update sur la position du user dès qu'il bouge
     trackUserLocation: true,
-    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    // montre l'orientation du user
     showUserHeading: true
-    })
-);
+});
+
+// on ajoute le bouton de géolocalisation à la carte
+mymap.addControl(geolocate);
+
+// lat long du user pour la fonction GPS plus tard
+geolocate.on('geolocate', function(e) {
+    let user_lon = e.coords.longitude;
+    let user_lat = e.coords.latitude;
+    let user_position = [user_lon, user_lat];
+    console.log(user_position);
+});
+
 
 // ajout des controles pour le zoom et remettre le nord en haut
 
@@ -48,20 +58,20 @@ mymap.addControl(new mapboxgl.NavigationControl());
 
 // on lit chaque point de notre geoJSON qui correspond aux arrêts
 
+
+// on initialise n à 0 pour montrer les marqueurs par étape
 let n = 0
 
 for (const feature of arret.features) {
-    console.log(feature)
-
     // pour chaque feature trouvé dans notre geojson
     // on incrémente n de 1
     n++;
-    console.log(n)
     // pour chaque arret, on crée un nouveau div dans l'html
     const el = document.createElement('div');
     el.className = 'marker';
 
-    el.style.backgroundImage = "./assets/marqueurs_etapes" + n
+    // on va chercher le marqueur qui correspond à la bonne étape
+    el.style.backgroundImage = 'url(./assets/marqueurs_etapes/etape' + n + '.png';
 
     new mapboxgl.Marker(el, {
         anchor: 'bottom'
@@ -88,10 +98,56 @@ mymap.on('load', () => {
         },
         'paint': {
             'line-color': '#3081ff',
-            'line-width': 7,
-            'line-dasharray': [0, 2]
+            'line-width': 7
         }
     });
 })
-console.log(sentier)
+///////////////////////////////////////////////////////
+//////////// IMPLEMENTATION DU MODE GPS //////////////
+///////////////////////////////////////////////////////
+
+// dès qu'on clique sur commencer le sentier,
+// il faut centrer sur l'utilisateur et mettre la caméra dans la bonne direction
+class ToggleControl extends mapboxgl.GeolocateControl {
+    _onSuccess(position) {
+        this.mymap.flyTo({
+            center: [position.coords.longitude, position.coords.latitude],
+            zoom: 25,
+            bearing: -90,
+            pitch: 90
+        });
+    }
+
+    onAdd(mymap, cs) {
+        this.mymap = mymap;
+        this.container = document.createElement('div');
+        this.container.className = 'mapboxgl-ctrl';
+        const button = this._createButton('monitor_button')
+        this.container.appendChild(button);
+        return this.container;
+    }
+
+    _createButton(className) {
+        const el = window.document.createElement('button')
+        el.className = className;
+        el.textContent = 'Commencer le sentier';
+        el.addEventListener('click', () => {
+            this.trigger();
+        });
+        this._setup = true;
+        return el;
+    }
+}
+
+const toggleControl = new ToggleControl({})
+mymap.addControl(toggleControl, 'top-left')
+
+
+// initialisation du bouton pour flyto
+// dès qu'on commence le sentier
+// $('.itin-btn').click(function(e){
+//     app.preload.show();
+//     getLocation();
+// });
+
 
