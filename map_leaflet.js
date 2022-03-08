@@ -17,7 +17,9 @@ const osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 mapbox.addTo(mymap);
 
-lc = L.control.locate().addTo(mymap);
+lc = L.control.locate({
+
+}).addTo(mymap);
 
 // ajout des icones personalisés
 
@@ -56,3 +58,16 @@ L.geoJSON(sentier, {
         };
     }
 }).addTo(mymap)
+
+// initialisation du bouton Commencer le sentier
+$(function(){
+    $(".itin-btn").click(function(){
+        // on ajoute la classe active au bouton s'il est appuyé
+        $("#itin-go").toggleClass('active');
+        $(this).toggleClass('active');
+        // dès que le user a appuyé sur le bouton, on active le control locate
+        lc._activate();
+    })
+})
+
+

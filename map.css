@@ -26,12 +26,23 @@ html, body{
     cursor: pointer;
 }
 
-.itin-go .itin-btn {
+.itin-go .itin-btn{
     background-color: rgb(108, 168, 118);
     border-radius: 40px;
     border: none;
     padding: 20px;
     color: #fff;
     font-size: 18px;
-    margin: 7px
+    margin: 7px;
+    cursor: pointer;
 }
+
+.itin-go.active{
+    left: 700px;
+    transition: all 1s ease;
+}
+
+/* .itin-go.active .itin-btn.active{
+    bottom: -100px;
+    transition: all 0.5s ease;
+} */
