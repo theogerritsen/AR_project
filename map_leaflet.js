@@ -5,11 +5,19 @@ let mymap = L.map('map', {
 	zoom: 13
 });
 
+const mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
+    tileSize: 512,
+    zoomOffset: -1,
+    attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+    );
+
 const osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   	attribution: '&copy; OpenStreetMap contributors'
 });
 
-osmLayer.addTo(mymap);
+mapbox.addTo(mymap);
+
+lc = L.control.locate().addTo(mymap);
 
 // ajout des icones personalisés
 
@@ -39,6 +47,7 @@ for (const feature of arret.features){
     let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap)
 }
 
+// polyline du parcours à faire et ajout à la carte
 L.geoJSON(sentier, {
     style: function(feature) {
         return {
@@ -47,47 +56,3 @@ L.geoJSON(sentier, {
         };
     }
 }).addTo(mymap)
-
-// new L.GeoJSON(arret).addTo(mymap);
-// icon = L.divIcon({
-//     className: 'marker',
-// })
-
-
-// // on initialise n à 0 pour montrer les marqueurs par étape
-// let n = 0
-
-// for (const feature of arret.features) {
-//     // pour chaque feature trouvé dans notre geojson
-//     // on incrémente n de 1
-//     n++;
-//     // pour chaque arret, on crée un nouveau div dans l'html
-//     const el = document.createElement('div');
-//     el.className = 'marker';
-
-//     // on va chercher le marqueur qui correspond à la bonne étape
-//     el.style.backgroundImage = 'url(./assets/marqueurs_etapes/etape' + n + '.png';
-
-
-//     // on  va chercher les coordonnées de chacun de nos marqueurs
-//     L.marker(latlng)
-//     setLngLat(feature.geometry.coordinates)
-//     addTo(mymap);
-// }
-
-// let iconePerso = L.icon({
-//     iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg',
-//     iconSize: [28,41]
-// });
-
-// function onEachFeature(feature, layer) {
-//     if (layer instanceof L.marker) {
-//         layer.setIcon()
-//     }
-// }
-// let etape = new L.geoJson(arret, {
-//     onEachFeature: onEachFeature,
-//     pointToLayer: function(feature, latlng){
-//         return L.marker(latlng, {icon: iconePerso})
-//     }
-// }).addTo(mymap)
