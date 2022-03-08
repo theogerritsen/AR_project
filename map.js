@@ -7,18 +7,16 @@
 // option de la carte
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA';
-const mymap = new mapboxgl.Map({
+const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [6.629357, 46.520009], // starting position
     zoom: 16 // starting zoom
-    // pitch: 60,
-    // bearing: -60
 });
 
 
 // fit bounds pour voir le parcours sur n'importe quel résolution d'écran
-mymap.fitBounds([
+map.fitBounds([
     [6.6240245,46.5184540],
     [6.6360568,46.5233845]
 ]);
@@ -32,11 +30,12 @@ let geolocate = new mapboxgl.GeolocateControl({
     // update sur la position du user dès qu'il bouge
     trackUserLocation: true,
     // montre l'orientation du user
-    showUserHeading: true
+    showUserHeading: true,
+    showAccuracyCircle: false
 });
 
 // on ajoute le bouton de géolocalisation à la carte
-mymap.addControl(geolocate);
+map.addControl(geolocate);
 
 // lat long du user pour la fonction GPS plus tard
 geolocate.on('geolocate', function(e) {
@@ -49,7 +48,16 @@ geolocate.on('geolocate', function(e) {
 
 // ajout des controles pour le zoom et remettre le nord en haut
 
-mymap.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.NavigationControl());
+
+// ajout des directions de mapbox
+
+map.addControl(
+    new MapboxDirections({
+        accessToken: mapboxgl.accessToken
+    }),
+    'top-left'
+);
 
 ///////////////////////////////////////////////////////////////////
 ////////// GESTION DES ARRETS /////////////////////////////////
@@ -78,17 +86,17 @@ for (const feature of arret.features) {
     })
     // on  va chercher les coordonnées de chacun de nos marqueurs
     .setLngLat(feature.geometry.coordinates)
-    .addTo(mymap);
+    .addTo(map);
 }
 
 /// Ajout de la multiline string
-mymap.on('load', () => {
-    mymap.addSource('route', {
+map.on('load', () => {
+    map.addSource('route', {
         'type': 'geojson',
         // on va chercher les propriétés de notre lignes dans chemin.js
         'data': sentier
     });
-    mymap.addLayer({
+    map.addLayer({
         'id': 'route',
         'type': 'line',
         'source': 'route',
@@ -108,39 +116,40 @@ mymap.on('load', () => {
 
 // dès qu'on clique sur commencer le sentier,
 // il faut centrer sur l'utilisateur et mettre la caméra dans la bonne direction
-class ToggleControl extends mapboxgl.GeolocateControl {
-    _onSuccess(position) {
-        this.mymap.flyTo({
-            center: [position.coords.longitude, position.coords.latitude],
-            zoom: 25,
-            bearing: -90,
-            pitch: 90
-        });
-    }
+// class ToggleControl extends mapboxgl.GeolocateControl {
+//     _onSuccess(position) {
+//         this.map.flyTo({
+//             center: [position.coords.longitude, position.coords.latitude],
+//             zoom: 25,
+//             pitch: 90
+//         })
+//     }
 
-    onAdd(mymap, cs) {
-        this.mymap = mymap;
-        this.container = document.createElement('div');
-        this.container.className = 'mapboxgl-ctrl';
-        const button = this._createButton('monitor_button')
-        this.container.appendChild(button);
-        return this.container;
-    }
+//     onAdd(map, cs) {
+//         this.map = map;
+//         this.container = document.createElement('div');
+//         this.container.className = 'mapboxgl-ctrl';
+//         const button = this._createButton('monitor_button')
+//         this.container.appendChild(button);
+//         return this.container;
+//     }
+//     _createButton(className) {
+//         const el = window.document.createElement('button')
+//         el.className = className;
+//         el.textContent = 'Commencer le sentier';
+//         el.addEventListener('click', () => {
+//            this.trigger();
+//         });
+//         this._setup = true;
+//         return el;
+//     }
+// }
 
-    _createButton(className) {
-        const el = window.document.createElement('button')
-        el.className = className;
-        el.textContent = 'Commencer le sentier';
-        el.addEventListener('click', () => {
-            this.trigger();
-        });
-        this._setup = true;
-        return el;
-    }
-}
-
-const toggleControl = new ToggleControl({})
-mymap.addControl(toggleControl, 'top-left')
+// const toggleControl = new ToggleControl({
+//     // trackUserLocation: true,
+//     // showUserHeading: true
+// });
+// map.addControl(toggleControl, 'top-left')
 
 
 // initialisation du bouton pour flyto
