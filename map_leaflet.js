@@ -78,6 +78,8 @@ L.geoJSON(sentier, {
     }
 }).addTo(mymap)
 
+// on ajout le div qui contiendra notre bouton dans une nouvelle constante
+const $divAR = $("#itin-rdv");
 // initialisation du bouton Commencer le sentier
 $(function(){
     $("#itin-btn").click(function(){
@@ -86,13 +88,15 @@ $(function(){
         // $(this).toggleClass('active');
         // dès que le user a appuyé sur le bouton, on active le control locate
         lc._activate();
-        // on ajoute un pop up : rendez-vous à la première étape
-        $("#itin-rdv").append("<button class='itin-btn' id='itin-btn' disabled>Rendez-vous à la première étape</button>");
+        // on ajoute un pop up : rendez-vous à la première étape si l'utilisateur n'est pas déjà sur place
+        $divAR.append("<button class='itin-btn' id='itin-btn' disabled>Rendez-vous à la première étape</button>");
         // on va aller chercher la position en temps réel de l'utilisateur
         currentPos = null;
         mymap.on('locationfound', function(evt){
 
-            currentPos = [evt.latlng.lat, evt.latlng.lng];
+            // on convertit la position du user en string avec JSON.stringify pour pouvoir comparer
+            // la position de l'utilisateur et la position du marqueur
+            currentPos = [JSON.stringify(evt.latlng.lat), JSON.stringify(evt.latlng.lng)];
 
             // il faut ensuite matcher la position de l'utilisateur avec la position des marqueurs (étapes)
             // pour cela, il faut laisser une certaine marge de précision pour que l'utilisateur n'ait pas
@@ -101,17 +105,27 @@ $(function(){
             // puis reconvertir le tout en float pour retourner à un array avec nos lat long
             // en degré une précision à 4 décimales est précis de 11.1m (+ - 5.55m), nous pouvons donc couper
             // notre array à 4 décimales pour permettre une marge de manoeuvre
-            let userPosition = [parseFloat(currentPos[0].toString().slice(0,7)), parseFloat(currentPos[1].toString().slice(0,6))]
-            console.log("user position: ", userPosition);
+            let userPosition = '[' + currentPos[0].slice(0,6) + ',' + currentPos[1].slice(0,5) + ']';
+            console.log("user position1: ", userPosition);
+            // on enlève le bouton à chaque itération pour qu'ils ne se superposent aps
+            $divAR.empty();
             // il faut matcher la position de l'utilisateur avec la position des marqueurs
+            // on itère à travers le dictionnaire qui contient la position de chacun de nos marqueurs
             for (var value in coords_dict) {
-                let markerPosition = [parseFloat(coords_dict[value].value[0].toString().slice(0,7)),parseFloat(coords_dict[value].value[1].toString().slice(0,6))];
-                console.log("marker position: ", markerPosition)
-                if (userPosition == coords_dict[value].value) {
-                    console.log("its a match")
+                markerPosition = '[' + JSON.stringify(coords_dict[value].value[0]).slice(0,6) + ',' + JSON.stringify(coords_dict[value].value[1]).slice(0,5) + ']';
+                if (userPosition == markerPosition) {
+                    
+                    // si la position du user est la même que celle du marqueur
+                    // on ajoute un bouton Go to AR
+                    $divAR.append("<button class='itin-btn' id='itin-btn'>Aller à l'AR</button>");
+                    console.log("its a match");
+                    // on arrête la boucle
+                    break;
                 }
                 else {
-                    break;
+                    // si les coordonnées ne match pas, on enlève le bouton AR
+                    $divAR.empty();
+                    console.log("its not a match");
                 };
                 
                 // if (currentPos.filter(element => coords_dict[value].value)){

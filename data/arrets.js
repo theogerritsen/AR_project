@@ -91,7 +91,7 @@ const arret = {
                 "nom": "etape9" }, 
                 "geometry": { 
                     "type": "Point", 
-                    "coordinates": [ 6.648585173138017, 46.51311699595473 ] 
+                    "coordinates": [ 6.648845678778179, 46.513200813704394 ] 
             }
         }
     ]
