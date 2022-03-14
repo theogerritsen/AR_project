@@ -5,6 +5,12 @@ let mymap = L.map('map', {
 	zoom: 13
 });
 
+// fit bounds pour voir tout le sentier sur n'importe quel device
+mymap.fitBounds([
+    [46.5184540, 6.6240245],
+    [46.5233845, 6.6360568]
+])
+
 const mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
     tileSize: 512,
     zoomOffset: -1,
@@ -61,12 +67,14 @@ L.geoJSON(sentier, {
 
 // initialisation du bouton Commencer le sentier
 $(function(){
-    $(".itin-btn").click(function(){
+    $("#itin-btn").click(function(){
         // on ajoute la classe active au bouton s'il est appuyé
         $("#itin-go").toggleClass('active');
-        $(this).toggleClass('active');
+        // $(this).toggleClass('active');
         // dès que le user a appuyé sur le bouton, on active le control locate
         lc._activate();
+        // on ajoute un pop up : rendez-vous à la première étape
+        $("#itin-rdv").append("<button class='itin-btn' id='itin-btn' disabled>Rendez-vous à la première étape</button>")
     })
 })
 

@@ -6,27 +6,28 @@
 html, body{
     height: 100%;
     width: 100vw;
+    overflow: hidden;
 }
 #map {
     height: 100%;
     width: 100vw;
     z-index: 1;
 }
-.itin-go {
+.itin-go, .itin-rdv {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 0;
     z-index: 2;
-    border-radius: 40px;
     border: none;
     padding: 20px;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
 }
-
-.itin-go .itin-btn{
+.itin-rdv{
+    top: 0;
+    height: 100px;
+    width: 200px;
+}
+.itin-btn{
     background-color: rgb(108, 168, 118);
     border-radius: 40px;
     border: none;
@@ -36,12 +37,14 @@ html, body{
     margin: 7px;
     cursor: pointer;
 }
-
+.itin-rdv .itin-btn{
+    cursor: default;
+}
 .itin-go.active{
+    position: absolute;
     left: 700px;
     transition: all 1s ease;
 }
-
 /* .itin-go.active .itin-btn.active{
     bottom: -100px;
     transition: all 0.5s ease;
