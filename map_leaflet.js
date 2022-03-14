@@ -78,6 +78,7 @@ L.geoJSON(sentier, {
     }
 }).addTo(mymap)
 
+let arPath = 'ar.html'
 // on ajout le div qui contiendra notre bouton dans une nouvelle constante
 const $divAR = $("#itin-rdv");
 // initialisation du bouton Commencer le sentier
@@ -89,7 +90,7 @@ $(function(){
         // dès que le user a appuyé sur le bouton, on active le control locate
         lc._activate();
         // on ajoute un pop up : rendez-vous à la première étape si l'utilisateur n'est pas déjà sur place
-        $divAR.append("<button class='itin-btn' id='itin-btn' disabled>Rendez-vous à la première étape</button>");
+        $divAR.append("<button class='itin-btn' id='rdv-btn' disabled>Rendez-vous à la prochaine étape</button>");
         // on va aller chercher la position en temps réel de l'utilisateur
         currentPos = null;
         mymap.on('locationfound', function(evt){
@@ -107,24 +108,35 @@ $(function(){
             // notre array à 4 décimales pour permettre une marge de manoeuvre
             let userPosition = '[' + currentPos[0].slice(0,6) + ',' + currentPos[1].slice(0,5) + ']';
             console.log("user position1: ", userPosition);
-            // on enlève le bouton à chaque itération pour qu'ils ne se superposent aps
-            $divAR.empty();
             // il faut matcher la position de l'utilisateur avec la position des marqueurs
             // on itère à travers le dictionnaire qui contient la position de chacun de nos marqueurs
             for (var value in coords_dict) {
                 markerPosition = '[' + JSON.stringify(coords_dict[value].value[0]).slice(0,6) + ',' + JSON.stringify(coords_dict[value].value[1]).slice(0,5) + ']';
+                console.log("positions: ", userPosition, markerPosition)
                 if (userPosition == markerPosition) {
-                    
+                    // on enlève le bouton à chaque itération pour qu'ils ne se superposent pas
+                    $("#itin-rdv #go-ar-btn").remove();
+                    // on enlève le bouton allez à la prochaine étape
+                    $("#itin-rdv #rdv-btn").remove();
                     // si la position du user est la même que celle du marqueur
                     // on ajoute un bouton Go to AR
-                    $divAR.append("<button class='itin-btn' id='itin-btn'>Aller à l'AR</button>");
+                    $divAR.append("<button class='itin-btn' id='go-ar-btn'>Commencer le tour en réalité augmentée</button>");
                     console.log("its a match");
+                    // fonction pour aller à la page de l'AR s'il est appuyé
+                    $(function(){
+                        $("#go-ar-btn").click(function(){
+                            window.location.href = "ar.html"
+                        })
+                    })
                     // on arrête la boucle
                     break;
                 }
                 else {
                     // si les coordonnées ne match pas, on enlève le bouton AR
-                    $divAR.empty();
+                    $("#itin-rdv #go-ar-btn").remove();
+                    $("#itin-rdv #rdv-btn").remove();
+                    // et on remet l'info qu'il faut aller à la prochaine étape
+                    $divAR.append("<button class='itin-btn' id='rdv-btn' disabled>Rendez-vous à la prochaine étape</button>");
                     console.log("its not a match");
                 };
                 
@@ -137,7 +149,7 @@ $(function(){
             };
         });
         //
-    })
-})
+    });
+});
 
 

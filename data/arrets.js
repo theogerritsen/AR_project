@@ -93,6 +93,16 @@ const arret = {
                     "type": "Point", 
                     "coordinates": [ 6.648845678778179, 46.513200813704394 ] 
             }
+        },
+        { 
+            "type": "Feature", 
+            "properties": { 
+                "id": 10,
+                "nom": "etape10" }, 
+                "geometry": { 
+                    "type": "Point", 
+                    "coordinates": [ 6.648087943091656, 46.51391366240597 ] 
+            }
         }
     ]
 }

@@ -22,6 +22,11 @@ html, body{
     border: none;
     padding: 20px;
 }
+/* a.class-btn{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+} */
 .itin-rdv{
     top: 0;
     height: 100px;
@@ -37,15 +42,9 @@ html, body{
     margin: 7px;
     cursor: pointer;
 }
-.itin-rdv .itin-btn{
-    cursor: default;
-}
 .itin-go.active{
     position: absolute;
     left: 700px;
     transition: all 1s ease;
 }
-/* .itin-go.active .itin-btn.active{
-    bottom: -100px;
-    transition: all 0.5s ease;
-} */
+
