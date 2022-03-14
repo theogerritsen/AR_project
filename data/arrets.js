@@ -82,7 +82,17 @@ const arret = {
                 "geometry": { 
                     "type": "Point", 
                     "coordinates": [ 6.626497695378868, 46.519174495157294 ] 
-            } 
+            }
+        },
+        { 
+            "type": "Feature", 
+            "properties": { 
+                "id": 9,
+                "nom": "etape9" }, 
+                "geometry": { 
+                    "type": "Point", 
+                    "coordinates": [ 6.648585173138017, 46.51311699595473 ] 
+            }
         }
     ]
 }
