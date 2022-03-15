@@ -12,12 +12,13 @@
     </script>
 </head>
 
-<script src="js/ar.js"></script>
+<!-- <script src="js/ar.js"></script> -->
 <body style='margin: 0; overflow: hidden;'>
     <a-scene
        vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; videoTexture: true; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+        <a-box material="color: yellow" gps-entity-place="longitude: 6.648854749263658; latitude: 46.51347553019077;" position="0 30 0"/>
         <a-camera id="camera1" look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1'
         gps-camera rotation-reader>
 		</a-camera>
