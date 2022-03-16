@@ -8,8 +8,8 @@ function staticLoadPlaces() {
        {
            name: 'Magnemite',
            location: {
-               lat: 46.51347553019077,
-               lng: 6.648854749263658,
+               lat: 46.51313335530353,
+               lng: 6.648636329118053,
            }
        },
    ];
@@ -23,9 +23,9 @@ function renderPlaces(places) {
        let longitude = place.location.lng;
 
        let model = document.createElement('a-box');
-       model.setAttribute('material', 'color: yellow');
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-       model.setAttribute('position', '0 30 0');
+       model.setAttribute('position', '0 1 0');
+       model.setAttribute('material', 'color: yellow');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
