@@ -80,7 +80,6 @@ L.geoJSON(sentier, {
 
 let arPath = 'ar_files/';
 
-let step1 = 'ar.html'
 // on ajout le div qui contiendra notre bouton dans une nouvelle constante
 const $divAR = $("#itin-rdv");
 
@@ -107,7 +106,7 @@ $(function(){
         // on va aller chercher la position en temps réel de l'utilisateur
         currentPos = null;
         mymap.on('locationfound', function(evt){
-            // on arrondit les lat long avec 3 décimales avec Math.round()
+            // on arrondit les lat long avec 4 décimales avec Math.round()
             // on convertit la position du user en string avec JSON.stringify pour pouvoir comparer
             // la position de l'utilisateur et la position du marqueur
             currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
@@ -115,8 +114,8 @@ $(function(){
             // il faut ensuite matcher la position de l'utilisateur avec la position des marqueurs (étapes)
             // pour cela, il faut laisser une certaine marge de précision pour que l'utilisateur n'ait pas
             // à être exactement au bon endroit
-            // on arrondit nos lat long à 3 décimales avec Math.round(). 3 décimales en degré permettent
-            // d'avoir une précision d'environ 76m à 45° de latitude, ce qui laisse en marge de manoeuvre
+            // on arrondit nos lat long à 3 décimales avec Math.round(). 4 décimales en degré permettent
+            // d'avoir une précision d'environ 7.8m à 45° de latitude, ce qui laisse en marge de manoeuvre
             // pour l'utilisateur
             let userPosition = '[' + currentPos[0] + ',' + currentPos[1] + ']';
             console.log("user position1: ", userPosition);
