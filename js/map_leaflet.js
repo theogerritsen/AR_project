@@ -86,7 +86,7 @@ const $divAR = $("#itin-rdv");
 // on crée 10 variable contenant le chemin de chaque fichier AR
 let step = [];
 for (i = 1; i <= 10; ++i){
-    this["step"+i] = "step" + i
+    this["step"+i] = "step" + i + ".html"
 }
 
 m = 0;
@@ -106,7 +106,7 @@ $(function(){
         // on va aller chercher la position en temps réel de l'utilisateur
         currentPos = null;
         mymap.on('locationfound', function(evt){
-            // on arrondit les lat long avec 4 décimales avec Math.round()
+            // on arrondit les lat long avec 4   décimales avec Math.round()
             // on convertit la position du user en string avec JSON.stringify pour pouvoir comparer
             // la position de l'utilisateur et la position du marqueur
             currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
@@ -142,36 +142,35 @@ $(function(){
                     // fonction pour aller à la page de l'AR s'il est appuyé
                     $(function(){
                         $("#go-ar-btn").click(function(){
-
-
-                            if (userPosition == '[6.6349,46.5228]'){
+                            //window.location.href = "ar_files/step9.html"
+                            if (userPosition == '[46.5228,6.6349]'){
                                 window.location.href = arPath + step1;
                             }
-                            if (userPosition == '[6.6331,46.5229]'){
+                            if (userPosition == '[46.5229,6.6331]'){
                                 window.location.href = arPath + step2;
                             }
-                            if (userPosition == '[6.6325,46.5230]'){
+                            if (userPosition == '[46.5230,6.6325]'){
                                 window.location.href = arPath + step3;
                             }
-                            if (userPosition == '[6.6304,46.5223]'){
+                            if (userPosition == '[46.5223,6.6304]'){
                                 window.location.href = arPath + step4;
                             }
-                            if (userPosition == '[6.6324,46.5207]'){
+                            if (userPosition == '[46.5207,6.6324]'){
                                 window.location.href = arPath + step5;
                             }
-                            if (userPosition == '[6.6304,46.5207]'){
+                            if (userPosition == '[46.5207,6.6304]'){
                                 window.location.href = arPath + step6;
                             }
-                            if (userPosition == '[6.6302,46.5223]'){
+                            if (userPosition == '[46.5223,6.6302]'){
                                 window.location.href = arPath + step7;
                             }
-                            if (userPosition == '[6.6264,46.5191]'){
+                            if (userPosition == '[46.5191,6.6264]'){
                                 window.location.href = arPath + step8;
                             }
-                            if (userPosition == '[6.6488,46.5132]'){
+                            if (userPosition == '[46.5131,6.6488]'){
                                 window.location.href = arPath + step9;
                             }
-                            if (userPosition == '[6.64808,46.5139]'){
+                            if (userPosition == '[46.5139,6.6480]'){
                                 window.location.href = arPath + step10;
                             }
 
