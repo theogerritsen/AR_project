@@ -49,6 +49,8 @@ for (const feature of arret.features){
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];
+
+    let url = feature.properties.url;
     
     // pour chaque coordonnée trouvée, on l'ajoute à notre array vide
     coords_dict.push({
@@ -76,9 +78,22 @@ L.geoJSON(sentier, {
     }
 }).addTo(mymap)
 
-let arPath = 'ar.html'
+let arPath = 'ar_files/';
+
+let step1 = 'ar.html'
 // on ajout le div qui contiendra notre bouton dans une nouvelle constante
 const $divAR = $("#itin-rdv");
+
+// on crée 10 variable contenant le chemin de chaque fichier AR
+let step = [];
+for (i = 1; i <= 10; ++i){
+    this["step"+i] = "step" + i
+}
+
+m = 0;
+
+let step_coordinates = [];
+// console.log(coords_dict)
 // initialisation du bouton Commencer le sentier
 $(function(){
     $("#itin-btn").click(function(){
@@ -95,7 +110,7 @@ $(function(){
             // on arrondit les lat long avec 3 décimales avec Math.round()
             // on convertit la position du user en string avec JSON.stringify pour pouvoir comparer
             // la position de l'utilisateur et la position du marqueur
-            currentPos = [JSON.stringify(Math.round(evt.latlng.lat*1000)/1000), JSON.stringify(Math.round(evt.latlng.lng*1000)/1000)];
+            currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
 
             // il faut ensuite matcher la position de l'utilisateur avec la position des marqueurs (étapes)
             // pour cela, il faut laisser une certaine marge de précision pour que l'utilisateur n'ait pas
@@ -108,7 +123,9 @@ $(function(){
             // il faut matcher la position de l'utilisateur avec la position des marqueurs
             // on itère à travers le dictionnaire qui contient la position de chacun de nos marqueurs
             for (var value in coords_dict) {
-                markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*1000)/1000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*1000)/1000) + ']';
+
+                markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*10000)/10000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*10000)/10000) + ']';
+
                 console.log("positions: ", userPosition, markerPosition)
                 if (userPosition == markerPosition) {
                     // on enlève le bouton à chaque itération pour qu'ils ne se superposent pas
@@ -119,10 +136,46 @@ $(function(){
                     // on ajoute un bouton Go to AR
                     $divAR.append("<button class='itin-btn' id='go-ar-btn'>Commencer le tour en réalité augmentée</button>");
                     console.log("its a match");
+                    // il faut faire en sorte de le bon AR trigger selon la localisation de
+                    // l'utilisateur
+                    // on a juste à travers un if avec les bonnes coordonnées
+
                     // fonction pour aller à la page de l'AR s'il est appuyé
                     $(function(){
                         $("#go-ar-btn").click(function(){
-                            window.location.href = "ar.html"
+
+
+                            if (userPosition == '[6.6349,46.5228]'){
+                                window.location.href = arPath + step1;
+                            }
+                            if (userPosition == '[6.6331,46.5229]'){
+                                window.location.href = arPath + step2;
+                            }
+                            if (userPosition == '[6.6325,46.5230]'){
+                                window.location.href = arPath + step3;
+                            }
+                            if (userPosition == '[6.6304,46.5223]'){
+                                window.location.href = arPath + step4;
+                            }
+                            if (userPosition == '[6.6324,46.5207]'){
+                                window.location.href = arPath + step5;
+                            }
+                            if (userPosition == '[6.6304,46.5207]'){
+                                window.location.href = arPath + step6;
+                            }
+                            if (userPosition == '[6.6302,46.5223]'){
+                                window.location.href = arPath + step7;
+                            }
+                            if (userPosition == '[6.6264,46.5191]'){
+                                window.location.href = arPath + step8;
+                            }
+                            if (userPosition == '[6.6488,46.5132]'){
+                                window.location.href = arPath + step9;
+                            }
+                            if (userPosition == '[6.64808,46.5139]'){
+                                window.location.href = arPath + step10;
+                            }
+
                         })
                     })
                     // on arrête la boucle
