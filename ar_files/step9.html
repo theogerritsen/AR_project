@@ -21,7 +21,18 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
+    <!-- on stock nos assets, par ex textures, directement dans cette balise pour les utiliser plus tard-->
+    <a-assets>
+      <img id="cubeTexture" src="../assets/textures/mYmmbrp.jpg">
+      <img id="skyTexture" src="../assets/textures/sechelt.jpg">
+    </a-assets>
+    <!-- <a-box src="#cubeTexture" position="0 2 -5" rotation="0 45 45"
+    scale="2 2 2" animation="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"></a-box> -->
+    <!-- on va aller rechercher nos assets en utilisant leur id-->
+    <a-sky src="#skyTexture"></a-sky>
+    
       <a-camera gps-camera rotation-reader> </a-camera>
+
     </a-scene>
     <div class="centered">
       <button id="return-btn" class="return-btn">Retourner à l'itinéraire</button>

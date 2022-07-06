@@ -30,17 +30,34 @@ function renderPlaces(places) {
        let latitude = place.location.lat;
        let longitude = place.location.lng;
 
+       // on va ajouter nos différentes textures dans la balise assets
+
+
        // on ajoute un cube jaune aux coordonnées indiquées
        let cube = document.createElement('a-box');
-       cube.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+       // cube.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        // il faut imaginer une scène en 3D
        // la première valeur correspond à x, la deuxième à y (qui est l'altitude), et la troisième à z (qui est la profondeur)
-       cube.setAttribute('position', '0 1 0');
-       cube.setAttribute('material', 'color: yellow');
+       cube.setAttribute('position', '0 2 -5');
+       cube.setAttribute('height', '2');
+       cube.setAttribute('scale', '2 2 2');
+        // ajout d'une texture personalisée, on  va chercher l'id de notre texture qu'on a définit dans la balise assets.
+       cube.setAttribute("src", "#cubeTexture");
+       // on ajoute une animation à notre objet (va aller de haut en bas en boucle)
+       cube.setAttribute("animation", "property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true");
+       //cube.setAttribute('material', 'color: yellow');
 
        cube.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
+
+       // on ajoute un environnement
+    //    let environnement = document.createElement('a-entity');
+    //    environnement.setAttribute('environment', 'preset: forest; dressingAmount: 500');
+
+    //    environnement.addEventListener('loaded', () => {
+    //     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+    //    });
 
        // on ajoute une sphère
        let sphere = document.createElement('a-sphere');

@@ -21,6 +21,10 @@ Nous allons ici surtout nous concentrer sur deux méthodes:
 
 * Une dernière méthode est proposée par AR.js que nous n'exploiterons pas ici : [Marker based](https://ar-js-org.github.io/AR.js-Docs/marker-based/). Cette méthode repose sur l'identification d'un marqueur (type QR code) afin d'afficher un élément en AR. Puisque notre application concerne un sentier didactique, il ne sera pas possible de disposer de marqueurs à travers la ville, même si cette dernière méthode est la plus fiable.
 
+## A-Frame
+
+[A-Frame](https://aframe.io/docs/1.3.0/introduction/) est un outil permettant de créer des expériences en réalité augmentée et en réalité virtuelle. Il s'agit d'un langage construit autours de l'HTML permettant de facilement créer des objets en trois dimensions à l'aide de différentes balises pré-définies.
+
 ## Applications AR déjà réalisée
 
 ### Pour les sentiers didactiques en Suisse
