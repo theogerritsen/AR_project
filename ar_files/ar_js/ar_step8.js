@@ -44,8 +44,8 @@ function renderPlaces(places) {
         plane.setAttribute('width', '1');
         plane.setAttribute('src', '#cubes-thumb');
         plane.setAttribute('look-at', '[gps-camera]');
-        plane.setAttribute('rotation', '0 90 0')
-        // entity.setAttribute('sound', 'on: click; src: #click-sound');
+        plane.setAttribute('rotation', '0 90 0');
+        plane.setAttribute('sound', 'on: click; src: #click-sound');
         plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
         plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
         //entity.setAttribute('event-set__click', '_target:');

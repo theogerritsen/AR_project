@@ -25,21 +25,11 @@
         >
         <!-- on stock nos assets, par ex textures, directement dans cette balise pour les utiliser plus tard-->
             <a-assets>
-                <!-- <audio id="click-sound" src="../assets/sounds/click.ogg"></audio> -->
+                <!-- ajout d'un son quand on clique sur le panneau -->
+                <audio id="click-sound" src="../assets/sounds/click.ogg"></audio>
                 <img id="cubes-thumb" src="../assets/textures/thumb-cubes.jpg">
             </a-assets>
 
-        <!-- <a-sky
-    id="image-360" radius="10" src="#city"
-    animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
-    animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
-
-        <a-entity id="links" layout="type: line; margin: 1.5" position="-3 -1 -4">
-            <a-entity template="src: #plane" data-src="#city" data-thumb="#city-thumb"></a-entity>
-    <a-entity template="src: #plane" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
-    <a-entity template="src: #plane" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
-        </a-entity> -->
-        <!-- <a-plane src="#cubes-thumb" height="1" width="1"></a-plane> -->
         
             <a-camera gps-camera rotation-reader>
             <!-- on ajoute un curseur pour intéragir avec les objets.-->

@@ -60,6 +60,8 @@ function renderPlaces(places) {
         cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave")
         //cube.setAttribute('material', 'color: yellow');
 
+        cube.setAttribute('sound', 'on: click; src: #click-sound');
+
         cube.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
@@ -81,31 +83,48 @@ function renderPlaces(places) {
 
        // on ajoute une sphère
        let sphere = document.createElement('a-sphere');
-       sphere.setAttribute('gps-entity-place', `latitude: ${46.513}; longitude: ${6.648};`);
-       sphere.setAttribute('position', '0 0 0');
-       sphere.setAttribute('material', 'color: green');
+            sphere.setAttribute('gps-entity-place', `latitude: ${46.513}; longitude: ${6.648};`);
+            sphere.setAttribute('position', '0 0 0');
+            sphere.setAttribute('material', 'color: green');
+            sphere.setAttribute('sound', 'on: click; src: #click-sound');
 
-       sphere.addEventListener('loaded', () => {
-           window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-       });
+            sphere.addEventListener('loaded', () => {
+                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            });
 
 
-       // on ajoute du texte
-       let text = document.createElement('a-text');
-       text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-       text.setAttribute('scale', '10 10 10');
-       text.setAttribute('look-at', '[gps-camera]');
-       text.setAttribute('value', 'Coucou toi');
-       text.setAttribute("animation__mouseenter", "property: scale; to: 20 20 20; dur: 300; startEvents: mouseenter");
-        text.setAttribute("animation__mouseleave", "property: scale; to: 10 10 10; dur: 300; startEvents: mouseleave")
+        // on ajoute du texte
+        let text = document.createElement('a-text');
+            text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            text.setAttribute('scale', '10 10 10');
+            text.setAttribute('look-at', '[gps-camera]');
+            text.setAttribute('value', 'Coucou toi');
+            text.setAttribute('sound', 'on: click; src: #click-sound');
+            text.setAttribute("animation__mouseenter", "property: scale; to: 20 20 20; dur: 300; startEvents: mouseenter");
+            text.setAttribute("animation__mouseleave", "property: scale; to: 10 10 10; dur: 300; startEvents: mouseleave")
 
-       text.addEventListener('loaded', () => {
-           window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-       });
+        text.addEventListener('loaded', () => {
+            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        });
+
+        let plane = document.createElement('a-plane');
+            plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            plane.setAttribute('height', '1');
+            plane.setAttribute('width', '1');
+            plane.setAttribute('src', '#cubes-thumb');
+            plane.setAttribute('look-at', '[gps-camera]');
+            plane.setAttribute('sound', 'on: click; src: #click-sound');
+            plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
+            plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
+
+            plane.addEventListener('loaded', () => {
+                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            });
 
        scene.appendChild(cube);
        scene.appendChild(sphere);
        scene.appendChild(text);
+       scene.appendChild(plane);
    });
 };
 
