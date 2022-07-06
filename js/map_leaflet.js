@@ -92,11 +92,44 @@ for (i = 1; i <= 10; ++i){
 m = 0;
 
 let step_coordinates = [];
+
+// function ChangeUrl(page, url) {
+//     if (typeof (history.pushState) != "undefined"){
+//         var obj = { Page: page, Url: url};
+//         history.pushState(obj, obj.Page, obj.Url);
+
+//     } else {
+//         alert("Browster does not support HTML5");
+//     }
+// }
+
+
+
+
 // console.log(coords_dict)
 // initialisation du bouton Commencer le sentier
 $(function(){
     $("#itin-btn").click(function(){
+
+        window.history.pushState(
+            
+              null
+            ,
+            "",
+            "index.html#tracking"
+          );
+
+        // ChangeUrl('tracking-mode', 'tracking-mode.html');
         // on ajoute la classe active au bouton s'il est appuyé
+
+        // (function(window,undefined){
+        //     History.Adapter.bind(window, 'statechange', function(){
+        //         var State = History.getState();
+        //         console.log(State);
+        //     });
+        
+        //     History.pushState({state:1}, "State 1", "?state=1");
+        // })(window);
         $("#itin-go").toggleClass('active');
         // $(this).toggleClass('active');
         // dès que le user a appuyé sur le bouton, on active le control locate

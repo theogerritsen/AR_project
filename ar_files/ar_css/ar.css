@@ -1,0 +1,26 @@
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(108, 168, 118);
+    border-radius: 40px;
+    border: none;
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    margin: 7px;
+    cursor: pointer;
+    z-index: 999;
+}
+.centered {
+    height: 20%;
+    justify-content: center;
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0px auto;
+    left: 0;
+    right: 0;
+}
