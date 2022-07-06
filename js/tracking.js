@@ -130,7 +130,7 @@ mymap.on('locationfound', function(evt){
                     if (userPosition == '[46.5191,6.6264]'){
                         window.location.href = arPath + step8;
                     }
-                    if (userPosition == '[46.5131,6.6488]'){
+                    if (userPosition == '[46.5132,6.6488]'){
                         window.location.href = arPath + step9;
                     }
                     if (userPosition == '[46.5139,6.6480]'){

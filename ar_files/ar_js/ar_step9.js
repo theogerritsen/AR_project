@@ -1,3 +1,9 @@
+$(function(){
+    $("#return-btn").click(function(){
+        window.location.href = "../tracking.html"
+    })
+})
+
 window.onload = () => {
     let places = staticLoadPlaces();
     console.log(places);
@@ -22,22 +28,6 @@ function staticLoadPlaces() {
        }
    ];
 }
-
-// enregistrement d'un component pour l'utiliser plus tard directement dans la balise
-AFRAME.registerComponent('scale-on-mouseenter', {
-    schema: {
-        to: {default: '1 1 1', type: 'vec3'}
-    },
-
-    init: function () {
-        var data = this.data;
-        var el = this.el;
-        this.el.addEventListener('mouseenter', function () {
-            el.object3D.scale.copy(data.to);
-        });
-    }
-});
-
 
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
@@ -69,8 +59,6 @@ function renderPlaces(places) {
         // il se remet ensuite en place quand on ne le regarde plus
         cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave")
         //cube.setAttribute('material', 'color: yellow');
-
-        cube.setAttribute("scale-on-mouseenter");
 
         cube.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
@@ -108,6 +96,8 @@ function renderPlaces(places) {
        text.setAttribute('scale', '10 10 10');
        text.setAttribute('look-at', '[gps-camera]');
        text.setAttribute('value', 'Coucou toi');
+       text.setAttribute("animation__mouseenter", "property: scale; to: 20 20 20; dur: 300; startEvents: mouseenter");
+        text.setAttribute("animation__mouseleave", "property: scale; to: 10 10 10; dur: 300; startEvents: mouseleave")
 
        text.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
