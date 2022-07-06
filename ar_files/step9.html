@@ -31,7 +31,10 @@
     <!-- on va aller rechercher nos assets en utilisant leur id-->
     <a-sky src="#skyTexture"></a-sky>
     
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <a-camera gps-camera rotation-reader>
+        <!-- on ajoute un curseur pour intéragir avec les objets-->
+        <a-cursor></a-cursor>
+      </a-camera>
 
     </a-scene>
     <div class="centered">
