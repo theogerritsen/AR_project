@@ -2,7 +2,7 @@ $(function(){
     $("#return-btn").click(function(){
         window.location.href = "../tracking.html"
     })
-})
+});
 
 window.onload = () => {
     let places = staticLoadPlaces();
@@ -54,10 +54,10 @@ function renderPlaces(places) {
 
         // on ajoute une animation qui trigger seulement si le user regarde l'objet
         // l'objet va avancer quand on le regarde
-        cube.setAttribute("animation__mouseenter", "property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter");
+        cube.setAttribute("animation__mouseenter", "property: scale; to: 2.3 2.3 2.3; src: #brick-bump; dur: 300; startEvents: mouseenter");
 
         // il se remet ensuite en place quand on ne le regarde plus
-        cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave")
+        cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; src: #cubeTexture; dur: 300; startEvents: mouseleave")
         //cube.setAttribute('material', 'color: yellow');
 
         cube.setAttribute('sound', 'on: click; src: #click-sound');
@@ -65,21 +65,6 @@ function renderPlaces(places) {
         cube.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
-
-
-        // puisqu'on a créé un curseur qui correspond au centre de la caméra,
-        // on peut agrandir notre objet lorsque l'utilisateur regarde cet objet avec 'mouseenter'
-        // cube.addEventListener('mouseenter', function() {
-        //     cube.setAttribute('scale', {x: 1, y: 1, z: 1});
-        // });
-
-       // on ajoute un environnement
-    //    let environnement = document.createElement('a-entity');
-    //    environnement.setAttribute('environment', 'preset: forest; dressingAmount: 500');
-
-    //    environnement.addEventListener('loaded', () => {
-    //     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-    //    });
 
        // on ajoute une sphère
        let sphere = document.createElement('a-sphere');

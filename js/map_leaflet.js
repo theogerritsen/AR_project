@@ -46,6 +46,7 @@ for (const feature of arret.features){
     n++;
     // on utilise ce n avec le chemin relatif des icones de chaque étape
     let path = 'assets/marqueurs_etapes/etape' + n + '.png';
+    let path_arjs = 'ar_files/step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];
@@ -64,8 +65,15 @@ for (const feature of arret.features){
         iconUrl: path,
         iconSize: [50, 50],
         iconAnchor:   [25, 50]
-    })
-    let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap)
+    });
+
+    let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
+
+    
+    let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
+
+    marqueur.bindPopup(popupContent);
+
 };
 
 // polyline du parcours à faire et ajout à la carte
@@ -113,23 +121,12 @@ $(function(){
 
         window.history.pushState(
             
-              null
-            ,
+            null,
             "",
             "index.html#tracking"
-          );
+        );
 
-        // ChangeUrl('tracking-mode', 'tracking-mode.html');
-        // on ajoute la classe active au bouton s'il est appuyé
-
-        // (function(window,undefined){
-        //     History.Adapter.bind(window, 'statechange', function(){
-        //         var State = History.getState();
-        //         console.log(State);
-        //     });
-        
-        //     History.pushState({state:1}, "State 1", "?state=1");
-        // })(window);
+        $("#itin-rdv #rdv-btn").remove();
         $("#itin-go").toggleClass('active');
         // $(this).toggleClass('active');
         // dès que le user a appuyé sur le bouton, on active le control locate

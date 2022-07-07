@@ -105,6 +105,8 @@ mymap.on('locationfound', function(evt){
             
             $(function(){
                 $("#go-ar-btn").click(function(){
+
+                    $( ".itin-rdv" ).css('background-color', 'red');
                     
                     if (userPosition == '[46.5228,6.6349]'){
                         window.location.href = arPath + step1;

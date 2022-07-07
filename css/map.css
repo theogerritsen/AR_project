@@ -42,6 +42,9 @@ html, body{
     margin: 7px;
     cursor: pointer;
 }
+.itin-btn:hover{
+    background-color: rgb(66, 104, 72);
+}
 .itin-go.active{
     position: absolute;
     left: 700px;
