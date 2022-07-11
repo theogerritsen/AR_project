@@ -49,7 +49,7 @@ function goFullScreen() {
 
         document.querySelector('#fullScreen').classList.toggle("active");
         // on remet le logo de enter fullscreen
-        $("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
+        document.querySelector("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
     
         $('#tooltiptext').text('Enter fullscreen')
     }
