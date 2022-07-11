@@ -1,3 +1,61 @@
+// fonction pour toggle le fullscreen
+
+function goFullScreen() {
+
+    let docElm = document.documentElement;
+
+    // si notre div fullScreen a une class active (par défaut)
+    if ($("#fullScreen").hasClass("active")) {
+
+        // on va toggle le fullscreen
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+
+        } else if (docElm.msRequestFullscreen) {
+            docElm.msRequestFullscreen();
+
+        } else if (docElm.mozRequestFullScreen) {
+            docElm.mozRequestFullScreen();
+
+        } else if (docElm.webkitRequestFullScreen) {
+            docElm.webkitRequestFullScreen();
+        }
+        // et on enlève la classe active
+        document.querySelector('#fullScreen').classList.toggle("active");
+
+        // et on change le logo pour mettre celui de exit full screen
+        document.querySelector('#fullscreen-logo').src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXElEQVRIS2NkoDFgpLH5DCPDgv/QYET3LS5xlFAnJohGLcBIqLAgQZfAFQd41WGLA5pbQNW8R0wqosjC4WkBzSOZ5hagR+poUUEwmdM8iAi6AJ+C4ZnRKAoSdM0A6+cYGWABv+kAAAAASUVORK5CYII="
+
+        $('#tooltiptext').text('Exit fullscreen')
+
+    }
+
+    else {
+        if(document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+
+        else if(document.msexitFullscreen) {
+            document.msexitFullscreen();
+        }
+
+        else if(document.mozexitFullscreen) {
+            document.mozexitFullscreen();
+        }
+
+        else if(document.webkitexitFullscreen) {
+            document.webkitexitFullscreen();
+        }
+
+        document.querySelector('#fullScreen').classList.toggle("active");
+        // on remet le logo de enter fullscreen
+        $("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
+    
+        $('#tooltiptext').text('Enter fullscreen')
+    }
+};
+
+
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
     minZoom: 10,

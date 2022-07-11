@@ -4,6 +4,7 @@ window.onload = () => {
     renderPlaces(places);
 };
 
+document.documentElement.requestFullscreen();
 
 function staticLoadPlaces() {
     return [
@@ -15,7 +16,7 @@ function staticLoadPlaces() {
             }
         },
         {
-            name: 'Pikachu',
+            name: 'Plane',
             location: {
                 lat: 46.513242067112145,
                 lng: 6.64953061533322,
@@ -24,15 +25,6 @@ function staticLoadPlaces() {
     ];
 }
 
-
-
-// function loadAssets(asset) {
-
-//     // on va chercher notre balise a-assets
-//     let assets = document.querySelector('a-assets');
-
-//     asset.forEach((asset))
-// }
 
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
@@ -45,7 +37,6 @@ function renderPlaces(places) {
 
         // on va chercher les noms de chacun de nos modèles pour les utiliser avec nos IF statements
         let name = place.name;
-        console.log(place.name);
 
         // test du modèle gltf
         if (name == 'River') {
@@ -55,7 +46,7 @@ function renderPlaces(places) {
             model.setAttribute('rotation', '0 140 0');
             model.setAttribute('animation-mixer', '');
             model.setAttribute('scale', '0.5 0.5 0.5');
-            model.setAttribute('position', '-20 -40 0');
+            model.setAttribute('position', '-20 0 0');
 
             model.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
@@ -65,7 +56,7 @@ function renderPlaces(places) {
         }
 
 
-        if (name == 'Pikachu') {
+        if (name == 'Plane') {
 
             let plane = document.createElement('a-plane');
             plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
