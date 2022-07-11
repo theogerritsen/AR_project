@@ -4,24 +4,27 @@ window.onload = () => {
     renderPlaces(places);
 };
 
+
 function staticLoadPlaces() {
     return [
         {
             name: 'River',
             location: {
-                lat: 46.51313335530353,
-                lng: 6.648636329118053,
+                lat: 46.513278984321566,
+                lng: 6.648818952768574,
             }
         },
         {
             name: 'Pikachu',
             location: {
-                lat: 46.52,
-                lng: 6.7,
+                lat: 46.513242067112145,
+                lng: 6.64953061533322,
             }
         }
     ];
 }
+
+
 
 // function loadAssets(asset) {
 
@@ -35,43 +38,56 @@ function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
 
     places.forEach((place) => {
+
+        // on va chercher les latitude et longitude
         let latitude = place.location.lat;
         let longitude = place.location.lng;
 
+        // on va chercher les noms de chacun de nos modèles pour les utiliser avec nos IF statements
+        let name = place.name;
+        console.log(place.name);
+
         // test du modèle gltf
-        let model = document.createElement('a-entity');
-        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        model.setAttribute('gltf-model', '../../assets/gltf/scene.gltf');
-        model.setAttribute('rotation', '0 140 0');
-        model.setAttribute('animation-mixer', '');
-        model.setAttribute('scale', '0.5 0.5 0.5');
-        model.setAttribute('position', '-20 -40 0');
+        if (name == 'River') {
+            let model = document.createElement('a-entity');
+            model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            model.setAttribute('gltf-model', '../../assets/gltf/scene.gltf');
+            model.setAttribute('rotation', '0 140 0');
+            model.setAttribute('animation-mixer', '');
+            model.setAttribute('scale', '0.5 0.5 0.5');
+            model.setAttribute('position', '-20 -40 0');
 
-        model.addEventListener('loaded', () => {
-            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-        });
+            model.addEventListener('loaded', () => {
+                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            });
 
-        scene.appendChild(model);
-
-        let plane = document.createElement('a-plane');
-        plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        plane.setAttribute('height', '1');
-        plane.setAttribute('width', '1');
-        plane.setAttribute('src', '#cubes-thumb');
-        plane.setAttribute('look-at', '[gps-camera]');
-        plane.setAttribute('rotation', '0 90 0');
-        plane.setAttribute('sound', 'on: click; src: #click-sound');
-        plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
-        plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
-        //entity.setAttribute('event-set__click', '_target:');
+            scene.appendChild(model);
+        }
 
 
+        if (name == 'Pikachu') {
+
+            let plane = document.createElement('a-plane');
+            plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            plane.setAttribute('height', '1');
+            plane.setAttribute('width', '1');
+            plane.setAttribute('src', '#cubes-thumb');
+            plane.setAttribute('look-at', '[gps-camera]');
+            plane.setAttribute('rotation', '0 90 0');
+            plane.setAttribute('sound', 'on: click; src: #click-sound');
+            plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
+            plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
+            //entity.setAttribute('event-set__click', '_target:');
+
+            plane.addEventListener('loaded', () => {
+                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            });
+
+            scene.appendChild(plane);
         
+        }
         
 
-        plane.addEventListener('loaded', () => {
-            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-        });
 
         let text = document.createElement('a-text');
        text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
@@ -85,6 +101,6 @@ function renderPlaces(places) {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
        //scene.appendChild(entity);
-       scene.appendChild(plane);
+
    });
 };
