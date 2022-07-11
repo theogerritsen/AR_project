@@ -46,6 +46,8 @@ for (const feature of arret.features){
     n++;
     // on utilise ce n avec le chemin relatif des icones de chaque étape
     let path = 'assets/marqueurs_etapes/etape' + n + '.png';
+    // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
+    // pour pouvoir l'utiliser dans le popup
     let path_arjs = 'ar_files/step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
@@ -69,7 +71,6 @@ for (const feature of arret.features){
 
     let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
 
-    
     let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
 
     marqueur.bindPopup(popupContent);
@@ -101,20 +102,6 @@ m = 0;
 
 let step_coordinates = [];
 
-// function ChangeUrl(page, url) {
-//     if (typeof (history.pushState) != "undefined"){
-//         var obj = { Page: page, Url: url};
-//         history.pushState(obj, obj.Page, obj.Url);
-
-//     } else {
-//         alert("Browster does not support HTML5");
-//     }
-// }
-
-
-
-
-// console.log(coords_dict)
 // initialisation du bouton Commencer le sentier
 $(function(){
     $("#itin-btn").click(function(){

@@ -2,18 +2,23 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50px;
+    width: 200px;
     background-color: rgb(108, 168, 118);
     border-radius: 40px;
     border: none;
-    padding: 20px;
+    padding: 10px;
     color: #fff;
     font-size: 18px;
     margin: 7px;
     cursor: pointer;
     z-index: 999;
 }
+button:hover{
+    background-color: rgb(66, 104, 72);
+}
 .centered {
-    height: 20%;
+    height: 10%;
     justify-content: center;
     position: fixed;
     bottom: 0%;

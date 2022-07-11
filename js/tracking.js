@@ -34,6 +34,7 @@ for (const feature of arret.features){
     n++;
     
     let path = 'assets/marqueurs_etapes/etape' + n + '.png';
+    let path_arjs = 'ar_files/step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];
@@ -51,8 +52,13 @@ for (const feature of arret.features){
         iconUrl: path,
         iconSize: [50, 50],
         iconAnchor:   [25, 50]
-    })
-    let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap)
+    });
+
+    let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
+
+    let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
+
+    marqueur.bindPopup(popupContent);
 };
 
 L.geoJSON(sentier, {

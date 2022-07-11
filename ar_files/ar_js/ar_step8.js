@@ -7,7 +7,7 @@ window.onload = () => {
 function staticLoadPlaces() {
     return [
         {
-            name: 'Magnemite',
+            name: 'River',
             location: {
                 lat: 46.51313335530353,
                 lng: 6.648636329118053,
@@ -37,6 +37,21 @@ function renderPlaces(places) {
     places.forEach((place) => {
         let latitude = place.location.lat;
         let longitude = place.location.lng;
+
+        // test du modèle gltf
+        let model = document.createElement('a-entity');
+        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+        model.setAttribute('gltf-model', '../../assets/gltf/scene.gltf');
+        model.setAttribute('rotation', '0 140 0');
+        model.setAttribute('animation-mixer', '');
+        model.setAttribute('scale', '0.5 0.5 0.5');
+        model.setAttribute('position', '-20 -40 0');
+
+        model.addEventListener('loaded', () => {
+            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        });
+
+        scene.appendChild(model);
 
         let plane = document.createElement('a-plane');
         plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
