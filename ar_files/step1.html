@@ -5,14 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Step 1</title>
         <!-- AFRAME -->
-        <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 
         <!-- AR.js -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/ajaxify/8.2.3/ajaxify.js' integrity='sha512-jipua8AH9JbOGVVx5NLMMm8UXqdF7RG+8kVIiVfjniUbMdfPlragzf32/wQ4N9g4d+m5euXVIKxX3h2g4auqSQ==' crossorigin='anonymous'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
-        <link rel="stylesheet" href="ar_css/ar.css">
+        <link rel="stylesheet" href="ar_css/tracking.css">
     </head>
   
     <body style="margin: 0; overflow: hidden;">
@@ -22,8 +20,8 @@
         <script src="ar_js/ar_step1.js"></script>
 
         <a-scene
-        vr-mode-ui="enabled: false" 
-        renderer="logarithmicDepthBuffer: true"
+        vr-mode-ui="enabled: false;" 
+        renderer="logarithmicDepthBuffer: true;"
         embedded
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
         >
@@ -39,7 +37,7 @@
                 <a-entity
                     gltf-model="../assets/gltf/cactus/scene.gltf"
                     scale="5 5 5"
-                    position="50 150 0"
+                    position="0 0 0"
                 >
                 </a-entity>
             </a-nft>

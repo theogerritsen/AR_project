@@ -36,7 +36,14 @@
             </a-assets>
 
         
-            <a-camera gps-camera rotation-reader arjs-look-controls="smoothingFactor: 0.1">
+            <a-camera 
+                gps-camera 
+                rotation-reader 
+                arjs-look-controls="smoothingFactor: 0.1" 
+                simulateLatitude 
+                simulateLongitude 
+                simulateAltitude
+            >
             <!-- on ajoute un curseur pour intéragir avec les objets.-->
             <a-cursor 
                 id="cursor" 

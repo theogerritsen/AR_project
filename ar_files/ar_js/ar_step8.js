@@ -4,8 +4,6 @@ window.onload = () => {
     renderPlaces(places);
 };
 
-document.documentElement.requestFullscreen();
-
 function staticLoadPlaces() {
     return [
         {
