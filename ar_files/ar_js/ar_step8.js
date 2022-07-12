@@ -16,7 +16,7 @@ function staticLoadPlaces() {
             }
         },
         {
-            name: 'Plane',
+            name: 'Cactus',
             location: {
                 lat: 46.513242067112145,
                 lng: 6.64953061533322,
@@ -42,7 +42,7 @@ function renderPlaces(places) {
         if (name == 'River') {
             let model = document.createElement('a-entity');
             model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-            model.setAttribute('gltf-model', '../../assets/gltf/scene.gltf');
+            model.setAttribute('gltf-model', '../../assets/gltf/cactus/scene.gltf');
             model.setAttribute('rotation', '0 140 0');
             model.setAttribute('animation-mixer', '');
             model.setAttribute('scale', '0.5 0.5 0.5');

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>GeoAR.js demo</title>
+        <title>Step 1</title>
         <!-- AFRAME -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
@@ -23,33 +23,36 @@
     </head>
   
     <body style="margin: 0; overflow: hidden;">
-        <script src="ar_js/ar_step8.js"></script>
+        <script src="ar_js/ar_step1.js"></script>
 
         <a-scene
         vr-mode-ui="enabled: false"
+        renderer="logarithmicDepthBuffer: true"
         embedded
-        arjs="sourceType: webcam; debugUIEnabled: false;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
         >
         <!-- on stock nos assets, par ex textures, directement dans cette balise pour les utiliser plus tard-->
-            <a-assets>
-                <!-- ajout d'un son quand on clique sur le panneau -->
-                <audio id="click-sound" src="../assets/sounds/click.ogg"></audio>
-                <img id="cubes-thumb" src="../assets/textures/thumb-cubes.jpg">
-            </a-assets>
+            <a-nft
+                type="nft"
+                url="../assets/img_descriptor/essai_texture"
+                smooth="true"
+                smoothCount="10"
+                smoothTolerance=".01"
+                smoothThreshold="5"
+            >
+                <a-entity
+                    gltf-model="../assets/gltf/cactus/scene.gltf"
+                    scale="5 5 5"
+                    position="50 150 0"
+                >
+                </a-entity>
+            </a-nft>
 
         
-            <a-camera gps-camera rotation-reader>
-            <!-- on ajoute un curseur pour intéragir avec les objets.-->
-            <a-cursor 
-                id="cursor" 
-                animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
-                animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500" 
-                event-set__mouseenter="_event: mouseenter; color: springgreen" 
-                event-set__mouseleave="_event: mouseleave; color: grey"
-                color="grey">
-            </a-cursor>
+            <a-entity camera>
+
             
-            </a-camera>
+            </a-entity>
 
         </a-scene>
     <!-- <div class="centered">
