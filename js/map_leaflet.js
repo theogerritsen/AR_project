@@ -106,7 +106,7 @@ for (const feature of arret.features){
     let path = 'assets/marqueurs_etapes/etape' + n + '.png';
     // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
     // pour pouvoir l'utiliser dans le popup
-    let path_arjs = 'ar_files/step' + n + '.html';
+    let path_arjs = 'step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];
