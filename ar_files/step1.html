@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="shortcut icon" href="#" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Image based tracking AR.js demo</title>
@@ -46,16 +47,17 @@
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <!-- pour le nft, il faut aller au root du fichier html-->
       <a-nft
         type="nft"
-        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_assets/essai_300dpi"
+        url="./ar_files/ar_assets/essai_300dpi"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
         smoothThreshold="5">
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
           <a-entity
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/scene.gltf"
+          gltf-model="./ar_gltf/scene.gltf"
               scale="5 5 5"
               position="100 100 0"
           >
