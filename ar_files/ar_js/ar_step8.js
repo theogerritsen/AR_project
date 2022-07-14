@@ -16,8 +16,8 @@ function staticLoadPlaces() {
         {
             name: 'Plane',
             location: {
-                lat: 46.513242067112145,
-                lng: 6.64853061533322,
+                lat: 46.513491814180114,
+                lng: 6.6488134914507,
             }
         }
     ];
