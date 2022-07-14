@@ -57,12 +57,25 @@
         smoothTolerance=".01"
         smoothThreshold="5">
           <!-- on peut aller chercher la scene directement dans notre fichier local -->
-          <a-entity
-          gltf-model="ar_gltf/trex/scene.gltf"
-              scale="5 5 5"
-              position="150 300 -100"
+          <!-- <a-entity
+          gltf-model="ar_gltf/scene.gltf"
+              scale="200 200 200"
+              position="0 20 -170"
           >
-          </a-entity>
+          </a-entity> -->
+          <!-- panneau informatif si on scanne qqch -->
+          <a-plane
+            height="1"
+            width="1"
+            position="0 100 -170"
+            scale="200 200 200"
+            src="../assets/textures/panneau_molasse.png"
+            look-at="[gps-camera]"
+            sound="on: click; src: ../assets/sounds/click.ogg"
+            event-set__mouseenter="scale: 2 2 2"
+            event-set__mouseleave="scale: 1 1 1"
+            >
+          </a-plane>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
