@@ -31,12 +31,14 @@ Deux solutions s'offrent à nous:
     * Déployer notre serveur local HTTPS avec la commande `http-server -S -C localhost.pem -K localhost-key.pem`. `-S` déploye le serveur avec HTTPS, `-C` utilise le certificat et ^-K` la clé.
     * Un message est ensuite visible: 
     
-    ```Available on:
+    ```
+    Available on:
     https://xxx.xxx.x.xx:8080
 
     https://xxx.xxx.xx.x:8080
 
-    https://xxx.x.x.x:8080```
+    https://xxx.x.x.x:8080
+    ```
 
     qui nous indique que notre serveur local HTTPS a bien été lancé. Les xxx correspondent à votre adresse IP.
     * Pour tester l'application sur notre smartphone, il faut tout d'abord aller récupérer notre adresse IP, qui peut se faire avec la commande `ipconfig` dans le terminal. Prenez l'adresse IPv4, qui devrait correspondre à la première adresse générée lors de l'étape précédente. Si les deux correspondent, connectez votre smartphone au même wifi que votre ordinateur, et tapez `https://{votre adresse IPv4}:8080`
