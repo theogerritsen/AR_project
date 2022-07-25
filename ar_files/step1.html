@@ -6,30 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Image based tracking AR.js demo</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
+    <!-- <script src="ar_js/ar_step1.js"></script> -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js' integrity='sha512-vRqhAr2wsn+/cSsyz80psBbCcqzz2GTuhGk3bq3dAyytz4J/8XwFqMjiAGFBj+WM95lHBJ9cDf87T3P8yMrY7A==' crossorigin='anonymous'></script> -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
     <!-- style for the loader -->
-    <style>
-      .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="ar_css/ar.css"/>
   
   </head>
 
@@ -37,7 +20,10 @@
     
     <!-- écran de chargement pour charger le nft-->>
     <div class="arjs-loader">
-      <div>Loading, please wait...</div>
+      <div>Loading</div>
+      <div class="spinner-sector spinner-sector-red"></div>
+      <div class="spinner-sector spinner-sector-blue"></div>
+      <div class="spinner-sector spinner-sector-green"></div>
     </div>
 
     <!-- a-frame scene -->
@@ -49,8 +35,10 @@
       
       
       <!-- pour le nft, il faut aller cherhcher le lien directement en ligne, ne charge pas sinon-->
+      <!--  -->
       <a-nft
         type="nft"
+        
         url="https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/trex/van/van"
         smooth="true"
         smoothCount="10"
