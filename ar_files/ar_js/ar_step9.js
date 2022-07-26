@@ -44,6 +44,7 @@ function renderPlaces(places) {
         cube.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         // il faut imaginer une scène en 3D
         // la première valeur correspond à x, la deuxième à y (qui est l'altitude), et la troisième à z (qui est la profondeur)
+        cube.setAttribute('id', 'cube');
         cube.setAttribute('position', '0 2 -5');
         cube.setAttribute('height', '2');
         cube.setAttribute('scale', '3 3 3');
@@ -57,8 +58,14 @@ function renderPlaces(places) {
         cube.setAttribute("animation__mouseenter", "property: scale; to: 2.3 2.3 2.3; src: #brick-bump; dur: 300; startEvents: mouseenter");
 
         // il se remet ensuite en place quand on ne le regarde plus
-        cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; src: #cubeTexture; dur: 300; startEvents: mouseleave")
+        cube.setAttribute("animation__mouseleave", "property: scale; to: 2 2 2; src: #cubeTexture; dur: 300; startEvents: mouseleave");
         //cube.setAttribute('material', 'color: yellow');
+
+        // on peut ajouter un événement si le cube est cliqué
+        cube.addEventListener('click', () => {
+            cube.setAttribute('scale', '10 10 10');
+            console.log('coucou')
+        });
 
         cube.setAttribute('sound', 'on: click; src: #click-sound');
 
@@ -93,20 +100,46 @@ function renderPlaces(places) {
         });
 
         let plane = document.createElement('a-plane');
+            plane.setAttribute('id', 'st_laurent1');
             plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
             plane.setAttribute('height', '1');
-            plane.setAttribute('width', '1');
-            plane.setAttribute('src', '#cubes-thumb');
+            plane.setAttribute('width', '1.5');
+            plane.setAttribute('src', '#st_laurent1');
             plane.setAttribute('look-at', '[gps-camera]');
             plane.setAttribute('sound', 'on: click; src: #click-sound');
             plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
             plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
 
+            console.log(plane.src);
+
+            //if (plane.attributes)
+
+            plane.addEventListener('click', () => {
+
+                if (plane.id == 'st_laurent1') {
+
+                    plane.id = 'st_laurent2';
+                    plane.setAttribute('src', '#st_laurent2');
+                }
+
+                else if (plane.id == 'st_laurent2') {
+
+                    plane.setAttribute('id', 'st_laurent3');
+                    plane.setAttribute('src', '#st_laurent3')
+                }
+
+                else if (plane.id == 'st_laurent3') {
+
+                    plane.setAttribute('id', 'st_laurent1');
+                    plane.setAttribute('src', '#st_laurent1');
+                }
+            });
+
             plane.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
             });
 
-       scene.appendChild(cube);
+       //scene.appendChild(cube);
        scene.appendChild(sphere);
        scene.appendChild(text);
        scene.appendChild(plane);
