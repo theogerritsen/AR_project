@@ -64,7 +64,7 @@ for (const feature of arret.features){
 L.geoJSON(sentier, {
     style: function(feature) {
         return {
-            color: "blue",
+            color: "#c0904d",
             weight: 5
         };
     }

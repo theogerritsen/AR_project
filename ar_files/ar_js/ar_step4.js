@@ -15,15 +15,8 @@ function staticLoadPlaces() {
         {
             name: 'Panneau',
             location: {
-                lat: 46.51313335530353,
-                lng: 6.648636329118053,
-            }
-        },
-        {
-            name: 'Pikachu',
-            location: {
-                lat: 46.52,
-                lng: 6.7,
+                lat: 46.51335216333632,
+                lng: 6.649697990550806,
             }
         }
     ];
@@ -36,8 +29,6 @@ function renderPlaces(places) {
 
             // pour utiliser les différentes coordonnées
             // on va passer le tout dans une boucle if
-
-        if(place.name == 'Panneau') {
 
 
             let latitude = place.location.lat;
@@ -52,8 +43,8 @@ function renderPlaces(places) {
                 panneau.setAttribute('src', '#st_laurent1');
                 panneau.setAttribute('look-at', '[gps-camera]');
                 panneau.setAttribute('sound', 'on: click; src: #click-sound');
-                panneau.setAttribute('animation__mouseenter', "property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter");
-                panneau.setAttribute('animation__mouseleave', "property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave");
+                panneau.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
+                panneau.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
 
                 panneau.addEventListener('click', () => {
 
@@ -97,8 +88,6 @@ function renderPlaces(places) {
 
             scene.appendChild(panneau);
             scene.appendChild(text);
-
-        };
 
     });
 };
