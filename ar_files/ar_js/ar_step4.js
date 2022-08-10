@@ -13,7 +13,7 @@ window.onload = () => {
 function staticLoadPlaces() {
     return [
         {
-            name: 'Panneau',
+            name: 'Pikachu',
             location: {
                 lat: 46.51335216333632,
                 lng: 6.649697990550806,
@@ -23,7 +23,7 @@ function staticLoadPlaces() {
 }
 
 function renderPlaces(places) {
-    let scene = document.querySelector('a-scene');
+    let scene = document.querySelector('#step4');
 
     places.forEach((place) => {
 
@@ -34,50 +34,61 @@ function renderPlaces(places) {
             let latitude = place.location.lat;
             let longitude = place.location.lng;
 
-            let panneau = document.createElement('a-plane');
-                panneau.setAttribute('id', 'st_laurent1');
-                panneau.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                panneau.setAttribute('height', '1');
-                panneau.setAttribute('width', '1.5');
-                panneau.setAttribute('position', '0 2 0');
-                panneau.setAttribute('src', '#st_laurent1');
-                panneau.setAttribute('look-at', '[gps-camera]');
-                panneau.setAttribute('sound', 'on: click; src: #click-sound');
-                panneau.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
-                panneau.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
+            let plane = document.createElement('a-plane');
+                plane.setAttribute('id', 'st_laurent1');
+                plane.setAttribute('gps-entity-place', `latitude: ${46.51335216333632}; longitude: ${6.649697990550806};`);
+                plane.setAttribute('height', '1');
+                plane.setAttribute('width', '1.5');
+                plane.setAttribute('scale', '10 10 10');
+                plane.setAttribute('position', '7.4 1.3 0.2');
+                plane.setAttribute('src', '#st_laurent1');
+                plane.setAttribute('look-at', '[gps-camera]');
+                plane.setAttribute('sound', 'on: click; src: #click-sound');
+                plane.setAttribute('event-set__mouseenter', 'scale: 13 13 13');
+                plane.setAttribute('event-set__mouseleave', 'scale: 10 10 10');
 
-                panneau.addEventListener('click', () => {
+                plane.addEventListener('click', () => {
 
-                if (panneau.id == 'st_laurent1') {
+                    if (plane.id == 'st_laurent1') {
 
-                    panneau.id = 'st_laurent2';
-                    panneau.setAttribute('src', '#st_laurent2');
-                }
+                        plane.id = 'st_laurent2';
+                        plane.setAttribute('src', '#st_laurent2');
+                    }
 
-                else if (panneau.id == 'st_laurent2') {
+                    else if (plane.id == 'st_laurent2') {
 
-                    panneau.setAttribute('id', 'st_laurent3');
-                    panneau.setAttribute('src', '#st_laurent3')
-                }
+                        plane.setAttribute('id', 'st_laurent3');
+                        plane.setAttribute('src', '#st_laurent3')
+                    }
 
-                else if (panneau.id == 'st_laurent3') {
+                    else if (plane.id == 'st_laurent3') {
 
-                    panneau.setAttribute('id', 'st_laurent1');
-                    panneau.setAttribute('src', '#st_laurent1');
-                }
-            });
+                        plane.setAttribute('id', 'st_laurent1');
+                        plane.setAttribute('src', '#st_laurent1');
+                    }
+                });
 
-            panneau.addEventListener('loaded', () => {
+            plane.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
             });
+
+            // let sphere = document.createElement('a-sphere');
+            // sphere.setAttribute('gps-entity-place', `latitude: ${46.513}; longitude: ${6.648};`);
+            // sphere.setAttribute('position', '0 0 0');
+            // sphere.setAttribute('material', 'color: green');
+            // sphere.setAttribute('sound', 'on: click; src: #click-sound');
+
+            // sphere.addEventListener('loaded', () => {
+            //     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            // });
 
             let text = document.createElement('a-text');
 
                 text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                text.setAttribute('scale', '2 2 2');
+                text.setAttribute('scale', '10 10 10');
                 text.setAttribute('position', '0 4 -10');
                 text.setAttribute('look-at', '[gps-camera]');
-                text.setAttribute('value', 'Information blabla');
+                text.setAttribute('value', 'uiuiuiuiui');
                 text.setAttribute('sound', 'on: click; src: #click-sound');
                 text.setAttribute("animation__mouseenter", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter");
                 text.setAttribute("animation__mouseleave", "property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave")
@@ -86,8 +97,9 @@ function renderPlaces(places) {
                     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
                 });
 
-            scene.appendChild(panneau);
+            scene.appendChild(plane);
             scene.appendChild(text);
+            //scene.appendChild(sphere);
 
     });
 };

@@ -30,7 +30,7 @@ function staticLoadPlaces() {
 }
 
 function renderPlaces(places) {
-    let scene = document.querySelector('a-scene');
+    let scene = document.querySelector('#step9');
 
     places.forEach((place) => {
         let latitude = place.location.lat;
@@ -99,50 +99,50 @@ function renderPlaces(places) {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
-        let plane = document.createElement('a-plane');
-            plane.setAttribute('id', 'st_laurent1');
-            plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-            plane.setAttribute('height', '1');
-            plane.setAttribute('width', '1.5');
-            plane.setAttribute('src', '#st_laurent1');
-            plane.setAttribute('look-at', '[gps-camera]');
-            plane.setAttribute('sound', 'on: click; src: #click-sound');
-            plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
-            plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
+        // let plane = document.createElement('a-plane');
+        //     plane.setAttribute('id', 'st_laurent1');
+        //     plane.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+        //     plane.setAttribute('height', '1');
+        //     plane.setAttribute('width', '1.5');
+        //     plane.setAttribute('src', '#st_laurent1');
+        //     plane.setAttribute('look-at', '[gps-camera]');
+        //     plane.setAttribute('sound', 'on: click; src: #click-sound');
+        //     plane.setAttribute('event-set__mouseenter', 'scale: 2 2 2');
+        //     plane.setAttribute('event-set__mouseleave', 'scale: 1 1 1');
 
-            console.log(plane.src);
+        //     console.log(plane.src);
 
-            //if (plane.attributes)
+        //     //if (plane.attributes)
 
-            plane.addEventListener('click', () => {
+        //     plane.addEventListener('click', () => {
 
-                if (plane.id == 'st_laurent1') {
+        //         if (plane.id == 'st_laurent1') {
 
-                    plane.id = 'st_laurent2';
-                    plane.setAttribute('src', '#st_laurent2');
-                }
+        //             plane.id = 'st_laurent2';
+        //             plane.setAttribute('src', '#st_laurent2');
+        //         }
 
-                else if (plane.id == 'st_laurent2') {
+        //         else if (plane.id == 'st_laurent2') {
 
-                    plane.setAttribute('id', 'st_laurent3');
-                    plane.setAttribute('src', '#st_laurent3')
-                }
+        //             plane.setAttribute('id', 'st_laurent3');
+        //             plane.setAttribute('src', '#st_laurent3')
+        //         }
 
-                else if (plane.id == 'st_laurent3') {
+        //         else if (plane.id == 'st_laurent3') {
 
-                    plane.setAttribute('id', 'st_laurent1');
-                    plane.setAttribute('src', '#st_laurent1');
-                }
-            });
+        //             plane.setAttribute('id', 'st_laurent1');
+        //             plane.setAttribute('src', '#st_laurent1');
+        //         }
+        //     });
 
-            plane.addEventListener('loaded', () => {
-                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-            });
+        //     plane.addEventListener('loaded', () => {
+        //         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        //     });
 
        //scene.appendChild(cube);
        scene.appendChild(sphere);
        scene.appendChild(text);
-       scene.appendChild(plane);
+       //scene.appendChild(plane);
    });
 };
 
