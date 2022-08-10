@@ -90,7 +90,7 @@ function renderPlaces(places) {
             text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
             text.setAttribute('scale', '10 10 10');
             text.setAttribute('look-at', '[gps-camera]');
-            text.setAttribute('value', 'Coucou toi');
+            text.setAttribute('position', '0 10 0');
             text.setAttribute('sound', 'on: click; src: #click-sound');
             text.setAttribute("animation__mouseenter", "property: scale; to: 20 20 20; dur: 300; startEvents: mouseenter");
             text.setAttribute("animation__mouseleave", "property: scale; to: 10 10 10; dur: 300; startEvents: mouseleave")
