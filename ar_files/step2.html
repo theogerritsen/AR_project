@@ -1,0 +1,81 @@
+<!-- CE STEP EST UN EXEMPLE POUR LE NFT-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <!-- <script src="ar_js/ar_step1.js"></script> -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js' integrity='sha512-vRqhAr2wsn+/cSsyz80psBbCcqzz2GTuhGk3bq3dAyytz4J/8XwFqMjiAGFBj+WM95lHBJ9cDf87T3P8yMrY7A==' crossorigin='anonymous'></script> -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <!-- style for the loader -->
+    <link rel="stylesheet" href="ar_css/ar.css"/>
+  
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    
+    <!-- écran de chargement pour charger le nft-->>
+    <div class="arjs-loader">
+      <div>Loading</div>
+      <div class="spinner-sector spinner-sector-red"></div>
+      <div class="spinner-sector spinner-sector-blue"></div>
+      <div class="spinner-sector spinner-sector-green"></div>
+    </div>
+
+    <!-- a-frame scene -->
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      gesture-detector
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      id="scene">
+      
+      
+      <!-- pour le nft, il faut aller cherhcher le lien directement en ligne, ne charge pas sinon-->
+      <!--  -->
+      <a-nft
+        type="nft"
+        
+        url="https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/trex/mur/mur"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;">
+          <!-- on peut aller chercher la scene directement dans notre fichier local -->
+          <!-- <a-entity
+          gltf-model="ar_gltf/scene.gltf"
+              scale="200 200 200"
+              position="0 20 -170"
+          >
+          </a-entity> -->
+          <!-- panneau informatif si on scanne qqch -->
+          <a-plane
+            height="1"
+            width="1"
+            position="0 100 -170"
+            scale="200 200 200"
+            src="ar_assets/textures/panneau_molasse.png"
+            look-at="[gps-camera]"
+            sound="on: click; src: ar_assets/sounds/click.ogg"
+            event-set__mouseenter="scale: 2 2 2"
+            event-set__mouseleave="scale: 1 1 1"
+            class="clickable"
+            gesture-handler="minScale: 0.25; maxScale: 10"
+            >
+          </a-plane>
+      </a-nft>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>

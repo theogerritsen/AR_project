@@ -38,6 +38,17 @@ function renderPlaces(places) {
 
         // on va ajouter nos différentes textures dans la balise assets
 
+        let model = document.createElement('a-entity');
+        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+        model.setAttribute('gltf-model', 'ar_gltf/step1/stone1/molasse.gltf');
+        model.setAttribute('scale', '1 1 1');
+        model.setAttribute('gesture-handler', 'locationBased: true');
+
+        model.addEventListener('loaded', () => {
+            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        });
+
+
 
         // on ajoute un cube jaune aux coordonnées indiquées
         let cube = document.createElement('a-box');
@@ -140,8 +151,9 @@ function renderPlaces(places) {
         //     });
 
        //scene.appendChild(cube);
-       scene.appendChild(sphere);
+       //scene.appendChild(sphere);
        scene.appendChild(text);
+       scene.appendChild(model);
        //scene.appendChild(plane);
    });
 };
