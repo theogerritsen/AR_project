@@ -2,7 +2,8 @@
 <html>
   <head>
     <link rel="shortcut icon" href="#" />
-    <meta charset="utf-8" name="viewport" content="minimal-ui, IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" content="minimal-ui, IE=edge" http-equiv="X-UA-Compatible"/>
 
     <title>Etape 1</title>
 
@@ -25,7 +26,7 @@
   </head>
 
   <body>
-    <script src="ar_js/ar_step1.js"></script>
+    <script src="ar_js/ar_step1.js" defer="defer"></script>
 
     <a-scene
       id="step1"
@@ -39,7 +40,8 @@
 
     <a-assets>
       <a-asset-item id="molasse" src="ar_gltf/step1/molasse/molasse.glb"></a-asset-item>
-      <a-asset-item id="gneiss" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
+      <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
+      <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio>
 
     </a-assets>
     
@@ -59,6 +61,9 @@
     </a-scene>
     <div class="centered">
       <button id="return-btn" class="return-btn">Retourner à l'itinéraire</button>
+    </div>
+    <div id="information" class="info">
+
     </div>
   </body>
 </html>

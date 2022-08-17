@@ -1,5 +1,9 @@
-body{
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
+}
+html, body{
+    /* margin-left: 0px !important; */
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
 }
@@ -21,6 +25,30 @@ button {
 }
 button:hover{
     background-color: rgb(66, 104, 72);
+}
+.info.molasse {
+    height: 50vh;
+    padding-bottom: 0px;
+}
+.info.gneiss {
+    height: 50vh;
+    padding-bottom: 0px;
+}
+.info {
+    position: absolute;
+    height: 0px;
+    z-index: 2;
+    bottom: -40px;
+    border-radius: 20px 20px 0px 0px;
+    background-color:  #661313;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    padding-top: 38px;
+    text-align: center;
+    box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308);
+    overflow: scroll;
+    -ms-overflow-style: none;  /* Cacher scrollbar pour IE and Edge */
+    scrollbar-width: none;  /* Cacher scrollbar pour Firefox */
 }
 .centered {
     height: 10%;
