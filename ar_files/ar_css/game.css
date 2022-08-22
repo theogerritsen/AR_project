@@ -1,0 +1,86 @@
+.inst-tab {
+    position: fixed;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 30% auto 20% 20%;
+    grid-template-areas: "image" "text" "btn" "back-btn";
+    font-size: 1em;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    background-color: aqua;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+}
+.inst-tab.active{
+    height: 0;
+}
+.inst-tab .btnx{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    margin-left: 50px;
+    font-size: 2em;
+    text-decoration: none;
+    color: #ffffff;
+}
+.molasse-img{
+    grid-column-start: 1;
+    grid-area: image;
+    background-size: cover;
+    background-image: url('../ar_assets/etape1/molasse.jpg');
+}
+.gneiss-img{
+    grid-column-start: 2;
+    background-size: cover;
+    background-image: url('../ar_assets/etape1/gneiss.jpg');
+}
+.calcaire-img{
+    grid-column-start: 3;
+    background-size: cover;
+    background-image: url('../ar_assets/etape1/calcaire.jpg');
+}
+.instructions {
+    margin: 30px;
+    grid-area: text;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: span col3-end;
+}
+button {
+    position: relative;
+    height: 60px;
+    width: 120px;
+    background-color: rgb(108, 168, 118);
+    border-radius: 50px;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    margin: 15px;
+    cursor: pointer;
+    z-index: 98;
+}
+button:hover{
+    background-color: rgb(66, 104, 72);
+}
+.start-btn{
+    grid-area: btn;
+    grid-column-start: 2;
+    grid-row-start: 3;
+    justify-self: center;
+}
+.step1-btn{
+    grid-area: back-btn;
+    grid-column-start: 1;
+    justify-self: start;
+}
+.itin-btn{
+    grid-row-start: 4;
+    grid-column-start: 3;
+    justify-self: end;
+}

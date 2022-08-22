@@ -19,7 +19,7 @@ button {
     padding: 10px;
     color: #fff;
     font-size: 18px;
-    margin: 7px;
+    margin: 15px;
     cursor: pointer;
     z-index: 999;
 }
@@ -34,21 +34,62 @@ button:hover{
     height: 50vh;
     padding-bottom: 0px;
 }
+.info.calcaire {
+    height: 50vh;
+    padding-bottom: 0px;
+}
 .info {
-    position: absolute;
+    overflow: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 210px 250px 20px;
+    grid-template-areas: "image" "text" "btn";
+    bottom: -30px;
     height: 0px;
-    z-index: 2;
-    bottom: -40px;
-    border-radius: 20px 20px 0px 0px;
-    background-color:  #661313;
-    overflow: hidden;
-    transition: all 0.5s ease;
-    padding-top: 38px;
     text-align: center;
-    box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308);
-    overflow: scroll;
-    -ms-overflow-style: none;  /* Cacher scrollbar pour IE and Edge */
-    scrollbar-width: none;  /* Cacher scrollbar pour Firefox */
+    position: fixed;
+    background-color: #313131;
+
+
+    transition: all 0.5s ease;
+    width: 100%;
+    margin: 30px auto;
+    left: 0;
+    right: 0;
+}
+.infoContent {
+    border-radius: 8px;
+    margin: 30px;
+    font-size: 30px;
+    grid-column-start: 1;
+    grid-column-end: span col2-end;
+    color: #fff;
+}
+.back-btn{
+    grid-area: btn;
+    grid-column-start: 1;
+    justify-self: center;
+}
+.game-btn{
+    grid-area: btn;
+    grid-column-start: 2;
+    justify-self: center;
+}
+.card-image{
+    grid-area: image;
+    grid-column-start: 1;
+    grid-column-end: span col2-end;
+    background-size: cover;
+}
+.info .btn{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 46px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #ffffff;
 }
 .centered {
     height: 10%;

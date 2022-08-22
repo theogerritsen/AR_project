@@ -22,10 +22,11 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/ajaxify/8.2.3/ajaxify.js' integrity='sha512-jipua8AH9JbOGVVx5NLMMm8UXqdF7RG+8kVIiVfjniUbMdfPlragzf32/wQ4N9g4d+m5euXVIKxX3h2g4auqSQ==' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
     
-    <link rel="stylesheet" href="ar_css/ar.css">
+    <link rel="stylesheet" href="ar_css/ar.css"/>
+    <link rel="stylesheet" href="../css/menu.css"/>
   </head>
 
-  <body>
+  <body style="margin: 0; overflow:hidden;">
     <script src="ar_js/ar_step1.js" defer="defer"></script>
 
     <a-scene
@@ -40,6 +41,7 @@
 
     <a-assets>
       <a-asset-item id="molasse" src="ar_gltf/step1/molasse/molasse.glb"></a-asset-item>
+      <a-asset-item id="calcaire" src="ar_gltf/step1/calcaire/calcaire.glb"></a-asset-item>
       <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
       <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio>
 
@@ -48,9 +50,9 @@
       <a-camera>
         <!-- on ajoute un curseur pour intéragir avec les objets.-->
         <a-cursor
-          id="cursor" 
+          id="cursor"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500" 
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
           event-set__mouseenter="_event: mouseenter; color: springgreen" 
           event-set__mouseleave="_event: mouseleave; color: grey"
           color="grey"></a-cursor>
@@ -59,12 +61,30 @@
       arjs-look-controls="smoothingFactor: 0.1">
 
     </a-scene>
-    <div class="centered">
+    <div id="button" class="centered">
       <button id="return-btn" class="return-btn">Retourner à l'itinéraire</button>
     </div>
     <div id="information" class="info">
-
+      <a href="javascript:" class="btn">&times;</a>
+      <div class="card-image"></div>
+      <div id="info_content" class="infoContent">
+      </div>
+      <button id="return-btn2" class="back-btn">Retrouner à l'itinéraire</button>
+      <button id="game-btn" class="game-btn">Aller au jeu</button>
     </div>
+    <div id="btn">
+      <div id="top"></div>
+      <div id="middle"></div>
+      <div id="bottom"></div>
+  </div>
+  <div id="box">
+      <div id="items">
+          <div class="item" id="home-menu">Home</div>
+
+          <div class="item" id="inst-menu">Instructions</div>
+      </div>
+  </div>
+  <script src="../js/menu.js"></script>
   </body>
 </html>
 
