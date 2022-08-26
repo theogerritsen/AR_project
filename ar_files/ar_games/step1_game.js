@@ -4,11 +4,6 @@ window.onload = () => {
     renderPlaces(places);
 };
 
-// setTimeout(function(){
-//     let txt = document.querySelector('[gps-entity-place]').getAttribute('latitude');
-//     alert(txt);
-// },10000);
-
 $(function(){
     $("#itin-btn").click(function(){
         window.location.href = "../../tracking.html"
@@ -18,41 +13,16 @@ $(function(){
     })
     $("#start-btn").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
+        document.querySelector('.score').classList.toggle("active");
     });
     $(".btnx").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
+        document.querySelector('.score').classList.toggle("active");
     });
     $(".bx-menu").click(function(){
         document.querySelector('.menu').classList.toggle("active");
     });
 });
-
-// geolocalisation de l'utilisateur
-var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-  
-  function success(pos) {
-    let crd = pos.coords;
-    let user_lat = JSON.stringify(Math.round(crd.latitude*100000)/100000);
-    let user_lng = JSON.stringify(Math.round(crd.longitude*100000)/100000);
-    let position = user_lat + ', ' + user_lng;
-    console.log(position);
-  
-    console.log('Votre position actuelle est :');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude : ${crd.longitude}`);
-    console.log(`La précision est de ${crd.accuracy} mètres.`);
-  }
-  
-  function error(err) {
-    console.warn(`ERREUR (${err.code}): ${err.message}`);
-  }
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
-  
 
 // on déclaire les variables avant les fonctions pour qu'elles soient globales
 var clicked_btn;
@@ -61,19 +31,41 @@ var user_score = 0;
 var scoreDiv = document.getElementById('userScore');
 // fonction pour le jeu
 function toggleGame(rock_id) {
+    //on va chercher les classes de nos trois pin géolocalisées
+    // puis on va chercher l'attribut distanceMsg qui contient la distance
+    // de l'utilisateur au marqueur en [m]
+    var calcaireClass = document.querySelector('.calcaire').getAttribute('distanceMsg');
+    var gneissClass = document.querySelector('.gneiss').getAttribute('distanceMsg');
+    var molasseClass = document.querySelector('.molasse').getAttribute('distanceMsg');
+    // on transforme les distances trouvées en int
+    var intCalcaire = parseInt(calcaireClass);
+    var intGneiss = parseInt(gneissClass);
+    var intMolasse = parseInt(molasseClass);
     // on va chercher l'id du bouton cliqué
     clicked_rock = rock_id;
-    console.log(clicked_rock);
-    // on ajoute les boutons quand le user clique sur la roche
-    document.querySelector('.centered').classList.toggle('active');
-
+    // condition de distance pour le jeu:
+    // si la roche cliquée est à une distance supérieure à 15m
+    // alors on demande à l'utilisateur de s'approcher de la roche
+    // si l'utilisateur est à moins de 15m, alors on affiche les boutons
+    // et l'utilisateur peut jouer au jeu
+    if ((clicked_rock == 'gneiss') && (intGneiss > 15)) {
+        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+    }
+    else if ((clicked_rock == 'calcaire') && (intCalcaire > 15)) {
+        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+    }
+    else if ((clicked_rock == 'molasse') && (intMolasse > 15)) {
+        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+    }
+    else {
+        document.querySelector('.centered').classList.toggle('active');
+    }
 };
 function getBtnId(btn_id) {
+        // on va chercher l'id du bouton cliqué
         clicked_btn = btn_id;
-        console.log('btn', clicked_btn)
-        console.log('rock', clicked_rock)
-        // si le bouton cliqué est le même que la roche
-        if (clicked_btn === clicked_rock) {
+        // si le bouton cliqué est le même que la roche + Btn
+        if (clicked_btn === clicked_rock + 'Btn') {
             // on enlève les boutons
             document.querySelector('.centered').classList.toggle('active');
             // on met un message comme quoi c'est la bonne réponse
@@ -83,10 +75,8 @@ function getBtnId(btn_id) {
             user_score += 1;
             console.log(user_score);
             document.getElementById('userScore').innerHTML = 'Score: ' + user_score + '/3';
-
             // si le score du user est égal à 3 (donc toutes les bonnes
             // réponse, on lui dit de passer à l'étape suivante)
-            // scoreDiv.insertAdjacentText('beforebegin', 'score');
             if (user_score == 3) {
                 alert("Bravo ! Passez à l'étape suivante")
             }
@@ -96,11 +86,6 @@ function getBtnId(btn_id) {
             alert('try again')
         }
 }
-// function toggleGame(btn_id) {
-//         let clicked_btn = btn_id;
-//         console.log(clicked_btn)
-//     }
-
 
 function staticLoadPlaces() {
     return [
@@ -135,45 +120,41 @@ function renderPlaces(places) {
         const latitude = place.location.lat;
         const longitude = place.location.lng;
 
-        const placeCube = document.createElement('a-box');
-        if (place.name == 'calcaire') {
-            placeCube.setAttribute('id', 'calcaire');
-            placeCube.setAttribute('value', '131313')
-        }
-        if (place.name == 'gneiss') {
-            placeCube.setAttribute('id', 'gneiss');
-            placeCube.setAttribute('value', '131313')
-        }
-        if (place.name == 'molasse') {
-            placeCube.setAttribute('id', 'molasse');
-            placeCube.setAttribute('value', '131313')
-        }
-        placeCube.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        placeCube.setAttribute('scale', '.5 .5 .5');
-        placeCube.setAttribute('onclick', 'toggleGame(this.id)');
-
-        if (place.name == 'calcaire') {
-            placeCube.setAttribute('color', '#4CC3D9');
-        };
-
-        placeCube.addEventListener('loaded', () => {
-            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-        });
-
         const placeText = document.createElement('a-text');
         placeText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         placeText.setAttribute('value', place.name);
-        placeText.setAttribute('scale', '3 3 3');
+        placeText.setAttribute('scale', '3 1 3');
         placeText.setAttribute('look-at', '[gps-camera]')
 
         placeText.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
-        // scene.appendChild(placeText);
-        scene.appendChild(placeCube);
+        const pin = document.createElement('a-entity');
+        pin.setAttribute('id', 'pin');
+        pin.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+        if (place.name == 'molasse') {
+            pin.setAttribute('id', 'molasse');
+            pin.setAttribute('class', 'molasse');
+        }
+        if (place.name == 'gneiss') {
+            pin.setAttribute('id', 'gneiss');
+            pin.setAttribute('class', 'gneiss');
+        }
+        if (place.name == 'calcaire') {
+            pin.setAttribute('id', 'calcaire');
+            pin.setAttribute('class', 'calcaire');
+        }
+        pin.setAttribute('scale', '.3 .3 .3');
+        pin.setAttribute('onclick', 'toggleGame(this.id)');
+        pin.setAttribute('gltf-model', '#pin');
 
-        console.log(placeCube.querySelector('[gps-entity-place]'))
+        pin.addEventListener('loaded', () => {
+            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
+        });
+
+        //scene.appendChild(placeText);
+        scene.appendChild(pin);
 
     });
 };

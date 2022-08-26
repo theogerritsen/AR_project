@@ -26,8 +26,9 @@ $(function(){
         sidebarBtn.classList.remove("active");
         sidebarBox.classList.remove("active");
     });
+    // changer si github ou pas
     $("#home-menu").click(function(){
-        window.location.href = "../../index.html"
+        window.location.href = "../../AR_project/index.html"
     });
     $("#back-menu").click(function(){
         window.location.href = "../step1.html"

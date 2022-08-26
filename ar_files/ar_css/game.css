@@ -1,3 +1,6 @@
+body {
+    font-family: Roboto, sans-serif;
+}
 .inst-tab {
     position: fixed;
     overflow: auto;
@@ -72,8 +75,11 @@ button:hover{
     position: fixed;
     top: 40px;
     font-size: 2em;
+    left: -200px;
+    transition: all 700ms ease;
+}
+.score.active {
     left: 40px;
-    
 }
 .centered.active{
     opacity: 1;
