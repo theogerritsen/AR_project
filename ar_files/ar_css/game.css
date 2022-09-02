@@ -1,5 +1,32 @@
 body {
-    font-family: Roboto, sans-serif;
+    font-family: "Roboto Mono", monospace;
+}
+button {
+    position: relative;
+    font-family: inherit;
+    border: 0.125em #1f1f1f solid;
+    padding: 0.8125em 3.125em 0.8125em;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #1f1f1f;
+    margin: 1em;
+    font-size: .7em;
+    cursor: pointer;
+    bottom: 2.5em;
+}
+button::after{
+    content: "";
+    background-color: #8bac9c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 0.4375em;
+    left: 0.4375em;
+}
+button:active:hover::after{
+    top: 0px;
+    left: 0px;
 }
 .inst-tab {
     position: fixed;
@@ -9,14 +36,14 @@ body {
     grid-template-rows: 30% auto 20% 20%;
     grid-template-areas: "image" "text" "btn" "back-btn";
     font-size: 1em;
-    top: 0px;
+    top: 0em;
     left: 0;
     right: 0;
-    bottom: 0px;
+    bottom: 0em;
     height: 100%;
     width: 100%;
-    color: rgb(0, 0, 0);
-    background-color: aqua;
+    color: #1f1f1f;
+    background-color: #efebd8;
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
 }
@@ -25,10 +52,9 @@ body {
 }
 .inst-tab .btnx{
     position: absolute;
-    top: 10px;
+    top: 0.625em;
     left: 0;
-    margin-left: 50px;
-    font-size: 2em;
+    font-size: 1em;
     text-decoration: none;
     color: #ffffff;
 }
@@ -49,53 +75,49 @@ body {
     background-image: url('../ar_assets/etape1/calcaire.jpg');
 }
 .instructions {
-    margin: 30px;
+    margin: 1.875em;
     grid-area: text;
     grid-row-start: 2;
     grid-column-start: 1;
     grid-column-end: span col3-end;
 }
-button {
-    position: relative;
-    height: 60px;
-    width: 120px;
-    background-color: rgb(108, 168, 118);
-    border-radius: 50px;
-    border: none;
-    padding: 10px;
-    color: #fff;
-    margin: 15px;
-    cursor: pointer;
-    z-index: 98;
-}
-button:hover{
-    background-color: rgb(66, 104, 72);
-}
+/* button:hover{
+    background-color: #c5c2b3;
+} */
 .score {
     position: fixed;
-    top: 40px;
+    top: 1em;
     font-size: 2em;
-    left: -200px;
+    left: -12.5em;
     transition: all 700ms ease;
+    color: white;
 }
 .score.active {
-    left: 40px;
+    left: 1em;
 }
 .centered.active{
-    opacity: 1;
+    bottom: 2.5em;
 }
 .centered {
-    opacity: 0;
-    height: 10%;
-    justify-content: center;
+    height: 10vh;
     position: fixed;
-    bottom: 40px;
-    display: flex;
-    flex-direction: row;
+    bottom: -10em;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    text-align: center;
     width: 100%;
-    margin: 0px auto;
     left: 0;
-    right: 0;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+}
+.gneiss-btn {
+    grid-column-start: 1;
+}
+.calcaire-btn {
+    grid-column-start: 2;
+}
+.molasse-btn {
+    grid-column-start: 3;
 }
 .start-btn{
     grid-area: btn;
@@ -112,4 +134,17 @@ button:hover{
     grid-row-start: 4;
     grid-column-start: 3;
     justify-self: end;
+}
+.ui-dialog {
+    position: absolute;
+    background-color: #efebd8;
+    color:#1f1f1f;
+    z-index: 90;
+    text-align: center;
+}
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+.ui-button {
+    bottom: auto;
 }

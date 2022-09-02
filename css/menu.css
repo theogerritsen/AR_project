@@ -58,8 +58,8 @@
     opacity: 0;
     padding: 20px 0px;
     height: 100%;
-    background-color: #f6f6f6;
-    color: #343838;
+    background-color: #efebd8;
+    color: #1f1f1f;
     -webkit-transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
     transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
   }
@@ -80,12 +80,26 @@
   #items .item {
     position: relative;
     cursor: pointer;
-    font-size: 2em;
+    font-size: 1.2em;
     padding: 15px 30px;
     -webkit-transition: all 250ms;
     transition: all 250ms;
   }
   
   #items .item:hover {
-    background-color: rgba(52, 56, 56, 0.2);
+    background-color: #acd1c0;
   }
+  hr {
+    display: block;
+    height: 1px;
+    width: 60%;
+    border: 0;
+    border-top: 3px solid #acd1c0;
+    margin: 1em 0;
+    padding: 0;
+}
+#items:hover hr{
+  width: 100%;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}

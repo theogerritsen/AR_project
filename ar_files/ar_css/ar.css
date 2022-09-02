@@ -5,26 +5,36 @@
 html, body{
     /* margin-left: 0px !important; */
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Roboto Mono", monospace;
 }
 button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 200px;
-    background-color: rgb(108, 168, 118);
-    border-radius: 40px;
-    border: none;
-    padding: 10px;
-    color: #fff;
-    font-size: 18px;
-    margin: 15px;
+    position: relative;
+    border: 0.125em #1f1f1f solid;
+    padding: 0.8125em 3.125em 0.8125em;
+    font-family: inherit;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #1f1f1f;
+    margin: 1em;
+    font-size: .7em;
     cursor: pointer;
-    z-index: 999;
+    bottom: 2.5em;
+    min-height: 3em;
+    max-width: 80%;
 }
-button:hover{
-    background-color: rgb(66, 104, 72);
+button::after{
+    content: "";
+    background-color: #8bac9c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 0.4375em;
+    left: 0.4375em;
+}
+button:active:hover::after{
+    top: 0px;
+    left: 0px;
 }
 .info.molasse {
     height: 50vh;
@@ -43,14 +53,14 @@ button:hover{
     overflow-x: hidden;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 210px 250px 20px;
+    grid-template-rows: 30% auto 30%;
     grid-template-areas: "image" "text" "btn";
+    font-size: 1em;
     bottom: -30px;
     height: 0px;
     text-align: center;
     position: fixed;
-    background-color: #313131;
-
+    background-color: #efebd8;
 
     transition: all 0.5s ease;
     width: 100%;
@@ -61,10 +71,9 @@ button:hover{
 .infoContent {
     border-radius: 8px;
     margin: 30px;
-    font-size: 30px;
     grid-column-start: 1;
     grid-column-end: span col2-end;
-    color: #fff;
+    color: #1f1f1f;
 }
 .back-btn{
     grid-area: btn;

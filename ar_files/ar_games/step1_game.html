@@ -7,6 +7,7 @@
     <title>Etape 1 - jeu</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Work+Sans:400,600" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
 
 
     <!-- AFRAME -->
@@ -24,6 +25,7 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/ajaxify/8.2.3/ajaxify.js' integrity='sha512-jipua8AH9JbOGVVx5NLMMm8UXqdF7RG+8kVIiVfjniUbMdfPlragzf32/wQ4N9g4d+m5euXVIKxX3h2g4auqSQ==' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <link rel="stylesheet" href="../ar_css/game.css">
     <link rel="stylesheet" href="../../css/menu.css">
@@ -101,13 +103,19 @@
     </div>
     <div id="box">
       <div id="items">
-        <div class="item" id="home-menu">Home</div>
+        <div class="item" id="home-menu">Itinéraire</div>
+        <hr/>
         <div class="item" id="back-menu">Retour à l'étape</div>
+        <hr/>
         <div class="item" id="inst-menu">Instructions</div>
+        <hr/>
       </div>
     </div>
     <div id="userScore" class="score">
       Score: 0/3
+    </div>
+    <div id="dialog">
+      Blablabla
     </div>
     <script src="../../js/menu.js"></script>
 </body>

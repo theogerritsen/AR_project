@@ -13,11 +13,21 @@ $(function(){
     })
     $("#start-btn").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
-        document.querySelector('.score').classList.toggle("active");
+        // si le score est déjà affiché alors on ne toggle pas la classe "active"
+        // pour éviter qu'il disparaisse
+        if (document.querySelector('.score').classList.contains("active")) {
+            return
+        } else {
+            document.querySelector('.score').classList.toggle("active");
+        };
     });
     $(".btnx").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
-        document.querySelector('.score').classList.toggle("active");
+        if (document.querySelector('.score').classList.contains("active")) {
+            return
+        } else {
+            document.querySelector('.score').classList.toggle("active");
+        };
     });
     $(".bx-menu").click(function(){
         document.querySelector('.menu').classList.toggle("active");
@@ -49,13 +59,58 @@ function toggleGame(rock_id) {
     // si l'utilisateur est à moins de 15m, alors on affiche les boutons
     // et l'utilisateur peut jouer au jeu
     if ((clicked_rock == 'gneiss') && (intGneiss > 15)) {
-        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+        $(function(){
+            $('#dialog').dialog({
+                // on enlève le bouton fermer qu'on remplace par un bouton "OK"
+                dialogClass: "no-close",
+                buttons: [
+                    {
+                        text: "Ok !",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+            // on ajoute ce message au dessus du bouton (si c'est la bonne réponse)
+            $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intGneiss+' m</b> de cette roche');
+        });
     }
     else if ((clicked_rock == 'calcaire') && (intCalcaire > 15)) {
-        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+        $(function(){
+            $('#dialog').dialog({
+                // on enlève le bouton fermer qu'on remplace par un bouton "OK"
+                dialogClass: "no-close",
+                buttons: [
+                    {
+                        text: "Ok !",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+            // on ajoute ce message au dessus du bouton (si c'est la bonne réponse)
+            $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intCalcaire+' m</b> de cette roche');
+        });
     }
     else if ((clicked_rock == 'molasse') && (intMolasse > 15)) {
-        alert('Rapprochez vous du marqueur pour mieux voir le type de roche');
+        $(function(){
+            $('#dialog').dialog({
+                // on enlève le bouton fermer qu'on remplace par un bouton "OK"
+                dialogClass: "no-close",
+                buttons: [
+                    {
+                        text: "Ok !",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+            // on ajoute ce message au dessus du bouton (si c'est la bonne réponse)
+            $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intMolasse+' m</b> de cette roche');
+        });
     }
     else {
         document.querySelector('.centered').classList.toggle('active');
@@ -68,22 +123,67 @@ function getBtnId(btn_id) {
         if (clicked_btn === clicked_rock + 'Btn') {
             // on enlève les boutons
             document.querySelector('.centered').classList.toggle('active');
-            // on met un message comme quoi c'est la bonne réponse
-            alert('correct answer')
-            // et on leur dit de passer au suivant
-            // et on ajoute un score de +1
-            user_score += 1;
-            console.log(user_score);
-            document.getElementById('userScore').innerHTML = 'Score: ' + user_score + '/3';
-            // si le score du user est égal à 3 (donc toutes les bonnes
-            // réponse, on lui dit de passer à l'étape suivante)
+
+            // si le score du user est inférieur à 3
+            if (user_score < 3) {
+                // on ajoute 1 au score qu'on update sur l'HTML
+                user_score += 1;
+                document.getElementById('userScore').innerHTML = 'Score: ' + user_score + '/3';
+                // on ajoute un dialog
+                $(function(){
+                    $('#dialog').dialog({
+                        // on enlève le bouton fermer qu'on remplace par un bouton "OK"
+                        dialogClass: "no-close",
+                        buttons: [
+                            {
+                                text: "Ok !",
+                                click: function() {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        ]
+                    });
+                    // on ajoute ce message au dessus du bouton (si c'est la bonne réponse)
+                    $('#dialog').html('Bien joué ! <br> Trouvez les autres roches pour gagner le jeu !')
+                });
+            }
+            // si le score du user est égal à 3, alors on lui dit qu'il a tout trouvé et qu'il peut passer
+            // à l'étape suivante
             if (user_score == 3) {
-                alert("Bravo ! Passez à l'étape suivante")
+                $(function(){
+                    $('#dialog').dialog({
+                        dialogClass: "no-close",
+                        buttons: [
+                            {
+                                text: "Ok !",
+                                click: function() {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        ]
+                    });
+                    $('#dialog').html("Vous avez tout trouvé ! Passez à l'étape suivante !");
+                    // metrre ref pour étape 2
+                });
             }
         }
-        // si c'est la mauvaise réponse on dit au user
+        // si c'est la mauvaise réponse on le dit au user
         else {
-            alert('try again')
+            $(function(){
+                $('#dialog').dialog({
+                    dialogClass: "no-close",
+                    draggable: false,
+                    buttons: [
+                        {
+                            text: "Ok !",
+                            click: function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    ]
+                });
+                $('#dialog').html('Mauvaise réponse !')
+            });
         }
 }
 

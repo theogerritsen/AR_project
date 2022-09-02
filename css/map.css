@@ -1,7 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Roboto Mono", monospace;
 }
 html, body{
     height: 100%;
@@ -13,22 +13,51 @@ html, body{
     width: 100vw;
     z-index: 1;
 }
+button {
+    font-family: inherit;
+    position: relative;
+    font-weight: 200;
+    letter-spacing: 1px;
+    border: 2px #1f1f1f solid;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #1f1f1f;
+    font-size: .7em;
+    margin: 50px;
+    cursor: pointer;
+}
+button::after{
+    content: "";
+    background-color: #8bac9c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+button:active:hover::after{
+    top: 0px;
+    left: 0px;
+}
 .itin-go, .itin-rdv {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 0;
     z-index: 2;
-    border: none;
-    padding: 20px;
 }
 .itin-rdv{
     top: 0;
-    height: 100px;
-    width: 200px;
+    max-height: 6.25em;
 }
-.itin-btn{
-    background-color: #6077c0;
+/* .itin-btn{
+    background-color: #8bac9c;
     border-radius: 40px;
     border: none;
     padding: 20px;
@@ -36,10 +65,7 @@ html, body{
     font-size: 18px;
     margin: 7px;
     cursor: pointer;
-}
-.itin-btn:hover{
-    background-color: #6077c0;
-}
+} */
 .itin-go.active{
     position: absolute;
     left: 700px;

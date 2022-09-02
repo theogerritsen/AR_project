@@ -147,21 +147,13 @@ function renderPlaces(places) {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
-        // let molasse_anim = document.createElement("a-entity");
-        // molasse_anim.setAttribute('raycaster', 'objects: .clickable');
-        // molasse_anim.setAttribute('emitevents', 'true');
-        // molasse_anim.setAttribute('cursor', 'fuse: false; rayOrigin: mouse;');
-        // //molasse_anim.setAttribute('fill', 'backwards');
-
-        // molasse.appendChild(molasse_anim);
-
         let gneiss = document.createElement('a-entity');
         gneiss.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         gneiss.setAttribute('id', 'gneiss');
         gneiss.setAttribute('onclick', 'toggleActive(this.id)');
         gneiss.setAttribute('gltf-model', '#gneiss-texture');
         gneiss.setAttribute('scale', '.3 .3 .3');
-        gneiss.setAttribute('position', '1 1.3 -5');
+        gneiss.setAttribute('position', '1.5 1.3 -5');
         gneiss.setAttribute('rotation', '0 0 0');
         gneiss.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
         gneiss.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
@@ -178,7 +170,7 @@ function renderPlaces(places) {
         calcaire.setAttribute('onclick', 'toggleActive(this.id)');
         calcaire.setAttribute('gltf-model', '#calcaire');
         calcaire.setAttribute('scale', '.3 .3 .3');
-        calcaire.setAttribute('position', '-1 1.3 -5');
+        calcaire.setAttribute('position', '-1.5 1.3 -5');
         calcaire.setAttribute('rotation', '0 0 0');
         calcaire.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
         calcaire.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
@@ -195,6 +187,7 @@ function renderPlaces(places) {
         molasse_txt.setAttribute('id', 'text-molasse');
         molasse_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         molasse_txt.setAttribute('scale', '1 1 1');
+        molasse_txt.setAttribute('font', 'dejavu');
         molasse_txt.setAttribute('value', 'molasse');
         molasse_txt.setAttribute('look-at', '[gps-camera]');
         molasse_txt.setAttribute('position', '-.5 2.1 -5');
@@ -208,9 +201,10 @@ function renderPlaces(places) {
         gneiss_txt.setAttribute('id', 'text-gneiss');
         gneiss_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         gneiss_txt.setAttribute('scale', '1 1 1');
+        gneiss_txt.setAttribute('font', 'dejavu');
         gneiss_txt.setAttribute('value', 'gneiss');
         gneiss_txt.setAttribute('look-at', '[gps-camera]');
-        gneiss_txt.setAttribute('position', '.7 2.1 -5');
+        gneiss_txt.setAttribute('position', '1.2 2.1 -5');
         gneiss_txt.setAttribute('sound', 'on: click; src: #click-sound');
 
             gneiss_txt.addEventListener('loaded', () => {
@@ -221,9 +215,10 @@ function renderPlaces(places) {
         calcaire_txt.setAttribute('id', 'text-calcaire');
         calcaire_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         calcaire_txt.setAttribute('scale', '1 1 1');
+        calcaire_txt.setAttribute('font', 'dejavu');
         calcaire_txt.setAttribute('value', 'calcaire');
         calcaire_txt.setAttribute('look-at', '[gps-camera]');
-        calcaire_txt.setAttribute('position', '-1.5 2.1 -5');
+        calcaire_txt.setAttribute('position', '-2 2.1 -5');
         calcaire_txt.setAttribute('sound', 'on: click; src: #click-sound');
 
         calcaire_txt.addEventListener('loaded', () => {
@@ -234,6 +229,7 @@ function renderPlaces(places) {
         instructions.setAttribute('id', 'instructions_step1');
         instructions.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         instructions.setAttribute('scale', '1 1 1');
+        instructions.setAttribute('font', 'dejavu');
         instructions.setAttribute('value', "Visez une roche pour plus d'information");
         instructions.setAttribute('look-at', '[gps-camera]');
         instructions.setAttribute('position', '-2 3.1 -5');
