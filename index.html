@@ -49,6 +49,32 @@
                 <div class="item" id="inst-menu">Instructions</div>
             </div>
         </div>
+        <div id="begin-info" class="begin-info">
+            Bienvenue dans le GéoGuide en réalité augmentée de l'UNIL !<br><br>
+            Ce guide vous propose de partir à la découverte de Lausanne et ses nombreuses facettes
+            à travers la réalité augmentée. Découvrez les anciens paysages de la ville, devenez un géologue
+            avéré ou encore un explorateur des sous-terrains.<br><br>
+            Deux options s'offrent à vous:<br>
+            <ul>
+                <li>
+                    Vous avez l'âme d'un explorateur et voulez partir en quête de nouvelles aventures:
+                    choisissez l'option "Commencer le jeu" pour découvrir Lausanne de manière ludique. Rendez-vous au premier
+                    lieu de rendez-vous et résolvez les différentes énigmes afin de débloquer les prochaines étapes de votre
+                    quête.
+                </li>
+                <li>
+                    Vous souhaitez découvrir le GéoGuide didactique de l'UNIL de manière informative:
+                    choisissez l'option "Voir le sentier" afin de voir le parcour complet directement
+                    et rendez-vous aux différents marqueurs pour découvrir Lausanne sous de nouvelles facettes.
+                </li>
+            </ul>
+            <div class="jeu-btn">
+                <button id="jeu-btn" class="itin-btn" onclick="showMarkers(this.id)">Commencer le jeu</button>
+            </div>
+            <div class="sentier-btn">
+                <button id="sentier-btn" class="itin-btn" onclick="showMarkers(this.id)">Voir le sentier</button>
+            </div>
+        </div>
         <script src="js/menu.js"></script>
         <script src="data/chemin.js"></script>
         <script src="data/arrets.js"></script>

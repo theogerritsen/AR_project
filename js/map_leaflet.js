@@ -89,7 +89,7 @@ lc = L.control.locate({
 
 ///////////////////////////////////////////////////////////////////
 ////////// GESTION DES ARRETS /////////////////////////////////
-////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////// 
 
 // ajout dynamique des marqueurs pour faire correspondre aux étapes
 
@@ -99,51 +99,68 @@ n = 0
 // on crée un array vide pour accueillir les coordonnées de chaque marqueur
 
 let coords_dict = [];
-for (const feature of arret.features){
-    // pour chaque feature trouvé (étape), on incrémente n de 1
-    n++;
-    // on utilise ce n avec le chemin relatif des icones de chaque étape
-    let path = 'assets/marqueurs_etapes/etape' + n + '.png';
-    // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
-    // pour pouvoir l'utiliser dans le popup
-    let path_arjs = 'ar_files/step' + n + '.html';
-    let lat = feature.geometry.coordinates[0];
-    let long = feature.geometry.coordinates[1];
-    let coords = [long, lat];
 
-    let url = feature.properties.url;
-    
-    // pour chaque coordonnée trouvée, on l'ajoute à notre array vide
-    coords_dict.push({
-        // avec comme clé "marqueur" + le numéro correspond
-        key: "marqueur" + n,
-        // avec comme valeur les coordonnées lat long contenus dans un array
-        value: coords
-    });
+// on va chercher l'id du boutton appuyé
+function showMarkers(btnId) {
+    for (const feature of arret.features){
+        // pour chaque feature trouvé (étape), on incrémente n de 1
+        n++;
+        // on utilise ce n avec le chemin relatif des icones de chaque étape
+        let path = 'assets/marqueurs_etapes/etape' + n + '.png';
+        // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
+        // pour pouvoir l'utiliser dans le popup
+        let path_arjs = 'ar_files/step' + n + '.html';
+        let lat = feature.geometry.coordinates[0];
+        let long = feature.geometry.coordinates[1];
+        let coords = [long, lat];
 
-    let marqueur_etape = L.icon({
-        iconUrl: path,
-        iconSize: [50, 50],
-        iconAnchor:   [25, 50]
-    });
+        let url = feature.properties.url;
+        
+        // pour chaque coordonnée trouvée, on l'ajoute à notre array vide
+        coords_dict.push({
+            // avec comme clé "marqueur" + le numéro correspond
+            key: "marqueur" + n,
+            // avec comme valeur les coordonnées lat long contenus dans un array
+            value: coords
+        });
 
-    let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
+        let marqueur_etape = L.icon({
+            iconUrl: path,
+            iconSize: [50, 50],
+            iconAnchor:   [25, 50]
+        });
 
-    let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
+        let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
 
-    marqueur.bindPopup(popupContent);
+        let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
 
-};
+        marqueur.bindPopup(popupContent);
 
-// polyline du parcours à faire et ajout à la carte
-L.geoJSON(sentier, {
-    style: function(feature) {
-        return {
-            color: "#c0904d",
-            weight: 5
-        };
+        // on ajoute la classe active à notre div pour fermer le panneau
+        // informatif
+
+        document.querySelector('.begin-info').classList.add("active");
+
+        // si l'id du bouton appuyé est celui du jeu, on casse la boucle
+        // à la première itération
+        // pour que l'application ne montre que le premier marqueur et ne
+        // montre pas l'itinéraire
+
+        if (btnId === "jeu-btn") {
+            break;
+        }
+        // si l'id du bouton n'est pas celui du jeu, on ajoute la polyline
+        // pour montrer l'itinéraire complet.
+        L.geoJSON(sentier, {
+            style: function(feature) {
+                return {
+                    color: "#c0904d",
+                    weight: 5
+                };
+            }
+        }).addTo(mymap)
     }
-}).addTo(mymap)
+}
 
 let arPath = 'ar_files/';
 

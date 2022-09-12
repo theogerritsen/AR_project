@@ -45,12 +45,32 @@ button:active:hover::after{
     top: 0px;
     left: 0px;
 }
-.itin-go, .itin-rdv {
+.itin-go, .itin-rdv{
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 0;
     z-index: 2;
+}
+.begin-info {
+    overflow-y: scroll;
+    text-align: center;
+    padding: 50px;
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    background-color: #efebd8;
+    top: 0;
+    z-index: 99;
+    transition: 0.2s;
+}
+.begin-info.active {
+    top: 100%;
+}
+.jeu-btn, .sentier-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 .itin-rdv{
     top: 0;
@@ -107,3 +127,4 @@ button:active:hover::after{
 .fullscreen:hover .tooltiptext{
     visibility: visible;
 }
+

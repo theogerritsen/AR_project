@@ -1,4 +1,4 @@
-
+// chemins relatifs pour le menu slide
 $(function(){
     $("#return-btn").click(function(){
         window.location.href = "../tracking.html"
@@ -57,13 +57,15 @@ function toggleActive(clicked_id) {
     let gneiss_text = 'Le calcaire – une des roches utilisée pour la construction des bâtiments et des trottoires de la Cité';
     let calcaire_txt = 'Le calcaire – une des roches utilisée pour la construction des bâtiments et des trottoires de la Cité';
 
-
+    // fonction pour monter le marqueur si le menu monte
+    // pour que le marqueur soit toujours visible
     // lorsque le div est activé, il a un offsetHeight de 30
+    // on utilise un timeout de 600ms 
     setTimeout(function(){
         let divHeight = getComputedStyle(document.querySelector(".info")).height;
         let cursor = document.getElementById("cursor");
         console.log(getComputedStyle(document.querySelector(".info")).height);
-        // donc si notre div a un offsetHeight de 30, on monte le marqueur
+        // donc si notre div a un height de 0, on monte le marqueur
         // pour qu'il soit toujours visible
         if (divHeight == '0px') {
             cursor.setAttribute('position', '0 0 -1');
