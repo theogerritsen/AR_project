@@ -1,5 +1,8 @@
-// fonction pour toggle le fullscreen
-
+// on va créer une variable gameMode avec comme valeur
+// false qui est globale à l'ensemble de notre application
+// le but étant de montrer uniquement les étapes que le user
+// à débloquer si il a choisi le mode jeu
+sessionStorage.setItem("gameMode","false");
 function goFullScreen() {
 
     let docElm = document.documentElement;
@@ -102,6 +105,10 @@ let coords_dict = [];
 
 // on va chercher l'id du boutton appuyé
 function showMarkers(btnId) {
+    // on commence par enlever tous les icones au cas ou ils étaient
+    // déjà présent sur la carte, pour les rajouter ensuite
+    $(".leaflet-marker-icon").remove();
+
     for (const feature of arret.features){
         // pour chaque feature trouvé (étape), on incrémente n de 1
         n++;
@@ -141,13 +148,27 @@ function showMarkers(btnId) {
 
         document.querySelector('.begin-info').classList.add("active");
 
-        // si l'id du bouton appuyé est celui du jeu, on casse la boucle
-        // à la première itération
-        // pour que l'application ne montre que le premier marqueur et ne
-        // montre pas l'itinéraire
+        // si l'id du bouton appuyé est celui du jeu, on switch le gameMode
+        // à true et on crée une nouvelle variable globale qui sera égale à 1
+        // cette valeur sera incérmentée de 1 à chaque fois que le user complète
+        // entièrement une étape. De plus, si le bouton du jeu est appuyé
+        // on break la boucle ici pour que seulement la localisation de la
+        // première étape soit montrée et que la partie du code qui montre la polyline
+        // du sentier ne soit pas effectué
 
         if (btnId === "jeu-btn") {
+            sessionStorage.setItem("gameMode","true");
+            sessionStorage.setItem("stepNum","3");
+
+            console.log(sessionStorage.getItem("gameMode"));
             break;
+        }
+        // si en revanche c'est l'autre bouton qui est appuyé, on garde notre
+        // variable globale avec la valeur false et on ne break pas la boucle
+        // afin de voir toutes les étapes ainsi que la polyline.
+        if (btnId === "sentier-btn") {
+            sessionStorage.setItem("gameMode","false");
+            console.log(sessionStorage.getItem("gameMode"));
         }
         // si l'id du bouton n'est pas celui du jeu, on ajoute la polyline
         // pour montrer l'itinéraire complet.

@@ -5,6 +5,7 @@ let mymap = L.map('map', {
 	zoom: 13
 });
 
+
 mymap.fitBounds([
     [46.5184540, 6.6240245],
     [46.5233845, 6.6360568]
@@ -28,10 +29,30 @@ lc = L.control.locate({
 
 n = 0
 
+// si le user est en mode jeu, on transforme le n
+
 let coords_dict = [];
+// on va chercher à quel étape le user est si il a choisi le mode jeu
+// pour montrer uniquement le bon nombre de marqueur d'étape
+let stepNumber = Number(sessionStorage.getItem("stepNum"));
+console.log(stepNumber);
+
+// on itère à travers tous les arrêts
 for (const feature of arret.features){
-    
     n++;
+
+    // si le user est en train d'utiliser le mode jeu
+    if (sessionStorage.getItem("gameMode") == "true") {
+        // et si le nombre d'arrêts qui sont en train d'être itéré
+        // devient plus grand que valeur de l'étape que le user est actuellement
+        // on casse la boucle pour ne montrer que le bon nombre d'étape.
+        if (n > stepNumber)
+        break;
+    }
+
+    // si le user est en mode jeu, on transforme n en stepNum 
+    // (le numéro de l'étape auquel il se trouve) pour ne montrer
+    // que les marqueurs qu'il a développé
     
     let path = 'assets/marqueurs_etapes/etape' + n + '.png';
     let path_arjs = 'ar_files/step' + n + '.html';
@@ -47,7 +68,6 @@ for (const feature of arret.features){
         
         value: coords
     });
-
     let marqueur_etape = L.icon({
         iconUrl: path,
         iconSize: [50, 50],
@@ -59,16 +79,22 @@ for (const feature of arret.features){
     let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
 
     marqueur.bindPopup(popupContent);
-};
 
-L.geoJSON(sentier, {
-    style: function(feature) {
-        return {
-            color: "#c0904d",
-            weight: 5
-        };
-    }
-}).addTo(mymap)
+    // si le n de la boucle est égal à la variable globale qui calcule
+    // le nombre d'étape, on break la boucle à ce moment la
+}
+
+if (sessionStorage.getItem("gameMode") == "false") {
+    L.geoJSON(sentier, {
+        style: function(feature) {
+            return {
+                color: "#c0904d",
+                weight: 5
+            };
+        }
+    }).addTo(mymap)
+}
+
 
 let arPath = 'ar_files/';
 
@@ -93,21 +119,21 @@ mymap.on('locationfound', function(evt){
     currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
  
     let userPosition = '[' + currentPos[0] + ',' + currentPos[1] + ']';
-    console.log("user position1: ", userPosition);
+    //console.log("user position1: ", userPosition);
     
     
     for (var value in coords_dict) {
 
         markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*10000)/10000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*10000)/10000) + ']';
 
-        console.log("positions: ", userPosition, markerPosition)
+        //console.log("positions: ", userPosition, markerPosition)
         if (userPosition == markerPosition) {
             
             $("#itin-rdv #go-ar-btn").remove();
             $("#itin-rdv #rdv-btn").remove();
             
             $divAR.append("<button class='itin-btn' id='go-ar-btn'>Commencer le tour en réalité augmentée</button>");
-            console.log("its a match");
+            //console.log("its a match");
             
             $(function(){
                 $("#go-ar-btn").click(function(){
@@ -156,7 +182,7 @@ mymap.on('locationfound', function(evt){
             $("#itin-rdv #rdv-btn").remove();
             
             $divAR.append("<button class='itin-btn' id='rdv-btn' disabled>Rendez-vous à la prochaine étape</button>");
-            console.log("its not a match");
+            //console.log("its not a match");
         };
     };
 });

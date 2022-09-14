@@ -16,6 +16,7 @@
         <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <link rel="stylesheet" href="dist/L.Control.Locate.css"/>
         <link rel="stylesheet" href="css/map.css"/>
+        <link rel="stylesheet" href="css/menu.css"/>
     </head>
     <body>
         <div id="map"></div>
@@ -26,6 +27,20 @@
             <div id="itin-rdv" class="itin-rdv">
             </div>
         </div>
+        <div id="btn">
+            <div id="top"></div>
+            <div id="middle"></div>
+            <div id="bottom"></div>
+        </div>
+        <div id="box">
+            <div id="items">
+                <div class="item" id="home-menu">Itinéraire</div>
+                <hr/>
+
+                <div class="item" id="inst-menu">Instructions</div>
+            </div>
+        </div>
+        <script src="js/menu.js"></script>
         <script src="data/chemin.js"></script>
         <script src="data/arrets.js"></script>
         <script src="dist/L.Control.Locate.js" ></script>

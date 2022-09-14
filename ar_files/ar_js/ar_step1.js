@@ -1,3 +1,4 @@
+console.log(sessionStorage.getItem("gameMode"));
 // chemins relatifs pour le menu slide
 $(function(){
     $("#return-btn").click(function(){

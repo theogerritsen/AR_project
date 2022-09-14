@@ -4,6 +4,10 @@ window.onload = () => {
     renderPlaces(places);
 };
 
+// on va chercher notre variable globale qui montre à quel étape le user
+// se trouve si il a choisi le mode jeu
+let stepNumber = Number(sessionStorage.getItem("stepNum"));
+
 $(function(){
     $("#itin-btn").click(function(){
         window.location.href = "../../tracking.html"
@@ -148,8 +152,10 @@ function getBtnId(btn_id) {
                 });
             }
             // si le score du user est égal à 3, alors on lui dit qu'il a tout trouvé et qu'il peut passer
-            // à l'étape suivante
+            // à l'étape suivante et on ajoute 1 au stepNumber pour montrer
+            // le bon nombre d'étapes sur la prochaine page si le user a choisi de jouer au jeu
             if (user_score == 3) {
+                stepNumber = stepNumber + 1;
                 $(function(){
                     $('#dialog').dialog({
                         dialogClass: "no-close",
