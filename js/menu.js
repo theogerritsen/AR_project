@@ -1,13 +1,5 @@
 let sidebarBox = document.querySelector('#box');
 let sidebarBtn = document.querySelector('#btn');
-// puisque le menu se trouve sur chaque page
-// on ajoute ici une variable qui va gérer quel marqueur
-// sont affichés si le jeu est complet
-
-// on crée une variable qui nous dit si le user est en mode jeu
-// ou pas
-//var gameMode = false;
-
 
 sidebarBtn.addEventListener('click', function(event) {
 
@@ -28,6 +20,9 @@ window.addEventListener('keydown', function(event) {
 		}
 });
 // changer le chemin selon le fichier
+// on va chercher le nom du fichier dans lequel on est actuellement
+var path = window.location.pathname;
+
 $(function(){
     $("#inst-menu").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
@@ -35,10 +30,26 @@ $(function(){
         sidebarBox.classList.remove("active");
     });
     // changer si github ou pas
-    $("#home-menu").click(function(){
-        window.location.href = "../../tracking.html"
-    });
-    $("#back-menu").click(function(){
-        window.location.href = "../step1.html"
-    });
+    if (path == "/ar_files/step1.html") {
+        $("#home-menu").click(function(){
+        window.location.href = "tracking.html"
+        });
+        $("#back-menu").click(function(){
+            window.location.href = "step1.html"
+        })
+    }
+    if (path == "/ar_files/ar_games/step1_game.html") {
+        $("#home-menu").click(function() {
+            window.location.href = "../../tracking.html"
+        });
+        $("#back-menu").click(function(){
+            window.location.href = "../../step1.html"
+        });
+    }
+    if (path == "/ar_files/tracking.html") {
+        $("#home-menu").click(function() {
+            window.location.href = "../index.html"
+        });
+        
+    }
 });

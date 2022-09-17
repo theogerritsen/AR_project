@@ -4,8 +4,7 @@ window.onload = () => {
     renderPlaces(places);
 };
 
-// on va chercher notre variable globale qui montre à quel étape le user
-// se trouve si il a choisi le mode jeu
+
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
 $(function(){

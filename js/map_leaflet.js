@@ -1,8 +1,13 @@
+var path = window.location.pathname;
+console.log(path);
 // on va créer une variable gameMode avec comme valeur
 // false qui est globale à l'ensemble de notre application
 // le but étant de montrer uniquement les étapes que le user
 // à débloquer si il a choisi le mode jeu
 sessionStorage.setItem("gameMode","false");
+// on va chercher notre variable globale qui montre à quel étape le user
+// se trouve si il a choisi le mode jeu
+sessionStorage.setItem("stepNum","3");
 function goFullScreen() {
 
     let docElm = document.documentElement;
@@ -103,6 +108,9 @@ n = 0
 
 let coords_dict = [];
 
+let stepNumber = Number(sessionStorage.getItem("stepNum"));
+
+
 // on va chercher l'id du boutton appuyé
 function showMarkers(btnId) {
     // on commence par enlever tous les icones au cas ou ils étaient
@@ -112,6 +120,15 @@ function showMarkers(btnId) {
     for (const feature of arret.features){
         // pour chaque feature trouvé (étape), on incrémente n de 1
         n++;
+
+            // si le user est en train d'utiliser le mode jeu
+        if (sessionStorage.getItem("gameMode") == "true") {
+            // et si le nombre d'arrêts qui sont en train d'être itéré
+            // devient plus grand que valeur de l'étape que le user est actuellement
+            // on casse la boucle pour ne montrer que le bon nombre d'étape.
+            if (n > stepNumber)
+            break;
+        }
         // on utilise ce n avec le chemin relatif des icones de chaque étape
         let path = 'assets/marqueurs_etapes/etape' + n + '.png';
         // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
@@ -158,8 +175,6 @@ function showMarkers(btnId) {
 
         if (btnId === "jeu-btn") {
             sessionStorage.setItem("gameMode","true");
-            sessionStorage.setItem("stepNum","3");
-
             console.log(sessionStorage.getItem("gameMode"));
             break;
         }

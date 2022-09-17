@@ -1,11 +1,11 @@
-console.log(sessionStorage.getItem("gameMode"));
+
 // chemins relatifs pour le menu slide
 $(function(){
     $("#return-btn").click(function(){
-        window.location.href = "../tracking.html"
+        window.location.href = "tracking.html"
     })
     $("#return-btn2").click(function(){
-        window.location.href = "../tracking.html"
+        window.location.href = "tracking.html"
     })
     $("#game-btn").click(function(){
         window.location.href = "ar_games/step1_game.html"

@@ -1,3 +1,5 @@
+var path = window.location.pathname;
+console.log(path);
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
     minZoom: 10,
@@ -54,8 +56,8 @@ for (const feature of arret.features){
     // (le numéro de l'étape auquel il se trouve) pour ne montrer
     // que les marqueurs qu'il a développé
     
-    let path = 'assets/marqueurs_etapes/etape' + n + '.png';
-    let path_arjs = 'ar_files/step' + n + '.html';
+    let path = '../assets/marqueurs_etapes/etape' + n + '.png';
+    let path_arjs = '../    ar_files/step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];

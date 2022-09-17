@@ -86,7 +86,7 @@
     transition: all 250ms;
   }
   
-  #items .item:hover {
+  #items .item:active:hover {
     background-color: #acd1c0;
   }
   hr {
@@ -98,7 +98,7 @@
     margin: 1em 0;
     padding: 0;
 }
-#items:hover hr{
+#items:active:hover hr{
   width: 100%;
   -webkit-transition: all 250ms;
   transition: all 250ms;
