@@ -11,6 +11,7 @@ button {
     position: relative;
     border: 0.125em #1f1f1f solid;
     padding: 0.8125em 3.125em 0.8125em;
+    letter-spacing: 1px;
     font-family: inherit;
     outline: 0;
     background-color: rgba(0, 0, 0, 0);
@@ -18,7 +19,6 @@ button {
     margin: 1em;
     font-size: .7em;
     cursor: pointer;
-    bottom: 2.5em;
     min-height: 3em;
     max-width: 80%;
 }
@@ -67,6 +67,29 @@ button:active:hover::after{
     margin: 30px auto;
     left: 0;
     right: 0;
+}
+.inst-tab {
+    position: fixed;
+    overflow: auto;
+    padding: 50px;
+    font-size: 1em;
+    text-align: center;
+    top: 0em;
+    left: 0;
+    right: 0;
+    bottom: 0em;
+    height: 100%;
+    width: 100%;
+    color: #1f1f1f;
+    background-color: #efebd8;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+}
+.inst-tab.active{
+    top: 100%;
+}
+p {
+    margin-bottom: 3em;
 }
 .infoContent {
     border-radius: 8px;

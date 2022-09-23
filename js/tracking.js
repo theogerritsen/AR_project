@@ -57,7 +57,7 @@ for (const feature of arret.features){
     // que les marqueurs qu'il a développé
     
     let path = '../assets/marqueurs_etapes/etape' + n + '.png';
-    let path_arjs = '../    ar_files/step' + n + '.html';
+    let path_arjs = '../ar_files/step' + n + '.html';
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];

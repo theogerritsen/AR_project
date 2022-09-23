@@ -7,7 +7,7 @@ console.log(path);
 sessionStorage.setItem("gameMode","false");
 // on va chercher notre variable globale qui montre à quel étape le user
 // se trouve si il a choisi le mode jeu
-sessionStorage.setItem("stepNum","3");
+sessionStorage.setItem("stepNum","1");
 function goFullScreen() {
 
     let docElm = document.documentElement;
@@ -163,7 +163,7 @@ function showMarkers(btnId) {
         // on ajoute la classe active à notre div pour fermer le panneau
         // informatif
 
-        document.querySelector('.begin-info').classList.add("active");
+        document.querySelector('.inst-tab').classList.add("active");
 
         // si l'id du bouton appuyé est celui du jeu, on switch le gameMode
         // à true et on crée une nouvelle variable globale qui sera égale à 1

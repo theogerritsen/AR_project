@@ -52,7 +52,7 @@ button:active:hover::after{
     bottom: 0;
     z-index: 2;
 }
-.begin-info {
+.inst-tab {
     overflow-y: scroll;
     text-align: center;
     padding: 50px;
@@ -64,7 +64,7 @@ button:active:hover::after{
     z-index: 99;
     transition: 0.2s;
 }
-.begin-info.active {
+.inst-tab.active {
     top: 100%;
 }
 .jeu-btn, .sentier-btn {

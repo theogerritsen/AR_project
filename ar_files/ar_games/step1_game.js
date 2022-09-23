@@ -9,7 +9,7 @@ let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
 $(function(){
     $("#itin-btn").click(function(){
-        window.location.href = "../../tracking.html"
+        window.location.href = "../tracking.html"
     })
     $("#step1-btn").click(function(){
         window.location.href = "../step1.html"
@@ -197,22 +197,22 @@ function staticLoadPlaces() {
         {
             name: 'molasse',
             location: {
-                lat: 46.513269263223904,
-                lng: 6.648777000499241,
+                lat: 46.52249367243052,
+                lng: 6.635092388635452,
             }
         },
         {
             name: 'gneiss',
             location: {
-                lat: 46.51332868747917,
-                lng: 6.64950601280128,
+                lat: 46.52293106527691,
+                lng: 6.634901951823021,
             }
         },
         {
             name: 'calcaire',
             location: {
-                lat: 46.51351142712949,
-                lng: 6.648653070434376,
+                lat: 46.5226219377873,
+                lng: 6.634484868333918
             }
         }
     ]

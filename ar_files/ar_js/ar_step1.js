@@ -54,9 +54,9 @@ function toggleActive(clicked_id) {
 
     // document.getElementById("information").setAttribute('style', 'margin-left:'+ marginLeft.substring(1)+';width:'+pixWidth - margFloat+';');
     //document.getElementById("information").setAttribute('style', 'width:'+ widthInfoDiv.substring(1)+';');
-    let molasse_text = 'aaaaaaaaaaLa molasse – une des roches utilisée pour la construction des bâtiments et des trottoires de la Cité';
-    let gneiss_text = 'Le calcaire – une des roches utilisée pour la construction des bâtiments et des trottoires de la Cité';
-    let calcaire_txt = 'Le calcaire – une des roches utilisée pour la construction des bâtiments et des trottoires de la Cité';
+    let molasse_text = "La molasse grise de Lausanne – puisée dans les sous-sols de la ville, cette roche, abondante et tendre, est facile à tailler. On la trouve un peu partout dans les constructions à Lausanne. Seul bémole: cette roche est facilement altérable (sensible à la pluie, par exemple). Ces altérations peuvent être facilement observées tout autours de la cathédrale, mais sont plus accentuées sur les façades sud et ouest. Bien que cette fragilité de la molasse ait causés de nombreux travaux de restauration, certains blocs de molasse présents datent encore du XIIIe siècle, lors de la première construction de la cathédrale.";
+    let gneiss_text = "Le gneiss – utilisé fréquemment pour les bords de trottoire à Lausanne, il est facilement reconnaissable par l'alignement régulier de minéraux tels que le quartz, le feldspath et le mica";
+    let calcaire_text = "Le calcaire – utilisé fréquemment pour la construction de marches d'escalier à Lausanne, on le trouve de manière assez abondante dans la région, notamment à la Carrière romaine de la Raisse, localisée sur la commune de Concise. Le calcaire est en général blanc et riche en débris de coquilles fossiles.";
 
     // fonction pour monter le marqueur si le menu monte
     // pour que le marqueur soit toujours visible
@@ -89,11 +89,8 @@ function toggleActive(clicked_id) {
         // on ajoute notre classe molasse
         popUpDiv.classList.toggle("molasse");
         imgDiv.setAttribute('style', "background-image: url('ar_assets/etape1/molasse.jpg');");
-        // on supprime le contenu actuel du div
-        infoDiv.innerHTML = "";
         // on ajoute le contenu en lien avec la molasse
-        infoDiv.append(molasse_text);
-
+        infoDiv.innerHTML = molasse_text + "<br><br><small>Source: Rousset, B. (2013). La Molasse grise de Lausanne. De la roche sédimentaire détritique au matériau de construction séculaire.<br>Emmanuel, R., Valentine, R., & Carole, H. (s. d.). Géologie, géomorphologie et tourisme urbain. Le cas de Lausanne. 11.</small>";
     }
     if (clicked_id == 'gneiss') {
 
@@ -103,9 +100,7 @@ function toggleActive(clicked_id) {
         popUpDiv.classList.toggle("gneiss");
         imgDiv.setAttribute('style', "background-image: url('ar_assets/etape1/gneiss.jpg');");
 
-        infoDiv.innerHTML = "";
-        
-        infoDiv.append(gneiss_text);
+        infoDiv.innerHTML = gneiss_text + "<br><br><small>Source: Septfontaine, M., & Ansermet, S. (1999). Belles et utiles, pierres de chez nous. Musée de géologie.</small>";
 
     }
     if (clicked_id == 'calcaire') {
@@ -116,9 +111,7 @@ function toggleActive(clicked_id) {
         popUpDiv.classList.toggle("calcaire");
         imgDiv.setAttribute('style', "background-image: url('ar_assets/etape1/calcaire.jpg');");
 
-        infoDiv.innerHTML = "";
-        
-        infoDiv.append(calcaire_txt);
+        infoDiv.innerHTML = calcaire_text + "<br><br><small>Source: Septfontaine, M., & Ansermet, S. (1999). Belles et utiles, pierres de chez nous. Musée de géologie.</small>";
 
     }
     //console.log(clicked_id)
