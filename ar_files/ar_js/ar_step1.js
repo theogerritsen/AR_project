@@ -7,6 +7,12 @@ $(function(){
     $("#return-btn2").click(function(){
         window.location.href = "tracking.html"
     })
+    $("#sentier-btn").click(function(){
+        window.location.href = "tracking.html"
+    })
+    $("#jeu-btn").click(function(){
+        document.querySelector('.inst-tab').classList.toggle('active');
+    })
     $("#game-btn").click(function(){
         window.location.href = "ar_games/step1_game.html"
     })
