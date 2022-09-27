@@ -22,6 +22,33 @@ $(function() {
     });
 });
 
+function toggleButton() {
+    document.querySelector('.centered').classList.toggle("active");
+}
+
+// fonction pour changer de panneau informatif quand on clique le bouton
+
+function change_plane(elem) {
+    $("#change").click(function() {
+        if (elem.id == 'info1') {
+            elem.setAttribute('id', 'info2');
+            elem.setAttribute('src', '#info2');
+        }
+        else if (elem.id == 'info2') {
+            elem.setAttribute('id', 'info3');
+            elem.setAttribute('src', '#info3')
+        }
+        else if (elem.id == 'info3') {
+            elem.setAttribute('id', 'info4');
+            elem.setAttribute('src', '#info4');
+        }
+        else if (elem.id == 'info4') {
+            elem.setAttribute('id', 'info1');
+            elem.setAttribute('src', '#info1');
+        }
+    })
+}
+
 function staticLoadPlaces() {
     return [
         {
@@ -32,31 +59,31 @@ function staticLoadPlaces() {
             }
         },
         {
-            name: 'panneau1',
+            name: 'info',
             location: {
-                lat: 46.513357398896744,
-                lng: 6.64929693971056,
+                lat: 46.51337495952703,
+                lng: 6.649994344068414,
             }
         },
         {
-            name: 'place_pepinet',
+            name: 'Place Pepinet',
             location: {
-                lat: 46.527302871376286,
-                lng: 6.57784007975565,
+                lat: 46.51314335023611,
+                lng: 6.648125417073529,
             }
         },
         {
-            name: 'rue_centrale',
+            name: 'Rue Centrale',
             location: {
                 lat: 46.52615522490866,
                 lng: 6.580411320389366,
             }
         },
         {
-            name: 'riponne',
+            name: 'Place de la Riponne',
             location: {
-                lat: 46.52720770161556,
-                lng: 6.58044386773916,
+                lat: 46.53001106458918,
+                lng: 6.572756532594398,
             }
         },
         {
@@ -96,36 +123,40 @@ function renderPlaces(places) {
 
         }
 
-        if (place.name == "panneau1") {
+        if (place.name == "info") {
 
             const plane1 = document.createElement('a-plane');
-                plane1.setAttribute('id', 'panneau1');
+                plane1.setAttribute('id', 'info1');
                 plane1.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                plane1.setAttribute('scale', '10 10 10');
                 plane1.setAttribute('height', '1');
                 plane1.setAttribute('width', '1.5');
-                plane1.setAttribute('scale', '10 10 10');
-                plane1.setAttribute('src', '#panneau1');
+                plane1.setAttribute('src', '#info1');
                 plane1.setAttribute('look-at', '[gps-camera]');
-                plane1.setAttribute('event-set__mouseenter', 'scale: 13 13 13');
-                plane1.setAttribute('event-set__mouseleavle', 'scale: 10 10 10');
+                plane1.setAttribute('event-set__mouseenter', 'onmouseover: toggleButton()');
+                //plane1.setAttribute('event-set__mouseleavle', 'scale: 10 10 10');
+
+                change_plane(plane1);
 
                 plane1.addEventListener('loaded', () => {
                     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
                 })
 
-                //scene.appendChild(plane1);
+                scene.appendChild(plane1);
         
         }
 
         // si les unités qu'on veut montrer sont des places,
         // alors on y met des pin et un texte au-dessus.
 
-        if (place.name == 'place_pepinet' || place.name == 'rue_centrale' || place.name == 'riponne') {
+        if (place.name == 'Place Pepinet' || place.name == 'Rue Centrale' || place.name == 'Place de la Riponne') {
             const pin = document.createElement('a-entity');
             pin.setAttribute('id', 'pin');
             pin.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
             pin.setAttribute('scale', '1 1 1');
             pin.setAttribute('gltf-model', '#pin');
+            //pin.setAttribute("animation__mouseenter", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter");
+            //pin.setAttribute("animation__mouseleave", "property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave");
 
             pin.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
@@ -135,10 +166,11 @@ function renderPlaces(places) {
 
             const pinText = document.createElement('a-text');
             pinText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-            pinText.setAttribute('id', 'pinText');
+            pinText.setAttribute('id', place.name);
             pinText.setAttribute('value', place.name);
-            pinText.setAttribute('scale', '3 1 3');
+            pinText.setAttribute('scale', '6 6 6');
             pinText.setAttribute('look-at', '[gps-camera]');
+            pinText.setAttribute('position', '0 6 0');
 
             pinText.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));

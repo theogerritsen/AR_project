@@ -133,51 +133,51 @@ function renderPlaces(places) {
         // on va ajouter nos différentes textures dans la balise assets
 
         let molasse = document.createElement('a-entity');
-        molasse.setAttribute('id', 'molasse');
-        molasse.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        molasse.setAttribute('onclick', 'toggleActive(this.id)');
-        molasse.setAttribute('gltf-model', '#molasse');
-        molasse.setAttribute('scale', '.3 .3 .3');
-        molasse.setAttribute('position', '0 1.3 -5');
-        molasse.setAttribute('rotation', '0 0 0');
-        molasse.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
-        molasse.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
-        molasse.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
-        molasse.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
+            molasse.setAttribute('id', 'molasse');
+            molasse.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            molasse.setAttribute('onclick', 'toggleActive(this.id)');
+            molasse.setAttribute('gltf-model', '#molasse');
+            molasse.setAttribute('scale', '.3 .3 .3');
+            molasse.setAttribute('position', '0 1.3 -5');
+            molasse.setAttribute('rotation', '0 0 0');
+            molasse.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
+            molasse.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
+            molasse.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
+            molasse.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
 
         molasse.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         let gneiss = document.createElement('a-entity');
-        gneiss.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        gneiss.setAttribute('id', 'gneiss');
-        gneiss.setAttribute('onclick', 'toggleActive(this.id)');
-        gneiss.setAttribute('gltf-model', '#gneiss-texture');
-        gneiss.setAttribute('scale', '.3 .3 .3');
-        gneiss.setAttribute('position', '1.5 1.3 -5');
-        gneiss.setAttribute('rotation', '0 0 0');
-        gneiss.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
-        gneiss.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
-        gneiss.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
-        gneiss.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
+            gneiss.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            gneiss.setAttribute('id', 'gneiss');
+            gneiss.setAttribute('onclick', 'toggleActive(this.id)');
+            gneiss.setAttribute('gltf-model', '#gneiss-texture');
+            gneiss.setAttribute('scale', '.3 .3 .3');
+            gneiss.setAttribute('position', '1.5 1.3 -5');
+            gneiss.setAttribute('rotation', '0 0 0');
+            gneiss.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
+            gneiss.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
+            gneiss.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
+            gneiss.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
 
         gneiss.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         let calcaire = document.createElement('a-entity');
-        calcaire.setAttribute('id', 'calcaire');
-        calcaire.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        calcaire.setAttribute('onclick', 'toggleActive(this.id)');
-        calcaire.setAttribute('gltf-model', '#calcaire');
-        calcaire.setAttribute('scale', '.3 .3 .3');
-        calcaire.setAttribute('position', '-1.5 1.3 -5');
-        calcaire.setAttribute('rotation', '0 0 0');
-        calcaire.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
-        calcaire.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
-        calcaire.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
-        calcaire.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
+            calcaire.setAttribute('id', 'calcaire');
+            calcaire.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            calcaire.setAttribute('onclick', 'toggleActive(this.id)');
+            calcaire.setAttribute('gltf-model', '#calcaire');
+            calcaire.setAttribute('scale', '.3 .3 .3');
+            calcaire.setAttribute('position', '-1.5 1.3 -5');
+            calcaire.setAttribute('rotation', '0 0 0');
+            calcaire.setAttribute("animation__mouseenter", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseenter");
+            calcaire.setAttribute("animation__mouseleave", "property: scale; to: .3 .3 .3; dur: 300; startEvents: mouseleave");
+            calcaire.setAttribute("animation__rotationenter", "property: object3D.rotation.y; to: 360; dur: 10000; loop: true; easing: linear; startEvents: mouseenter");
+            calcaire.setAttribute("animation__rotationleave", "property: object3D.rotation.y; to: 0; startEvents: mouseleave");
 
         calcaire.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
@@ -186,55 +186,55 @@ function renderPlaces(places) {
 
         // on ajoute du texte
         let molasse_txt = document.createElement('a-text');
-        molasse_txt.setAttribute('id', 'text-molasse');
-        molasse_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        molasse_txt.setAttribute('scale', '1 1 1');
-        molasse_txt.setAttribute('font', 'dejavu');
-        molasse_txt.setAttribute('value', 'molasse');
-        molasse_txt.setAttribute('look-at', '[gps-camera]');
-        molasse_txt.setAttribute('position', '-.5 2.1 -5');
-        molasse_txt.setAttribute('sound', 'on: click; src: #click-sound');
+            molasse_txt.setAttribute('id', 'text-molasse');
+            molasse_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            molasse_txt.setAttribute('scale', '1 1 1');
+            molasse_txt.setAttribute('font', 'dejavu');
+            molasse_txt.setAttribute('value', 'molasse');
+            molasse_txt.setAttribute('look-at', '[gps-camera]');
+            molasse_txt.setAttribute('position', '-.5 2.1 -5');
+            molasse_txt.setAttribute('sound', 'on: click; src: #click-sound');
 
         molasse_txt.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         let gneiss_txt = document.createElement('a-text');
-        gneiss_txt.setAttribute('id', 'text-gneiss');
-        gneiss_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        gneiss_txt.setAttribute('scale', '1 1 1');
-        gneiss_txt.setAttribute('font', 'dejavu');
-        gneiss_txt.setAttribute('value', 'gneiss');
-        gneiss_txt.setAttribute('look-at', '[gps-camera]');
-        gneiss_txt.setAttribute('position', '1.2 2.1 -5');
-        gneiss_txt.setAttribute('sound', 'on: click; src: #click-sound');
+            gneiss_txt.setAttribute('id', 'text-gneiss');
+            gneiss_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            gneiss_txt.setAttribute('scale', '1 1 1');
+            gneiss_txt.setAttribute('font', 'dejavu');
+            gneiss_txt.setAttribute('value', 'gneiss');
+            gneiss_txt.setAttribute('look-at', '[gps-camera]');
+            gneiss_txt.setAttribute('position', '1.2 2.1 -5');
+            gneiss_txt.setAttribute('sound', 'on: click; src: #click-sound');
 
             gneiss_txt.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         let calcaire_txt = document.createElement('a-text');
-        calcaire_txt.setAttribute('id', 'text-calcaire');
-        calcaire_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        calcaire_txt.setAttribute('scale', '1 1 1');
-        calcaire_txt.setAttribute('font', 'dejavu');
-        calcaire_txt.setAttribute('value', 'calcaire');
-        calcaire_txt.setAttribute('look-at', '[gps-camera]');
-        calcaire_txt.setAttribute('position', '-2 2.1 -5');
-        calcaire_txt.setAttribute('sound', 'on: click; src: #click-sound');
+            calcaire_txt.setAttribute('id', 'text-calcaire');
+            calcaire_txt.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            calcaire_txt.setAttribute('scale', '1 1 1');
+            calcaire_txt.setAttribute('font', 'dejavu');
+            calcaire_txt.setAttribute('value', 'calcaire');
+            calcaire_txt.setAttribute('look-at', '[gps-camera]');
+            calcaire_txt.setAttribute('position', '-2 2.1 -5');
+            calcaire_txt.setAttribute('sound', 'on: click; src: #click-sound');
 
         calcaire_txt.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         let instructions = document.createElement('a-text');
-        instructions.setAttribute('id', 'instructions_step1');
-        instructions.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        instructions.setAttribute('scale', '1 1 1');
-        instructions.setAttribute('font', 'dejavu');
-        instructions.setAttribute('value', "Visez une roche pour plus d'information");
-        instructions.setAttribute('look-at', '[gps-camera]');
-        instructions.setAttribute('position', '-2 3.1 -5');
+            instructions.setAttribute('id', 'instructions_step1');
+            instructions.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            instructions.setAttribute('scale', '1 1 1');
+            instructions.setAttribute('font', 'dejavu');
+            instructions.setAttribute('value', "Visez une roche pour plus d'information");
+            instructions.setAttribute('look-at', '[gps-camera]');
+            instructions.setAttribute('position', '-2 3.1 -5');
 
 
         scene.appendChild(molasse_txt);

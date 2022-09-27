@@ -54,7 +54,11 @@
     <a-assets>
       <a-asset-item id="river" src="ar_gltf/river/FINAL_LOWPOLY_RIVER2.glb"></a-asset-item>
       <a-asset-item id="pin" src="ar_gltf/step1/pin.glb"></a-asset-item>
-      <img id="panneau1" src="ar_assets/img/info1_etape2.png">
+      <img id="info1" src="ar_assets/img/info1_etape2.png">
+      <img id="info2" src="ar_assets/img/info2_etape2.png">
+      <img id="info3" src="ar_assets/img/info3_etape2.png">
+      <img id="info4" src="ar_assets/img/info4_etape2.png">
+
     </a-assets>
       
       
@@ -64,7 +68,18 @@
       <!-- static camera that moves according to the device movemenents -->
       <a-camera gps-camera="maxDistance: 80;" rotation-reader look-controls-enabled='false'
     arjs-look-controls="smoothingFactor: 0.1">
+    <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
+          event-set__mouseenter="_event: mouseenter; color: springgreen" 
+          event-set__mouseleave="_event: mouseleave; color: grey"
+          color="grey"></a-cursor>
+      </a-camera>
     </a-scene>
+    <div class="centered">
+      <button id="change" class="change-btn" data-action="change">Info suivante</button>
+    </div>
     <div id="btn">
       <div id="top"></div>
       <div id="middle"></div>
