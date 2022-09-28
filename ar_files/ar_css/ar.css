@@ -134,11 +134,34 @@ p {
     margin: 0px auto;
     left: 0;
     right: 0;
+    transition: all 350ms ease;
 }
 .centered.active {
     bottom: 0%;
 }
-
+.a-dialog{
+    font-family: "Roboto Mono", monospace;
+    background-color: #efebd8;
+}
+.a-dialog-allow-button {
+    border: 1px #1f1f1f solid;
+    border-radius: 0px;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+.a-dialog-allow-button::after {
+    z-index: -1;
+}
+.a-dialog-deny-button {
+    border: 1px #1f1f1f solid;
+    border-radius: 0px;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+.a-dialog-deny-button::after {
+    z-index: -1;
+    background-color: #d1706a;
+}
 .arjs-loader {
     width: 100%;
     height: 100%;

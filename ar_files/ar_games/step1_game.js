@@ -4,9 +4,6 @@ window.onload = () => {
     renderPlaces(places);
 };
 
-
-let stepNumber = Number(sessionStorage.getItem("stepNum"));
-
 $(function(){
     $("#itin-btn").click(function(){
         window.location.href = "../tracking.html"
@@ -151,10 +148,10 @@ function getBtnId(btn_id) {
                 });
             }
             // si le score du user est égal à 3, alors on lui dit qu'il a tout trouvé et qu'il peut passer
-            // à l'étape suivante et on ajoute 1 au stepNumber pour montrer
+            // à l'étape suivante et change le stepnum à 2 pour montrer deux étapes ensuite
             // le bon nombre d'étapes sur la prochaine page si le user a choisi de jouer au jeu
             if (user_score == 3) {
-                stepNumber = stepNumber + 1;
+                sessionStorage.setItem("stepNum","2");
                 $(function(){
                     $('#dialog').dialog({
                         dialogClass: "no-close",
@@ -162,13 +159,12 @@ function getBtnId(btn_id) {
                             {
                                 text: "Ok !",
                                 click: function() {
-                                    $(this).dialog("close");
+                                    window.location.href = "../tracking.html";
                                 }
                             }
                         ]
                     });
                     $('#dialog').html("Vous avez tout trouvé ! Passez à l'étape suivante !");
-                    // metrre ref pour étape 2
                 });
             }
         }
@@ -197,22 +193,22 @@ function staticLoadPlaces() {
         {
             name: 'molasse',
             location: {
-                lat: 46.52249367243052,
-                lng: 6.635092388635452,
+                lat: 46.51328264327101,
+                lng: 6.648734389754356,
             }
         },
         {
             name: 'gneiss',
             location: {
-                lat: 46.52293106527691,
-                lng: 6.634901951823021,
+                lat: 46.513521765976556,
+                lng: 6.648684751370902,
             }
         },
         {
             name: 'calcaire',
             location: {
-                lat: 46.5226219377873,
-                lng: 6.634484868333918
+                lat: 46.51315169467691,
+                lng: 6.648204913664181,
             }
         }
     ]
@@ -257,6 +253,10 @@ function renderPlaces(places) {
         pin.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
         });
+
+        pin.addEventListener('mouseenter', () => {
+            document.querySelector
+        })
 
         //scene.appendChild(placeText);
         scene.appendChild(pin);

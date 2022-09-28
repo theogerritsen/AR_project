@@ -102,7 +102,7 @@ lc = L.control.locate({
 // ajout dynamique des marqueurs pour faire correspondre aux étapes
 
 // on initialise n à 0
-n = 0
+//n = 0
 
 // on crée un array vide pour accueillir les coordonnées de chaque marqueur
 
@@ -113,9 +113,34 @@ let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
 // on va chercher l'id du boutton appuyé
 function showMarkers(btnId) {
+
+    // on initialise n à 0
+    n = 0
     // on commence par enlever tous les icones au cas ou ils étaient
     // déjà présent sur la carte, pour les rajouter ensuite
     $(".leaflet-marker-icon").remove();
+
+    $(".leaflet-interactive").remove();
+
+    // si l'id du bouton appuyé est celui du jeu, on switch le gameMode
+        // à true et on crée une nouvelle variable globale qui sera égale à 1
+        // cette valeur sera incérmentée de 1 à chaque fois que le user complète
+        // entièrement une étape. De plus, si le bouton du jeu est appuyé
+        // on break la boucle ici pour que seulement la localisation de la
+        // première étape soit montrée et que la partie du code qui montre la polyline
+        // du sentier ne soit pas effectué
+
+        if (btnId === "jeu-btn") {
+            sessionStorage.setItem("gameMode","true");
+            console.log(sessionStorage.getItem("gameMode"));
+        }
+        // si en revanche c'est l'autre bouton qui est appuyé, on garde notre
+        // variable globale avec la valeur false et on ne break pas la boucle
+        // afin de voir toutes les étapes ainsi que la polyline.
+        if (btnId === "sentier-btn") {
+            sessionStorage.setItem("gameMode","false");
+            console.log(sessionStorage.getItem("gameMode"));
+        }
 
     for (const feature of arret.features){
         // pour chaque feature trouvé (étape), on incrémente n de 1
@@ -165,36 +190,21 @@ function showMarkers(btnId) {
 
         document.querySelector('.inst-tab').classList.add("active");
 
-        // si l'id du bouton appuyé est celui du jeu, on switch le gameMode
-        // à true et on crée une nouvelle variable globale qui sera égale à 1
-        // cette valeur sera incérmentée de 1 à chaque fois que le user complète
-        // entièrement une étape. De plus, si le bouton du jeu est appuyé
-        // on break la boucle ici pour que seulement la localisation de la
-        // première étape soit montrée et que la partie du code qui montre la polyline
-        // du sentier ne soit pas effectué
 
-        if (btnId === "jeu-btn") {
-            sessionStorage.setItem("gameMode","true");
-            console.log(sessionStorage.getItem("gameMode"));
-            break;
+        // si le user n'est pas en mode jeu, on dessine la polyline
+
+        if (sessionStorage.getItem("gameMode") == "false") {
+
+            L.geoJSON(sentier, {
+                style: function(feature) {
+                    return {
+                        color: "#c0904d",
+                        weight: 5
+                    };
+                }
+            }).addTo(mymap)
+
         }
-        // si en revanche c'est l'autre bouton qui est appuyé, on garde notre
-        // variable globale avec la valeur false et on ne break pas la boucle
-        // afin de voir toutes les étapes ainsi que la polyline.
-        if (btnId === "sentier-btn") {
-            sessionStorage.setItem("gameMode","false");
-            console.log(sessionStorage.getItem("gameMode"));
-        }
-        // si l'id du bouton n'est pas celui du jeu, on ajoute la polyline
-        // pour montrer l'itinéraire complet.
-        L.geoJSON(sentier, {
-            style: function(feature) {
-                return {
-                    color: "#c0904d",
-                    weight: 5
-                };
-            }
-        }).addTo(mymap)
     }
 }
 

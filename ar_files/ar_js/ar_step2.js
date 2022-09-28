@@ -61,8 +61,8 @@ function staticLoadPlaces() {
         {
             name: 'info',
             location: {
-                lat: 46.51337495952703,
-                lng: 6.649994344068414,
+                lat: 46.51329379944873,
+                lng: 6.648917439796385,
             }
         },
         {
@@ -128,19 +128,27 @@ function renderPlaces(places) {
             const plane1 = document.createElement('a-plane');
                 plane1.setAttribute('id', 'info1');
                 plane1.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                plane1.setAttribute('scale', '10 10 10');
+                //plane1.setAttribute('scale', '10 10 0');
                 plane1.setAttribute('height', '1');
                 plane1.setAttribute('width', '1.5');
                 plane1.setAttribute('src', '#info1');
                 plane1.setAttribute('look-at', '[gps-camera]');
-                plane1.setAttribute('event-set__mouseenter', 'onmouseover: toggleButton()');
                 //plane1.setAttribute('event-set__mouseleavle', 'scale: 10 10 10');
 
                 change_plane(plane1);
 
                 plane1.addEventListener('loaded', () => {
                     window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-                })
+                });
+
+                // on ajoute le bouton (info suivante) si le curseur est sur le panneau
+                plane1.addEventListener('mouseenter', () => {
+                    document.querySelector('.centered').classList.add('active');
+                });
+                // et on l'enlève si le curseur sort du panneau
+                plane1.addEventListener('mouseleave', () => {
+                    document.querySelector('.centered').classList.remove('active');
+                });
 
                 scene.appendChild(plane1);
         
@@ -162,22 +170,36 @@ function renderPlaces(places) {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
             });
 
+
+
             scene.appendChild(pin);
 
             const pinText = document.createElement('a-text');
             pinText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
             pinText.setAttribute('id', place.name);
             pinText.setAttribute('value', place.name);
-            pinText.setAttribute('scale', '6 6 6');
+            pinText.setAttribute('scale', '6 6 0');
+            //pinText.setAttribute('position', '0 6 0');
             pinText.setAttribute('look-at', '[gps-camera]');
-            pinText.setAttribute('position', '0 6 0');
 
             pinText.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
             });
 
+
             scene.appendChild(pinText);
+
+            // on agrandit le texte si le le user vise le pin
+
+            pin.addEventListener('mouseenter', () => {
+                pinText.setAttribute('scale', '12 12 0');
+            });
+    
+            pin.addEventListener('mouseleave', () => {
+                pinText.setAttribute('scale', '6 6 0');
+            });
         }
+
 
         scene.appendChild(river);
         
