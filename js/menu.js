@@ -23,6 +23,8 @@ window.addEventListener('keydown', function(event) {
 // on va chercher le nom du fichier dans lequel on est actuellement
 var path = window.location.pathname;
 
+console.log('chemin', path);
+
 $(function(){
     $("#inst-menu").click(function(){
         document.querySelector('.inst-tab').classList.toggle("active");
