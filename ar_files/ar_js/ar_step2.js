@@ -1,5 +1,6 @@
-// montrer la place pépinet
-// montrer la rue centrale
+// montrer la place pépinet -- ok
+
+// montrer la rue centrale -- ok
 // mettre un pin pour la place de la riponne
 // montrer m2
 // montrer ouchy et épalinge ?

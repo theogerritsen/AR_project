@@ -30,7 +30,7 @@ $(function(){
         sidebarBox.classList.remove("active");
     });
     // changer si github ou pas
-    if (path == "/ar_files/step1.html") {
+    if (path == "AR_project/ar_files/step1.html") {
         $("#home-menu").click(function(){
         window.location.href = "tracking.html"
         });
@@ -41,7 +41,7 @@ $(function(){
             window.location.href = "../index.html"
         })
     }
-    if (path == "/ar_files/step2.html") {
+    if (path == "AR_project/ar_files/step2.html") {
         $("#home-menu").click(function(){
         window.location.href = "tracking.html"
         });
@@ -49,7 +49,7 @@ $(function(){
             window.location.href = "../index.html"
         })
     }
-    if (path == "/ar_files/ar_games/step1_game.html") {
+    if (path == "AR_project/ar_files/ar_games/step1_game.html") {
         $("#home-menu").click(function() {
             window.location.href = "../tracking.html"
         });
@@ -60,7 +60,7 @@ $(function(){
             window.location.href = "../../index.html"
         })
     }
-    if (path == "/ar_files/tracking.html") {
+    if (path == "AR_project/ar_files/tracking.html") {
         $("#home-menu").click(function() {
             window.location.href = "../index.html"
         });

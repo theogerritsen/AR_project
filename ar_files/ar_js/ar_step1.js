@@ -183,7 +183,6 @@ function renderPlaces(places) {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
-
         // on ajoute du texte
         let molasse_txt = document.createElement('a-text');
             molasse_txt.setAttribute('id', 'text-molasse');
