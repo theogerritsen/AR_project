@@ -2,17 +2,19 @@ let scene = document.querySelector('#etape3');
 
 console.log('coucou')
 
-for (var n = 0; n < 10; n++) {
+for (var n = 1; n < 10; n++) {
     const nft = document.createElement('a-nft');
+    nft.setAttribute('registerevents', '');
+    nft.setAttribute('name', 'panneau' + n);
     nft.setAttribute('type', 'nft');
     nft.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p' + n);
     nft.setAttribute('smooth', 'true');
     nft.setAttribute('smoothCount', '10');
     nft.setAttribute('smoothTolerance', '.01');
     nft.setAttribute('smoothThreshold', '5');
-    nft.setAttribute('raycaster', 'objects: .clickable');
+    //nft.setAttribute('raycaster', 'objects: .clickable');
     nft.setAttribute('emitevents', 'true');
-    nft.setAttribute('cursor', 'true: false; rayOrigin:mouse');
+    //nft.setAttribute('cursor', 'true: false; rayOrigin:mouse');
 
     const infoPlane = document.createElement('a-plane');
     infoPlane.setAttribute('height', '1');
@@ -27,6 +29,8 @@ for (var n = 0; n < 10; n++) {
     infoPlane.setAttribute('class', 'clickable');
     infoPlane.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
 
+    // on ajoute les NFT à la scène
     scene.appendChild(nft);
-    scene.appendChild(infoPlane);
+    // et on ajoute chaque panneau à l'intérieur du nft
+    nft.appendChild(infoPlane);
 }
