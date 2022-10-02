@@ -58,7 +58,7 @@ function toggleGame(rock_id) {
     // alors on demande à l'utilisateur de s'approcher de la roche
     // si l'utilisateur est à moins de 15m, alors on affiche les boutons
     // et l'utilisateur peut jouer au jeu
-    if ((clicked_rock == 'gneiss') && (intGneiss > 15)) {
+    if ((clicked_rock == 'gneiss') && (intGneiss > 5)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
@@ -76,7 +76,7 @@ function toggleGame(rock_id) {
             $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intGneiss+' m</b> de cette roche');
         });
     }
-    else if ((clicked_rock == 'calcaire') && (intCalcaire > 15)) {
+    else if ((clicked_rock == 'calcaire') && (intCalcaire > 5)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
@@ -94,7 +94,7 @@ function toggleGame(rock_id) {
             $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intCalcaire+' m</b> de cette roche');
         });
     }
-    else if ((clicked_rock == 'molasse') && (intMolasse > 15)) {
+    else if ((clicked_rock == 'molasse') && (intMolasse > 5)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
@@ -193,22 +193,22 @@ function staticLoadPlaces() {
         {
             name: 'molasse',
             location: {
-                lat: 46.522808177614046,
-                lng: 6.635174328452285,
+                lat: 46.51349042070761,
+                lng: 6.648814904810279,
             }
         },
         {
             name: 'gneiss',
             location: {
-                lat: 46.522348842944425,
-                lng: 6.6350739214384715,
+                lat: 46.51312843496473,
+                lng: 6.648022200887821,
             }
         },
         {
             name: 'calcaire',
             location: {
-                lat: 46.52277830230699,
-                lng: 6.636079348387988,
+                lat: 46.51293469512585,
+                lng: 6.649392763744405,
             }
         }
     ]
