@@ -148,3 +148,26 @@ button:active:hover::after{
 .ui-button {
     bottom: auto;
 }
+.a-dialog{
+    font-family: "Roboto Mono", monospace;
+    background-color: #efebd8;
+}
+.a-dialog-allow-button {
+    border: 0.0625em #1f1f1f solid;
+    border-radius: 0em;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+.a-dialog-allow-button::after {
+    z-index: -1;
+}
+.a-dialog-deny-button {
+    border: 0.0625em #1f1f1f solid;
+    border-radius: 0em;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+.a-dialog-deny-button::after {
+    z-index: -1;
+    background-color: #d1706a;
+}

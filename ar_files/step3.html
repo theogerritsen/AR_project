@@ -1,5 +1,3 @@
-<!-- CE STEP EST UN EXEMPLE POUR LE NFT-->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,11 +11,17 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script><script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
     <!-- style for the loader -->
     <link rel="stylesheet" href="ar_css/ar.css"/>
+    <link rel="stylesheet" href="../css/menu.css"/>
     <script>
       THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/ajaxify/8.2.3/ajaxify.js' integrity='sha512-jipua8AH9JbOGVVx5NLMMm8UXqdF7RG+8kVIiVfjniUbMdfPlragzf32/wQ4N9g4d+m5euXVIKxX3h2g4auqSQ==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   </head>
 
@@ -38,8 +42,14 @@
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true; antialias: true; alpha: true;"
       embedded
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: true;"
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
       >
+      <a-assets>
+        <img id="img1" src="ar_assets/img/st_laurent1.gif">
+        <img id="info1" src="ar_assets/etape3/arret1.png">
+        <img id="img2" src="ar_assets/etape3/img2.jpeg">
+        <img id="img3" src="ar_assets/etape3/img3.jpeg">
+      </a-assets>
       <script src="ar_js/ar_step3.js"></script>
       
       
@@ -50,7 +60,65 @@
       
 
       <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
+      <a-camera>
+        <a-cursor
+        id="cursor"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
+        event-set__mouseenter="_event: mouseenter; color: springgreen" 
+        event-set__mouseleave="_event: mouseleave; color: grey"
+        color="grey"></a-cursor>
+      </a-camera>
     </a-scene>
+    <div class="centered.active">
+      <button id="change" class="change-btn" data-action="change">Image suivante</button>
+    </div>
+    <div id="btn">
+      <div id="top"></div>
+      <div id="middle"></div>
+      <div id="bottom"></div>
+    </div>
+    <div id="box">
+      <div id="items">
+        <div class="item" id="home-menu">Itinéraire</div>
+        <hr/>
+        <div class="item" id="inst-menu">Instructions</div>
+        <hr/>
+        <div class="item" id="begin-menu">Retour au départ</div>
+      </div>
+      <div id="credit">
+        <hr/>
+        <div class="item" id="credit-menu">Crédits</div>
+        <hr/>
+        <div class="item" id="geoguide-menu">GéoGuide UNIL</div>
+      </div>
+    </div>
+    <div id="inst-tab" class="inst-tab">
+      Bienvenue dans l'étape 3 ! <br><br>
+      Vous suivrez ici l'histoire de la Louve et apercevrez, ou bout de cette étape,
+      un résidu de la Louve qui passe actuellement sous la Riponne.<br><br>
+      Afin de trouver la Louve sous-terraine, des images vous seront données qui correspondent
+      à des inscriptions sur les murs. Trouvez ces inscriptions et filmez les avec votre téléphone. Un point vous est attribué pour chaque image trouvée.
+      Trouvez les trois images pour arriver jusqu'à la Louve. Pour commencer, rendez-vous à l'entrée du parking de la Riponne, juste à côté de l'entrée du métro.<br><br>
+      Bonne chance !
+      <div class="jeu-btn">
+        <button id="jeu-btn" class="itin-btn">C'est parti !</button>
+      </div>
+      <div class="seniter-btn">
+        <button id="sentier-btn" class="itin-btn">Retour à l'itinérare</button>
+      </div>
+    </div>
+    <div class="img-tab">
+      Voici votre première inscription murale à trouver ! Observez la bien, souvenez-vous en, puis,
+      dès que vous la trouvez, filmez la avec votre téléphone !<br><br>
+      <img src="ar_assets/etape3/img1.jpeg" class="img"> 
+      <div class="jeu-btn">
+        <button id="img-btn" class="itin-btn">C'est parti !</button>
+      </div>
+    </div>
+    <div id="userScore" class="score">
+      Images trouvées : 0/3
+    </div>
+    <script src="../js/menu.js"></script>
   </body>
 </html>

@@ -33,20 +33,20 @@ button::after{
     left: 0.4375em;
 }
 button:active:hover::after{
-    top: 0px;
-    left: 0px;
+    top: 0em;
+    left: 0em;
 }
 .info.molasse {
     height: 50vh;
-    padding-bottom: 0px;
+    padding-bottom: 0em;
 }
 .info.gneiss {
     height: 50vh;
-    padding-bottom: 0px;
+    padding-bottom: 0em;
 }
 .info.calcaire {
     height: 50vh;
-    padding-bottom: 0px;
+    padding-bottom: 0em;
 }
 .info {
     overflow: auto;
@@ -56,7 +56,7 @@ button:active:hover::after{
     grid-template-rows: 30% auto 30%;
     grid-template-areas: "image" "text" "btn";
     font-size: 1em;
-    bottom: -30px;
+    bottom: -1.875em;
     height: 0px;
     text-align: center;
     position: fixed;
@@ -64,14 +64,14 @@ button:active:hover::after{
 
     transition: all 0.5s ease;
     width: 100%;
-    margin: 30px auto;
+    margin: 1.875em auto;
     left: 0;
     right: 0;
 }
 .inst-tab {
     position: fixed;
     overflow: auto;
-    padding: 50px;
+    padding: 3.125em;
     font-size: 1em;
     text-align: center;
     top: 0em;
@@ -88,12 +88,47 @@ button:active:hover::after{
 .inst-tab.active{
     top: 100%;
 }
+.img-tab {
+    position: fixed;
+    overflow: auto;
+    padding: 3.125em;
+    font-size: 1em;
+    text-align: center;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0em;
+    height: 100%;
+    width: 100%;
+    color: #1f1f1f;
+    background-color: #efebd8;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+}
+.img-tab.active{
+    top: 0em;
+}
+.img {
+    margin-top: 1.25em;
+    width: 70%;
+}
+.score {
+    position: fixed;
+    top: 1em;
+    font-size: 2em;
+    left: -12.5em;
+    transition: all 700ms ease;
+    color: white;
+}
+.score.active {
+    left: 1em;
+}
 p {
     margin-bottom: 3em;
 }
 .infoContent {
-    border-radius: 8px;
-    margin: 30px;
+    border-radius: 0.5em;
+    margin: 1.875em;
     grid-column-start: 1;
     grid-column-end: span col2-end;
     color: #1f1f1f;
@@ -116,10 +151,10 @@ p {
 }
 .info .btn{
     position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 46px;
-    margin-left: 50px;
+    top: 0.625em;
+    right: 1.5625em;
+    font-size: 2.875em;
+    margin-left: 3.125em;
     text-decoration: none;
     color: #ffffff;
 }
@@ -127,11 +162,11 @@ p {
     height: 10%;
     justify-content: center;
     position: fixed;
-    bottom: -100px;
+    bottom: -6.25em;
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: 0px auto;
+    margin: 0em auto;
     left: 0;
     right: 0;
     transition: all 350ms ease;
@@ -144,8 +179,8 @@ p {
     background-color: #efebd8;
 }
 .a-dialog-allow-button {
-    border: 1px #1f1f1f solid;
-    border-radius: 0px;
+    border: 0.0625em #1f1f1f solid;
+    border-radius: 0em;
     outline: 0;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -153,8 +188,8 @@ p {
     z-index: -1;
 }
 .a-dialog-deny-button {
-    border: 1px #1f1f1f solid;
-    border-radius: 0px;
+    border: 0.0625em #1f1f1f solid;
+    border-radius: 0em;
     outline: 0;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -171,15 +206,15 @@ p {
     font-size: 1.5rem;
     position: relative;
     animation: text-color 2s ease-in-out infinite alternate;
-    background-color: rgba(0, 0, 0, 0) !important;
+    background-color: rgba(0, 0, 0, 0.438) !important;
     z-index: 9999;
 }
 .spinner-sector {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 12.5em;
+    height: 12.5em;
     border-radius: 50%;
-    border: 15px solid transparent;
+    border: 0.9375em solid transparent;
     mix-blend-mode: overlay;
     animation: rotate var(--duration) var(--timing) infinite;
     pointer-events: none;

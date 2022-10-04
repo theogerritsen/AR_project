@@ -4,36 +4,36 @@
 #btn {
     position: fixed;
     z-index: 1000;
-    top: 15px;
-    right: 15px;
+    top: 0.9375em;
+    right: 0.9375em;
     cursor: pointer;
     -webkit-transition: right 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
     transition: right 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
 #btn div {
-    width: 35px;
-    height: 2px;
-    margin-bottom: 8px;
+    width: 2.1875em;
+    height: 0.125em;
+    margin-bottom: 0.5em;
     background-color: #343838;
     -webkit-transition: -webkit-transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
     transition: transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
 }
 #btn:hover > div {
-    box-shadow: 0 0 1px #343838;
+    box-shadow: 0 0 0.0625em #343838;
 }
 #btn.active {
-    right: 230px
+    right: 14.375em
 }
 #btn.active div{
     background-color: #343838;
 }
 #btn.active:hover > div {
-    box-shadow: 0 0 1px #343838;
+    box-shadow: 0 0 0.0625em #343838;
 }
 #btn.active #top {
-    -webkit-transform: translateY(10px) rotate(-135deg);
-    -ms-transform: translateY(10px) rotate(-135deg);
-    transform: translateY(10px) rotate(-135deg);
+    -webkit-transform: translateY(0.625em) rotate(-135deg);
+    -ms-transform: translateY(0.625em) rotate(-135deg);
+    transform: translateY(0.625em) rotate(-135deg);
   }
   
 #btn.active #middle {
@@ -43,20 +43,24 @@
   }
   
 #btn.active #bottom {
-    -webkit-transform: translateY(-10px) rotate(-45deg);
-    -ms-transform: translateY(-10px) rotate(-45deg);
-    transform: translateY(-10px) rotate(-45deg);
+    -webkit-transform: translateY(-0.625em) rotate(-45deg);
+    -ms-transform: translateY(-0.625em) rotate(-45deg);
+    transform: translateY(-0.625em) rotate(-45deg);
   }
   
 #box {
     position: fixed;
     z-index: 999;
     overflow: auto;
-    top: 0px;
-    right: -275px;
-    width: 275px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 60% 20%;
+    grid-template-areas: "icon" "content" "credit";
+    top: 0em;
+    right: -17.1875em;
+    width: 17.1875em;
     opacity: 0;
-    padding: 20px 0px;
+    padding: 1.25em 0em;
     height: 100%;
     background-color: #efebd8;
     color: #1f1f1f;
@@ -65,11 +69,12 @@
   }
   
   #box.active {
-    right: 0px;
+    right: 0em;
     opacity: 1;
   }
   
   #items {
+    grid-area: content;
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -81,7 +86,7 @@
     position: relative;
     cursor: pointer;
     font-size: 1.2em;
-    padding: 15px 30px;
+    padding: 0.9375em 1.875em;
     -webkit-transition: all 250ms;
     transition: all 250ms;
   }
@@ -89,17 +94,47 @@
   #items .item:active:hover {
     background-color: #acd1c0;
   }
-  hr {
+hr {
     display: block;
-    height: 1px;
+    height: 0.0625em;
     width: 60%;
     border: 0;
-    border-top: 3px solid #acd1c0;
+    border-top: 0.1875em solid #acd1c0;
     margin: 1em 0;
     padding: 0;
+}
+#credit hr {
+  width: 100%;
 }
 #items:active:hover hr{
   width: 100%;
   -webkit-transition: all 250ms;
   transition: all 250ms;
+}
+#credit {
+  grid-area: credit;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#credit .item {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0.9375em 1.875em;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}
+
+#credit .item:active:hover {
+  background-color: #acd1c0;
+}
+
+#credit:active:hover hr{
+width: 100%;
+-webkit-transition: all 250ms;
+transition: all 250ms;
 }

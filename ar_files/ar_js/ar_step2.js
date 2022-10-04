@@ -55,43 +55,43 @@ function staticLoadPlaces() {
         {
             name: 'river',
             location: {
-                lat: 46.523487129882334,
-                lng: 6.633027811470954,
+                lat: 46.52384019539211,
+                lng: 6.633033340579409
             }
         },
         {
             name: 'info',
             location: {
                 lat: 46.52344644483276,
-                lng: 6.631961426747679,
+                lng: 6.631961426747679
             }
         },
         {
             name: 'Place Pepinet',
             location: {
                 lat: 46.521122597896664,
-                lng: 6.6323745456259715,
+                lng: 6.6323745456259715
             }
         },
         {
             name: 'Rue Centrale',
             location: {
                 lat: 46.520965737105385,
-                lng: 6.633555052114807,
+                lng: 6.633555052114807
             }
         },
         {
             name: 'Place de la Riponne',
             location: {
                 lat: 46.523872169883575,
-                lng: 6.633220323316099,
+                lng: 6.633220323316099
             }
         },
         {
             name: 'm2',
             location: {
                 lat: 46.52502994800139,
-                lng: 6.579198931609544,
+                lng: 6.579198931609544
             }
         }
     ]
@@ -120,7 +120,8 @@ function renderPlaces(places) {
 
             river.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
-            })
+            });
+            scene.appendChild(river);
 
         }
 
@@ -200,9 +201,6 @@ function renderPlaces(places) {
                 pinText.setAttribute('scale', '6 6 0');
             });
         }
-
-
-        scene.appendChild(river);
         
     });
 };
