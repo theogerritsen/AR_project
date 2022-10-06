@@ -58,7 +58,7 @@ function toggleGame(rock_id) {
     // alors on demande à l'utilisateur de s'approcher de la roche
     // si l'utilisateur est à moins de 15m, alors on affiche les boutons
     // et l'utilisateur peut jouer au jeu
-    if ((clicked_rock == 'gneiss') && (intGneiss > 15)) {
+    if ((clicked_rock == 'gneiss') && (intGneiss > 80)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
@@ -76,7 +76,7 @@ function toggleGame(rock_id) {
             $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intGneiss+' m</b> de cette roche');
         });
     }
-    else if ((clicked_rock == 'calcaire') && (intCalcaire > 15)) {
+    else if ((clicked_rock == 'calcaire') && (intCalcaire > 80)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
@@ -94,7 +94,7 @@ function toggleGame(rock_id) {
             $('#dialog').html('Vous êtes trop éloigné de la roche ! Approchez-vous à mois de <b>15 m</b> pour jouer au jeu. <br> Vous êtes actuellement à <b>'+intCalcaire+' m</b> de cette roche');
         });
     }
-    else if ((clicked_rock == 'molasse') && (intMolasse > 15)) {
+    else if ((clicked_rock == 'molasse') && (intMolasse > 80)) {
         $(function(){
             $('#dialog').dialog({
                 // on enlève le bouton fermer qu'on remplace par un bouton "OK"
