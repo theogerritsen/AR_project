@@ -31,6 +31,9 @@ $(function(){
         sidebarBtn.classList.remove("active");
         sidebarBox.classList.remove("active");
     });
+    $("#geoguide-menu").click(function() {
+        window.location.href = "https://igd.unil.ch/geoguidelsne/"
+    });
     // changer si github ou pas
     if (path == "/AR_project/ar_files/step1.html") {
         $("#home-menu").click(function(){

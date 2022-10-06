@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etape 1 - jeu</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Work+Sans:400,600" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
@@ -11,8 +13,10 @@
 
     <!-- AFRAME -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    
+    <!-- AR.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
@@ -44,8 +48,8 @@
       <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio> -->
 
     </a-assets>
-    <a-camera gps-camera rotation-reader look-controls-enabled='false'
-    arjs-look-controls="smoothingFactor: 1">
+    <a-camera gps-camera="simulateLatitude: 46.522288442744916; simulateLongitude: 6.635280933718589" rotation-reader look-controls-enabled='false'
+    arjs-look-controls="smoothingFactor: 1" simulateLatitude="1">
       <!-- on ajoute un curseur pour intéragir avec les objets.-->
       <a-cursor
         id="cursor"
@@ -69,6 +73,7 @@
       <div class="calcaire-img"></div>
         <div class="instructions">
           Bienvenue dans ce jeu de l'étape 1. <br><br>
+          Rendez-vous tout d'abord devant la porte de la cathédrale. <br>
           Vous découvrirez, une fois cette fenêtre fermée,
           trois localisations qui représentent les trois types de roches
           utilisées pour les constructions dans cette région, que vous avez vu précédemment :<br>
@@ -104,6 +109,12 @@
         <hr/>
         <div class="item" id="inst-menu">Instructions</div>
         <hr/>
+      </div>
+      <div id="credit">
+        <hr/>
+        <div class="item" id="credit-menu">Crédits</div>
+        <hr/>
+        <div class="item" id="geoguide-menu">GéoGuide UNIL</div>
       </div>
     </div>
     <div id="userScore" class="score">

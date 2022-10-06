@@ -131,8 +131,8 @@ function renderPlaces(places) {
                 plane1.setAttribute('id', 'info1');
                 plane1.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                 //plane1.setAttribute('scale', '10 10 0');
-                plane1.setAttribute('height', '1');
-                plane1.setAttribute('width', '1.5');
+                plane1.setAttribute('height', '10');
+                plane1.setAttribute('width', '15');
                 plane1.setAttribute('src', '#info1');
                 plane1.setAttribute('look-at', '[gps-camera]');
                 //plane1.setAttribute('event-set__mouseleavle', 'scale: 10 10 10');

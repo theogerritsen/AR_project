@@ -193,22 +193,22 @@ function staticLoadPlaces() {
         {
             name: 'molasse',
             location: {
-                lat: 46.52277772178569,
-                lng: 6.635147220160171
+                lat: 46.52251839669645,
+                lng: 6.635088404913561
             }
         },
         {
             name: 'gneiss',
             location: {
-                lat: 46.522354724330874,
-                lng: 6.635032760274506
+                lat: 46.522355929331596,
+                lng: 6.635009698169367
             }
         },
         {
             name: 'calcaire',
             location: {
-                lat: 46.52230264333548,
-                lng: 6.634593382003729
+                lat: 46.52229177541784,
+                lng: 6.63559333894939
             }
         }
     ]
@@ -246,7 +246,7 @@ function renderPlaces(places) {
             pin.setAttribute('id', 'calcaire');
             pin.setAttribute('class', 'calcaire');
         }
-        pin.setAttribute('scale', '.3 .3 .3');
+        pin.setAttribute('scale', '1 1 1');
         pin.setAttribute('onclick', 'toggleGame(this.id)');
         pin.setAttribute('gltf-model', '#pin');
 
@@ -258,7 +258,7 @@ function renderPlaces(places) {
             document.querySelector
         })
 
-        //scene.appendChild(placeText);
+        scene.appendChild(placeText);
         scene.appendChild(pin);
 
     });
