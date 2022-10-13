@@ -60,12 +60,12 @@ infoPlane.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
 
 infoPlane.addEventListener('mouseenter', () => {
     planeId = 'info1';
-    document.querySelector('.centered').classList.remove('active');
+    document.querySelector('.centered').classList.add('active');
 
 });
 
 infoPlane.addEventListener('mouseleave', () => {
-    document.querySelector('.centered').classList.add('active');
+    document.querySelector('.centered').classList.remove('active');
 });
 
 scene.appendChild(nft);
@@ -82,7 +82,7 @@ nft2.setAttribute('registerevents', ''   );
 nft2.setAttribute('name', 'panneau');
 
 nft2.setAttribute('type', 'nft');
-nft2.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p8');
+nft2.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p2');
 nft2.setAttribute('smooth', 'true');
 nft2.setAttribute('smoothCount', '10');
 nft2.setAttribute('smoothTolerance', '.01');
@@ -107,11 +107,11 @@ infoPlane2.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
 
 infoPlane2.addEventListener('mouseenter', () => {
     planeId = 'info2';
-    document.querySelector('.centered').classList.remove('active');
+    document.querySelector('.centered').classList.add('active');
 });
 
 infoPlane2.addEventListener('mouseleave', () => {
-    document.querySelector('.centered').classList.add('active');
+    document.querySelector('.centered').classList.remove('active');
 });
 
 scene.appendChild(nft2);
@@ -123,17 +123,16 @@ $(function() {
         if (planeId == 'info1') {
 
 
-            infoPlane.setAttribute('src', '#img1');
+            infoPlane.setAttribute('src', '#img2');
             document.getElementById('userScore').innerHTML = 'Images trouvées : 1/3';
 
         }
 
         else if (planeId == 'info2') {
-            infoPlane2.setAttribute('src', '#img2');
+            infoPlane2.setAttribute('src', '#img3');
             document.getElementById('userScore').innerHTML = 'Images trouvées : 2/3';
         }
         else if (planeId == 'info3') {
-            infoPlane3.setAttribute('src', '#img3');
             document.getElementById('userScore').innerHTML = 'Images trouvées : 3/3';
         }
     })

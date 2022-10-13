@@ -162,7 +162,7 @@ p {
     height: 10%;
     justify-content: center;
     position: fixed;
-    bottom: 0%;
+    bottom: -100px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -172,7 +172,7 @@ p {
     transition: all 350ms ease;
 }
 .centered.active {
-    bottom: -100px;
+    bottom: 0%;
 }
 .a-dialog{
     font-family: "Roboto Mono", monospace;

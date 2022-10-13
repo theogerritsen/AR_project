@@ -246,7 +246,7 @@ function renderPlaces(places) {
             pin.setAttribute('id', 'calcaire');
             pin.setAttribute('class', 'calcaire');
         }
-        pin.setAttribute('scale', '1 1 1');
+        pin.setAttribute('scale', '.5 .5 .5');
         pin.setAttribute('onclick', 'toggleGame(this.id)');
         pin.setAttribute('gltf-model', '#pin');
 
