@@ -142,13 +142,13 @@ mymap.on('locationfound', function(evt){
 
                     $( ".itin-rdv" ).css('background-color', 'red');
                     
-                    if (userPosition == '[46.5228,6.6349]'){
+                    if (userPosition == '[46.523,6.635]'){
                         window.location.href = arPath + step1;
                     }
-                    if (userPosition == '[46.5229,6.6331]'){
+                    if (userPosition == '[46.523,6.633]'){
                         window.location.href = arPath + step2;
                     }
-                    if (userPosition == '[46.5230,6.6325]'){
+                    if (userPosition == '[46.523,6.632]'){
                         window.location.href = arPath + step3;
                     }
                     if (userPosition == '[46.5223,6.6304]'){

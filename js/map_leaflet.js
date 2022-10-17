@@ -257,7 +257,7 @@ $(function(){
             // pour cela, il faut laisser une certaine marge de précision pour que l'utilisateur n'ait pas
             // à être exactement au bon endroit
             // on arrondit nos lat long à 3 décimales avec Math.round(). 4 décimales en degré permettent
-            // d'avoir une précision d'environ 7.8m à 45° de latitude, ce qui laisse en marge de manoeuvre
+            // d'avoir une précision d'environ 79m à 45° de latitude, ce qui laisse en marge de manoeuvre
             // pour l'utilisateur
             let userPosition = '[' + currentPos[0] + ',' + currentPos[1] + ']';
             console.log("user position1: ", userPosition);

@@ -47,7 +47,7 @@ const infoPlane = document.createElement('a-plane');
 infoPlane.setAttribute('id', 'info1');
 infoPlane.setAttribute('height', '1');
 infoPlane.setAttribute('width', '1');
-infoPlane.setAttribute('position', '0 50 0');
+infoPlane.setAttribute('position', '100 150 0');
 infoPlane.setAttribute('rotation', '-100 0 0');
 infoPlane.setAttribute('scale', '100 100 100');
 infoPlane.setAttribute('src', '#info1');
@@ -60,7 +60,7 @@ infoPlane.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
 
 infoPlane.addEventListener('mouseenter', () => {
     planeId = 'info1';
-    alert(planeId);
+    //alert(planeId);
     document.querySelector('.centered').classList.add('active');
  
 });
@@ -95,8 +95,8 @@ const infoPlane2 = document.createElement('a-plane');
 infoPlane2.setAttribute('height', '1');
 infoPlane2.setAttribute('width', '1');
 infoPlane2.setAttribute('id', 'info2');
-infoPlane2.setAttribute('position', '0 100 -170');
-infoPlane2.setAttribute('scale', '10 10 10');
+infoPlane2.setAttribute('position', '100 150 0');
+infoPlane2.setAttribute('scale', '100 100 100');
 infoPlane2.setAttribute('rotation', '-100 0 0');
 infoPlane2.setAttribute('src', '#info2');
 infoPlane2.setAttribute('look-at', '[gps-camera]');
@@ -108,7 +108,7 @@ infoPlane2.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
 
 infoPlane2.addEventListener('mouseenter', () => {
     planeId = 'info2';
-    alert(planeId);
+    //alert(planeId);
     document.querySelector('.centered').classList.add('active');
 });
 
