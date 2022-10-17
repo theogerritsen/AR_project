@@ -24,7 +24,7 @@ $(function() {
 
 
 
-let planeId;
+let planeId = 'info2';
 
 let scene = document.querySelector('#etape3');
 
@@ -47,7 +47,7 @@ const infoPlane = document.createElement('a-plane');
 infoPlane.setAttribute('id', 'info1');
 infoPlane.setAttribute('height', '1');
 infoPlane.setAttribute('width', '1');
-infoPlane.setAttribute('position', '100 150 0');
+infoPlane.setAttribute('position', '50 0 0');
 infoPlane.setAttribute('rotation', '-100 0 0');
 infoPlane.setAttribute('scale', '100 100 100');
 infoPlane.setAttribute('src', '#info1');
@@ -95,7 +95,7 @@ const infoPlane2 = document.createElement('a-plane');
 infoPlane2.setAttribute('height', '1');
 infoPlane2.setAttribute('width', '1');
 infoPlane2.setAttribute('id', 'info2');
-infoPlane2.setAttribute('position', '100 150 0');
+infoPlane2.setAttribute('position', '50 0 0');
 infoPlane2.setAttribute('scale', '100 100 100');
 infoPlane2.setAttribute('rotation', '-100 0 0');
 infoPlane2.setAttribute('src', '#info2');
@@ -126,15 +126,15 @@ $(function() {
 
 
             infoPlane.setAttribute('src', '#img2');
-            document.getElementById('userScore').innerHTML = 'Images trouvées : 1/3';
+            document.getElementById('userScore').innerHTML = 'Image trouvée : 1/3';
 
         }
 
-        else if (planeId == 'info2') {
+        if (planeId == 'info2') {
             infoPlane2.setAttribute('src', '#img3');
             document.getElementById('userScore').innerHTML = 'Images trouvées : 2/3';
         }
-        else if (planeId == 'info3') {
+        if (planeId == 'info3') {
             document.getElementById('userScore').innerHTML = 'Images trouvées : 3/3';
         }
     })
