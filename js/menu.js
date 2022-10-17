@@ -71,4 +71,12 @@ $(function(){
         });
         
     }
+    if (path == "/AR_project/ar_files/step3.html") {
+        $("#home-menu").click(function() {
+            window.location.href = "tracking.html"
+        });
+        $("#begin-menu").click(function () {
+            window.location.href = "../index.html"
+        });
+    }
 });

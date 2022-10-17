@@ -173,6 +173,8 @@ function showMarkers(btnId) {
             value: coords
         });
 
+        
+
         let marqueur_etape = L.icon({
             iconUrl: path,
             iconSize: [50, 50],
@@ -207,6 +209,8 @@ function showMarkers(btnId) {
         }
     }
 }
+
+console.log(coords_dict)
 
 let arPath = 'ar_files/';
 
@@ -247,7 +251,7 @@ $(function(){
             // on arrondit les lat long avec 4   décimales avec Math.round()
             // on convertit la position du user en string avec JSON.stringify pour pouvoir comparer
             // la position de l'utilisateur et la position du marqueur
-            currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
+            currentPos = [JSON.stringify(Math.round(evt.latlng.lat*1000)/1000), JSON.stringify(Math.round(evt.latlng.lng*1000)/1000)];
 
             // il faut ensuite matcher la position de l'utilisateur avec la position des marqueurs (étapes)
             // pour cela, il faut laisser une certaine marge de précision pour que l'utilisateur n'ait pas
@@ -261,7 +265,7 @@ $(function(){
             // on itère à travers le dictionnaire qui contient la position de chacun de nos marqueurs
             for (var value in coords_dict) {
 
-                markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*10000)/10000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*10000)/10000) + ']';
+                markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*1000)/1000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*1000)/1000) + ']';
 
                 console.log("positions: ", userPosition, markerPosition)
                 if (userPosition == markerPosition) {
@@ -281,19 +285,19 @@ $(function(){
                     $(function(){
                         $("#go-ar-btn").click(function(){
                             //window.location.href = "ar_files/step9.html"
-                            if (userPosition == '[46.5228,6.6349]'){
+                            if (userPosition == '[46.523,6.635]'){
                                 window.location.href = arPath + step1;
                             }
-                            if (userPosition == '[46.5229,6.6331]'){
+                            if (userPosition == '[46.523,6.633]'){
                                 window.location.href = arPath + step2;
                             }
-                            if (userPosition == '[46.5230,6.6325]'){
+                            if (userPosition == '[46.523,6.632]'){
                                 window.location.href = arPath + step3;
                             }
-                            if (userPosition == '[46.5223,6.6304]'){
+                            if (userPosition == '[46.522,6.63]'){
                                 window.location.href = arPath + step4;
                             }
-                            if (userPosition == '[46.5207,6.6324]'){
+                            if (userPosition == '[46.521,6.632]'){
                                 window.location.href = arPath + step5;
                             }
                             if (userPosition == '[46.5207,6.6304]'){
