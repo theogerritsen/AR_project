@@ -162,7 +162,7 @@ p {
     height: 10%;
     justify-content: center;
     position: fixed;
-    bottom: 0%;
+    bottom: -100px;
     display: flex;
     flex-direction: row;
     width: 100%;
