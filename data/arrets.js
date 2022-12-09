@@ -36,92 +36,93 @@ const arret = {
             }, 
             "geometry": { 
                 "type": "Point", 
-                "coordinates": [ 6.6323808455612605, 46.52308011434363 ] 
-            } 
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 4,
-                "nom": "etape4",
-                "url": "ar_files/step4"
-            }, 
-            "geometry": { 
-                "type": "Point", 
-                "coordinates": [ 6.630476636445888, 46.522366227937745 ] 
-            } 
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 5,
-                "nom": "etape5",
-                "url": "ar_files/step5"
-            }, 
-            "geometry": { 
-                "type": "Point", 
-                "coordinates": [ 6.632415699909275, 46.520778941474354 ] 
-            } 
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 6,
-                "nom": "etape6",
-                "url": "ar_files/step6"
-            }, 
-            "geometry": { 
-                "type": "Point", 
-                "coordinates": [ 6.630457331610523, 46.520712447041433 ] 
-            } 
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 7,
-                "nom": "etape7",
-                "url": "ar_files/step7"
-            }, 
-            "geometry": { 
-                "type": "Point", 
-                "coordinates": [ 6.630290023037355, 46.520352090114606 ] 
-            } 
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 8,
-                "nom": "etape8",
-                "url": "ar_files/step8" 
-            }, 
-                "geometry": { 
-                    "type": "Point", 
-                    "coordinates": [ 6.626497695378868, 46.519174495157294 ] 
-            }
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 9,
-                "nom": "etape9",
-                "url": "ar_files/step9"
-            }, 
-                "geometry": { 
-                    "type": "Point", 
-                    "coordinates": [ 6.648815678778179, 46.513200813704394 ] 
-            }
-        },
-        { 
-            "type": "Feature", 
-            "properties": { 
-                "id": 10,
-                "nom": "etape10",
-                "url": "ar_files/step10"
-            }, 
-                "geometry": { 
-                    "type": "Point", 
-                    "coordinates": [ 6.648087943091656, 46.51391366240597 ] 
+                "coordinates": [ 6.632542223934792, 46.523042539922692 ] 
             }
         }
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 4,
+        //         "nom": "etape4",
+        //         "url": "ar_files/step4"
+        //     }, 
+        //     "geometry": { 
+        //         "type": "Point", 
+        //         "coordinates": [ 6.630476636445888, 46.522366227937745 ] 
+        //     } 
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 5,
+        //         "nom": "etape5",
+        //         "url": "ar_files/step5"
+        //     }, 
+        //     "geometry": { 
+        //         "type": "Point", 
+        //         "coordinates": [ 6.632415699909275, 46.520778941474354 ] 
+        //     } 
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 6,
+        //         "nom": "etape6",
+        //         "url": "ar_files/step6"
+        //     }, 
+        //     "geometry": { 
+        //         "type": "Point", 
+        //         "coordinates": [ 6.630457331610523, 46.520712447041433 ] 
+        //     } 
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 7,
+        //         "nom": "etape7",
+        //         "url": "ar_files/step7"
+        //     }, 
+        //     "geometry": { 
+        //         "type": "Point", 
+        //         "coordinates": [ 6.630290023037355, 46.520352090114606 ] 
+        //     } 
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 8,
+        //         "nom": "etape8",
+        //         "url": "ar_files/step8" 
+        //     }, 
+        //         "geometry": { 
+        //             "type": "Point", 
+        //             "coordinates": [ 6.626497695378868, 46.519174495157294 ] 
+        //     }
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 9,
+        //         "nom": "etape9",
+        //         "url": "ar_files/step9"
+        //     }, 
+        //         "geometry": { 
+        //             "type": "Point", 
+        //             "coordinates": [ 6.648815678778179, 46.513200813704394 ] 
+        //     }
+        // },
+        // { 
+        //     "type": "Feature", 
+        //     "properties": { 
+        //         "id": 10,
+        //         "nom": "etape10",
+        //         "url": "ar_files/step10"
+        //     }, 
+        //         "geometry": { 
+        //             "type": "Point", 
+        //             "coordinates": [ 6.648087943091656, 46.51391366240597 ] 
+        //     }
+        // }
     ]
 }

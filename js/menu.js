@@ -35,7 +35,7 @@ $(function(){
         window.location.href = "https://igd.unil.ch/geoguidelsne/"
     });
     // changer si github ou pas
-    if (path == "/AR_project/ar_files/step1.html") {
+    if (path == "/ar_files/step1.html") {
         $("#home-menu").click(function(){
         window.location.href = "tracking.html"
         });
@@ -44,7 +44,8 @@ $(function(){
         });
         $("#begin-menu").click(function(){
             window.location.href = "../index.html"
-        })
+        });
+
     }
     if (path == "/AR_project/ar_files/step2.html") {
         $("#home-menu").click(function(){
@@ -52,7 +53,8 @@ $(function(){
         });
         $("#begin-menu").click(function(){
             window.location.href = "../index.html"
-        })
+        });
+        alert("step2")
     }
     if (path == "/AR_project/ar_files/ar_games/step1_game.html") {
         $("#home-menu").click(function() {

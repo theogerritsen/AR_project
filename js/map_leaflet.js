@@ -8,74 +8,74 @@ sessionStorage.setItem("gameMode","false");
 // on va chercher notre variable globale qui montre à quel étape le user
 // se trouve si il a choisi le mode jeu
 sessionStorage.setItem("stepNum","1");
-function goFullScreen() {
+// function goFullScreen() {
 
-    let docElm = document.documentElement;
+//     let docElm = document.documentElement;
 
-    // si notre div fullScreen a une class active (par défaut)
-    if ($("#fullScreen").hasClass("active")) {
+//     // si notre div fullScreen a une class active (par défaut)
+//     if ($("#fullScreen").hasClass("active")) {
 
-        // on va toggle le fullscreen
-        if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
+//         // on va toggle le fullscreen
+//         if (docElm.requestFullscreen) {
+//             docElm.requestFullscreen();
 
-        } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen();
+//         } else if (docElm.msRequestFullscreen) {
+//             docElm.msRequestFullscreen();
 
-        } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen();
+//         } else if (docElm.mozRequestFullScreen) {
+//             docElm.mozRequestFullScreen();
 
-        } else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen();
-        }
-        // et on enlève la classe active
-        document.querySelector('#fullScreen').classList.toggle("active");
+//         } else if (docElm.webkitRequestFullScreen) {
+//             docElm.webkitRequestFullScreen();
+//         }
+//         // et on enlève la classe active
+//         document.querySelector('#fullScreen').classList.toggle("active");
 
-        // et on change le logo pour mettre celui de exit full screen
-        document.querySelector('#fullscreen-logo').src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXElEQVRIS2NkoDFgpLH5DCPDgv/QYET3LS5xlFAnJohGLcBIqLAgQZfAFQd41WGLA5pbQNW8R0wqosjC4WkBzSOZ5hagR+poUUEwmdM8iAi6AJ+C4ZnRKAoSdM0A6+cYGWABv+kAAAAASUVORK5CYII="
+//         // et on change le logo pour mettre celui de exit full screen
+//         document.querySelector('#fullscreen-logo').src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXElEQVRIS2NkoDFgpLH5DCPDgv/QYET3LS5xlFAnJohGLcBIqLAgQZfAFQd41WGLA5pbQNW8R0wqosjC4WkBzSOZ5hagR+poUUEwmdM8iAi6AJ+C4ZnRKAoSdM0A6+cYGWABv+kAAAAASUVORK5CYII="
 
-        $('#tooltiptext').text('Exit fullscreen')
+//         $('#tooltiptext').text('Exit fullscreen')
 
-    }
+//     }
 
-    else {
-        if(document.exitFullscreen) {
-            document.exitFullscreen();
-        }
+//     else {
+//         if(document.exitFullscreen) {
+//             document.exitFullscreen();
+//         }
 
-        else if(document.msexitFullscreen) {
-            document.msexitFullscreen();
-        }
+//         else if(document.msexitFullscreen) {
+//             document.msexitFullscreen();
+//         }
 
-        else if(document.mozexitFullscreen) {
-            document.mozexitFullscreen();
-        }
+//         else if(document.mozexitFullscreen) {
+//             document.mozexitFullscreen();
+//         }
 
-        else if(document.webkitexitFullscreen) {
-            document.webkitexitFullscreen();
-        }
+//         else if(document.webkitexitFullscreen) {
+//             document.webkitexitFullscreen();
+//         }
 
-        document.querySelector('#fullScreen').classList.toggle("active");
-        // on remet le logo de enter fullscreen
-        document.querySelector("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
+//         document.querySelector('#fullScreen').classList.toggle("active");
+//         // on remet le logo de enter fullscreen
+//         document.querySelector("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
     
-        $('#tooltiptext').text('Enter fullscreen')
-    }
-};
+//         $('#tooltiptext').text('Enter fullscreen')
+//     }
+// };
 
 
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
     minZoom: 10,
-	maxZoom: 18,
-	zoom: 13
+	maxZoom: 20,
+	zoom: 18
 });
 
 // fit bounds pour voir tout le sentier sur n'importe quel device
-mymap.fitBounds([
-    [46.5184540, 6.6240245],
-    [46.5233845, 6.6360568]
-])
+    mymap.fitBounds([
+        [46.5244384, 6.6317780],
+        [46.5213593, 6.6363160]
+    ])
 
 const mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
     tileSize: 512,
@@ -109,6 +109,9 @@ lc = L.control.locate({
 let coords_dict = [];
 
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
+
+let path_info;
+
 
 
 // on va chercher l'id du boutton appuyé
@@ -159,6 +162,15 @@ function showMarkers(btnId) {
         // on le réutilise pour incrémenter le chemin relatif aux fichiers AR
         // pour pouvoir l'utiliser dans le popup
         let path_arjs = 'ar_files/step' + n + '.html';
+        if (n == 1) {
+            path_info = 'https://igd.unil.ch/geoguidelsne/#stop8';
+        }
+        if (n == 2) {
+            path_info = 'https://igd.unil.ch/geoguidelsne/#stop9';
+        }
+        if (n == 3) {
+            path_info = 'https://igd.unil.ch/geoguidelsne/#stop10';
+        }
         let lat = feature.geometry.coordinates[0];
         let long = feature.geometry.coordinates[1];
         let coords = [long, lat];
@@ -183,7 +195,7 @@ function showMarkers(btnId) {
 
         let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
 
-        let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
+        let popupContent = "<b><a href=" + path_arjs + ">Commencer l'AR</a></b> <br><br> <b><a href=" + path_info + ">Information</a></b>";
 
         marqueur.bindPopup(popupContent);
 
@@ -219,7 +231,7 @@ const $divAR = $("#itin-rdv");
 
 // on crée 10 variable contenant le chemin de chaque fichier AR
 let step = [];
-for (i = 1; i <= 10; ++i){
+for (i = 1; i <= 3; ++i){
     this["step"+i] = "step" + i + ".html"
 }
 
