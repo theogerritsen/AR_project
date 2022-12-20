@@ -28,7 +28,7 @@ nft.setAttribute('markerhandler', '');
 nft.setAttribute('registerevents', ''   );
 nft.setAttribute('name', 'panneau2');
 nft.setAttribute('type', 'nft');
-nft.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p7');
+nft.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p2');
 nft.setAttribute('smooth', 'true');
 nft.setAttribute('smoothCount', '10');
 nft.setAttribute('smoothTolerance', '.01');
@@ -74,7 +74,7 @@ nft2.setAttribute('registerevents', ''   );
 nft2.setAttribute('name', 'panneau');
 
 nft2.setAttribute('type', 'nft');
-nft2.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p8');
+nft2.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p4');
 nft2.setAttribute('smooth', 'true');
 nft2.setAttribute('smoothCount', '10');
 nft2.setAttribute('smoothTolerance', '.01');
@@ -123,7 +123,7 @@ nft3.setAttribute('markerhandler', '');
 nft3.setAttribute('registerevents', ''   );
 nft3.setAttribute('name', 'panneau3');
 nft3.setAttribute('type', 'nft');
-nft3.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p8');
+nft3.setAttribute('url', 'https://raw.githubusercontent.com/theogerritsen/AR_project/main/ar_files/ar_gltf/step3/etape3_p9');
 nft3.setAttribute('smooth', 'true');
 nft3.setAttribute('smoothCount', '10');
 nft3.setAttribute('smoothTolerance', '.01');
@@ -188,54 +188,18 @@ let nftNum;
 AFRAME.registerComponent('markerhandler', {
     init: function () {
       nft.addEventListener('markerFound', () => {
-        // redirect to custom URL e.g. google.com
         nftNum = 'nft1'
-        
       });
       
       nft2.addEventListener('markerFound', () => {
-        // redirect to custom URL e.g. google.com
         nftNum = 'nft2'
-        
       });
 
       nft3.addEventListener('markerFound', () => {
-        // redirect to custom URL e.g. google.com
         nftNum = 'nft3'
-        
       });
-    //   nft3.addEventListener('markerFound', () => {
-    //     // redirect to custom URL e.g. google.com
-    //     nftNum = 'nft2'
-    //     alert(nftNum);
-        
-    //   });
     }
   });
 
-//   window.addEventListener('load', () => {
-//     const camera = document.querySelector('[camera]');
-//     const marker = document.querySelector('a-marker');
-//     let check;
-
-//     marker.addEventListener('markerFound', () => {
-//         let cameraPosition = camera.object3D.position;
-//         let markerPosition = marker.object3D.position;
-//         let distance = cameraPosition.distanceTo(markerPosition)
-
-//         check = setInterval(() => {
-//             cameraPosition = camera.object3D.position;
-//             markerPosition = marker.object3D.position;
-//             distance = cameraPosition.distanceTo(markerPosition)
-
-//             // do what you want with the distance:
-//             console.log(distance);
-//         }, 100);
-//     });
-
-//     marker.addEventListener('markerLost', () => {
-//       clearInterval(check);
-//     })
-// })
 
 

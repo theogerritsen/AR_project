@@ -1,16 +1,14 @@
-// montrer la place pépinet -- ok
-
-// montrer la rue centrale -- ok
-// mettre un pin pour la place de la riponne
-// montrer m2
-// montrer ouchy et épalinge ?
+// on affiche les lieux lorsque la page est chargée
 window.onload = () => {
     let places = staticLoadPlaces();
     renderPlaces(places);
 };
 
+// variable globale pour retourner à la bonne étape si l'utilisateur a choisi
+// le mode chasse au trésor
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
+// défintion de la fonction des boutons
 $(function() {
     $("#sentier-btn").click(function(){
         window.location.href = "tracking.html"
@@ -49,7 +47,7 @@ function change_plane(elem) {
         }
     })
 }
-
+// chargement des assets avec leur localisation
 function staticLoadPlaces() {
     return [
         {
@@ -165,14 +163,10 @@ function renderPlaces(places) {
             pin.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
             pin.setAttribute('scale', '1 1 1');
             pin.setAttribute('gltf-model', '#pin');
-            //pin.setAttribute("animation__mouseenter", "property: scale; to: 2 2 2; dur: 300; startEvents: mouseenter");
-            //pin.setAttribute("animation__mouseleave", "property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave");
 
             pin.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
             });
-
-
 
             scene.appendChild(pin);
 
@@ -181,13 +175,11 @@ function renderPlaces(places) {
             pinText.setAttribute('id', place.name);
             pinText.setAttribute('value', place.name);
             pinText.setAttribute('scale', '6 6 0');
-            //pinText.setAttribute('position', '0 6 0');
             pinText.setAttribute('look-at', '[gps-camera]');
 
             pinText.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'));
             });
-
 
             scene.appendChild(pinText);
 

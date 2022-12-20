@@ -1,5 +1,4 @@
-
-// chemins relatifs pour le menu slide
+// // chemins relatifs pour les nfos slide
 $(function(){
     $("#return-btn").click(function(){
         window.location.href = "tracking.html"
@@ -18,16 +17,16 @@ $(function(){
     })
 });
 
+// on ajoute les assets sur le chargement de la page
 window.onload = () => {
     let places = staticLoadPlaces();
-    console.log(places);
     renderPlaces(places);
 };
 
 function staticLoadPlaces() {
     return [
         {
-            name: 'Magnemite',
+            name: 'Roche',
             location: {
                 lat: 46.51313335530353,
                 lng: 6.648636329118053,
@@ -36,6 +35,9 @@ function staticLoadPlaces() {
     ];
 };
 
+// fonction pour les informations relatives aux roches
+// on modifie la position du curseur pour qu'il monte et ne soit
+// pas caché par les informations
 $(function() {
     $(".btn").click(function(){
         document.querySelector('.info').classList.remove("molasse");
@@ -53,13 +55,10 @@ function toggleActive(clicked_id) {
 
     // on va chercher notre div qui contiendra les informations
     let popUpDiv = document.querySelector('.info');
-
     let infoDiv = document.querySelector('.infoContent');
-
     let imgDiv = document.querySelector('.card-image');
 
-    // document.getElementById("information").setAttribute('style', 'margin-left:'+ marginLeft.substring(1)+';width:'+pixWidth - margFloat+';');
-    //document.getElementById("information").setAttribute('style', 'width:'+ widthInfoDiv.substring(1)+';');
+    // on ajout le contenu de chaque div
     let molasse_text = "La molasse grise de Lausanne – puisée dans les sous-sols de la ville, cette roche, abondante et tendre, est facile à tailler. On la trouve un peu partout dans les constructions à Lausanne. Seul bémole: cette roche est facilement altérable (sensible à la pluie, par exemple). Ces altérations peuvent être facilement observées tout autours de la cathédrale, mais sont plus accentuées sur les façades sud et ouest. Bien que cette fragilité de la molasse ait causés de nombreux travaux de restauration, certains blocs de molasse présents datent encore du XIIIe siècle, lors de la première construction de la cathédrale.";
     let gneiss_text = "Le gneiss – utilisé fréquemment pour les bords de trottoire à Lausanne, il est facilement reconnaissable par l'alignement régulier de minéraux tels que le quartz, le feldspath et le mica";
     let calcaire_text = "Le calcaire – utilisé fréquemment pour la construction de marches d'escalier à Lausanne, on le trouve de manière assez abondante dans la région, notamment à la Carrière romaine de la Raisse, localisée sur la commune de Concise. Le calcaire est en général blanc et riche en débris de coquilles fossiles.";
@@ -83,12 +82,10 @@ function toggleActive(clicked_id) {
         }
     }, 600);
     // si on clique sur un des asset, on monte le curseur pour qu'il soit encore visible
-    //cursor.setAttribute('position', '0 0.07 -1');
     $('#information').animate({scrollTop: 0}, 'fast');
 
-
+    // conditions pour afficher les bonnes informations selon la roche cliquée
     if (clicked_id == 'molasse') {
-
         // si le div a deja une classe gneiss ou calcaire, on l'enlève
         popUpDiv.classList.remove("calcaire");
         popUpDiv.classList.remove("gneiss");
@@ -120,7 +117,6 @@ function toggleActive(clicked_id) {
         infoDiv.innerHTML = calcaire_text + "<br><br><small>Source: Septfontaine, M., & Ansermet, S. (1999). Belles et utiles, pierres de chez nous. Musée de géologie.</small>";
 
     }
-    //console.log(clicked_id)
 }
 
 function renderPlaces(places) {
@@ -244,11 +240,5 @@ function renderPlaces(places) {
         scene.appendChild(calcaire);
         scene.appendChild(instructions);
 
-});
+    });
 };
-
-
-
-
-
-

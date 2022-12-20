@@ -11,14 +11,6 @@ sidebarBtn.addEventListener('click', function(event) {
 				sidebarBox.classList.add('active');
 		}
 });
-
-window.addEventListener('keydown', function(event) {
-
-		if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-				sidebarBtn.classList.remove('active');
-				sidebarBox.classList.remove('active');
-		}
-});
 // changer le chemin selon le fichier
 // on va chercher le nom du fichier dans lequel on est actuellement
 var path = window.location.pathname;
