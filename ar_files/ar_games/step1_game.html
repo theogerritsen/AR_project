@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="shortcut icon" href="#" />
+  <head>
+    <link rel="shortcut icon" href="#" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,45 +27,45 @@
     
     <link rel="stylesheet" href="../ar_css/game.css">
     <link rel="stylesheet" href="../../css/menu.css">
-</head>
-<body style="margin: 0; overflow: hidden;">
-  <script src="step1_game.js"></script>
-  <a-scene
-      id="game1"
-      vr-mode-ui="enabled: false"
-      embedded
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;
-      sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight: 960;"
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <script src="step1_game.js"></script>
+    <a-scene
+        id="game1"
+        vr-mode-ui="enabled: false"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;
+        sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight: 960;"
 
-      renderer="logarithmicDepthBuffer: true;"
-    >
+        renderer="logarithmicDepthBuffer: true;"
+      >
 
-    <a-assets>
-      <a-asset-item id="pin" src="../ar_gltf/step1/pin.glb"></a-asset-item>
-      
-      <!-- <a-asset-item id="calcaire" src="ar_gltf/step1/calcaire/calcaire.glb"></a-asset-item>
-      <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
-      <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio> -->
+      <a-assets>
+        <a-asset-item id="pin" src="../ar_gltf/step1/pin.glb"></a-asset-item>
+        
+        <!-- <a-asset-item id="calcaire" src="ar_gltf/step1/calcaire/calcaire.glb"></a-asset-item>
+        <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
+        <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio> -->
 
-    </a-assets>
-    <a-camera gps-camera rotation-reader look-controls-enabled='false'
-    arjs-look-controls="smoothingFactor: 1" simulateLatitude="1">
-      <!-- on ajoute un curseur pour intéragir avec les objets.-->
-      <a-cursor
-        id="cursor"
-        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
-        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
-        event-set__mouseenter="_event: mouseenter; color: springgreen" 
-        event-set__mouseleave="_event: mouseleave; color: grey"
-        color="grey"></a-cursor>
-    </a-camera>
+      </a-assets>
+      <a-camera gps-camera rotation-reader look-controls-enabled='false'
+      arjs-look-controls="smoothingFactor: 1" simulateLatitude="1">
+        <!-- on ajoute un curseur pour intéragir avec les objets.-->
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
+          event-set__mouseenter="_event: mouseenter; color: springgreen" 
+          event-set__mouseleave="_event: mouseleave; color: grey"
+          color="grey"></a-cursor>
+      </a-camera>
 
-  </a-scene>
-  <div class="centered">
-    <button id="gneissBtn" class="gneiss-btn" onclick="getBtnId(this.id)">Gneiss</button>
-    <button id="calcaireBtn" class="calcaire-btn" onclick="getBtnId(this.id)">Calcaire</button>
-    <button id="molasseBtn" class="molasse-btn" onclick="getBtnId(this.id)">Molasse</button>
-  </div>
+    </a-scene>
+    <div class="centered">
+      <button id="gneissBtn" class="gneiss-btn" onclick="getBtnId(this.id)">Gneiss</button>
+      <button id="calcaireBtn" class="calcaire-btn" onclick="getBtnId(this.id)">Calcaire</button>
+      <button id="molasseBtn" class="molasse-btn" onclick="getBtnId(this.id)">Molasse</button>
+    </div>
     <div class="inst-tab">
       <a href="javascript:" class="btnx">&times;</a>
       <div class="molasse-img"></div>
@@ -124,5 +124,5 @@
       Blablabla
     </div>
     <script src="../../js/menu.js"></script>
-</body>
+  </body>
 </html>

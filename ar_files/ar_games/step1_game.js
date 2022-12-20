@@ -1,6 +1,6 @@
 window.onload = () => {
     let places = staticLoadPlaces();
-    console.log(places);
+    
     renderPlaces(places);
 };
 
@@ -217,7 +217,7 @@ function renderPlaces(places) {
 
     let scene = document.querySelector('#game1');
     places.forEach((place) => {
-        console.log(place.name)
+        
         const latitude = place.location.lat;
         const longitude = place.location.lng;
 
@@ -258,7 +258,7 @@ function renderPlaces(places) {
             document.querySelector
         })
 
-        scene.appendChild(placeText);
+        //scene.appendChild(placeText);
         scene.appendChild(pin);
 
     });
