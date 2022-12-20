@@ -199,7 +199,7 @@ AFRAME.registerComponent('markerhandler', {
         nftNum = 'nft3'
       });
     }
-  });
+});
 
 
 

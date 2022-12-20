@@ -1,5 +1,4 @@
 var path = window.location.pathname;
-console.log(path);
 // on va créer une variable gameMode avec comme valeur
 // false qui est globale à l'ensemble de notre application
 // le but étant de montrer uniquement les étapes que le user
@@ -8,61 +7,6 @@ sessionStorage.setItem("gameMode","false");
 // on va chercher notre variable globale qui montre à quel étape le user
 // se trouve si il a choisi le mode jeu
 sessionStorage.setItem("stepNum","1");
-// function goFullScreen() {
-
-//     let docElm = document.documentElement;
-
-//     // si notre div fullScreen a une class active (par défaut)
-//     if ($("#fullScreen").hasClass("active")) {
-
-//         // on va toggle le fullscreen
-//         if (docElm.requestFullscreen) {
-//             docElm.requestFullscreen();
-
-//         } else if (docElm.msRequestFullscreen) {
-//             docElm.msRequestFullscreen();
-
-//         } else if (docElm.mozRequestFullScreen) {
-//             docElm.mozRequestFullScreen();
-
-//         } else if (docElm.webkitRequestFullScreen) {
-//             docElm.webkitRequestFullScreen();
-//         }
-//         // et on enlève la classe active
-//         document.querySelector('#fullScreen').classList.toggle("active");
-
-//         // et on change le logo pour mettre celui de exit full screen
-//         document.querySelector('#fullscreen-logo').src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXElEQVRIS2NkoDFgpLH5DCPDgv/QYET3LS5xlFAnJohGLcBIqLAgQZfAFQd41WGLA5pbQNW8R0wqosjC4WkBzSOZ5hagR+poUUEwmdM8iAi6AJ+C4ZnRKAoSdM0A6+cYGWABv+kAAAAASUVORK5CYII="
-
-//         $('#tooltiptext').text('Exit fullscreen')
-
-//     }
-
-//     else {
-//         if(document.exitFullscreen) {
-//             document.exitFullscreen();
-//         }
-
-//         else if(document.msexitFullscreen) {
-//             document.msexitFullscreen();
-//         }
-
-//         else if(document.mozexitFullscreen) {
-//             document.mozexitFullscreen();
-//         }
-
-//         else if(document.webkitexitFullscreen) {
-//             document.webkitexitFullscreen();
-//         }
-
-//         document.querySelector('#fullScreen').classList.toggle("active");
-//         // on remet le logo de enter fullscreen
-//         document.querySelector("#fullscreen-logo").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAX0lEQVRIS2NkoDFgpLH5DHS34D8eH6E7hii1ZGmCOoIiC8gNOpilcP24fDBqwcAFEdXzHbmRSbRDhp8FGBmF6LCAKBzNaAQDbPAEETanklW0k6WJkvqAYCCTqmDo52QALsQcGSF8WtwAAAAASUVORK5CYII="
-    
-//         $('#tooltiptext').text('Enter fullscreen')
-//     }
-// };
-
 
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
@@ -98,12 +42,6 @@ lc = L.control.locate({
 ///////////////////////////////////////////////////////////////////
 ////////// GESTION DES ARRETS /////////////////////////////////
 //////////////////////////////////////////////////////////// 
-
-// ajout dynamique des marqueurs pour faire correspondre aux étapes
-
-// on initialise n à 0
-//n = 0
-
 // on crée un array vide pour accueillir les coordonnées de chaque marqueur
 
 let coords_dict = [];
@@ -111,8 +49,6 @@ let coords_dict = [];
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
 let path_info;
-
-
 
 // on va chercher l'id du boutton appuyé
 function showMarkers(btnId) {
@@ -135,14 +71,12 @@ function showMarkers(btnId) {
 
         if (btnId === "jeu-btn") {
             sessionStorage.setItem("gameMode","true");
-            console.log(sessionStorage.getItem("gameMode"));
         }
         // si en revanche c'est l'autre bouton qui est appuyé, on garde notre
         // variable globale avec la valeur false et on ne break pas la boucle
         // afin de voir toutes les étapes ainsi que la polyline.
         if (btnId === "sentier-btn") {
             sessionStorage.setItem("gameMode","false");
-            console.log(sessionStorage.getItem("gameMode"));
         }
 
     for (const feature of arret.features){
@@ -185,8 +119,6 @@ function showMarkers(btnId) {
             value: coords
         });
 
-        
-
         let marqueur_etape = L.icon({
             iconUrl: path,
             iconSize: [50, 50],
@@ -204,7 +136,6 @@ function showMarkers(btnId) {
 
         document.querySelector('.inst-tab').classList.add("active");
 
-
         // si le user n'est pas en mode jeu, on dessine la polyline
 
         if (sessionStorage.getItem("gameMode") == "false") {
@@ -221,8 +152,6 @@ function showMarkers(btnId) {
         }
     }
 }
-
-console.log(coords_dict)
 
 let arPath = 'ar_files/';
 
@@ -272,14 +201,12 @@ $(function(){
             // d'avoir une précision d'environ 79m à 45° de latitude, ce qui laisse en marge de manoeuvre
             // pour l'utilisateur
             let userPosition = '[' + currentPos[0] + ',' + currentPos[1] + ']';
-            console.log("user position1: ", userPosition);
             // il faut matcher la position de l'utilisateur avec la position des marqueurs
             // on itère à travers le dictionnaire qui contient la position de chacun de nos marqueurs
             for (var value in coords_dict) {
 
                 markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*1000)/1000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*1000)/1000) + ']';
 
-                console.log("positions: ", userPosition, markerPosition)
                 if (userPosition == markerPosition) {
                     // on enlève le bouton à chaque itération pour qu'ils ne se superposent pas
                     $("#itin-rdv #go-ar-btn").remove();
@@ -288,7 +215,6 @@ $(function(){
                     // si la position du user est la même que celle du marqueur
                     // on ajoute un bouton Go to AR
                     $divAR.append("<button class='itin-btn' id='go-ar-btn'>Commencer le tour en réalité augmentée</button>");
-                    console.log("its a match");
                     // il faut faire en sorte de le bon AR trigger selon la localisation de
                     // l'utilisateur
                     // on a juste à travers un if avec les bonnes coordonnées
@@ -339,7 +265,6 @@ $(function(){
                     $("#itin-rdv #rdv-btn").remove();
                     // et on remet l'info qu'il faut aller à la prochaine étape
                     $divAR.append("<button class='itin-btn' id='rdv-btn' disabled>Rendez-vous à la prochaine étape</button>");
-                    console.log("its not a match");
                 };
             };
         });

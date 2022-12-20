@@ -70,7 +70,6 @@ function toggleActive(clicked_id) {
     setTimeout(function(){
         let divHeight = getComputedStyle(document.querySelector(".info")).height;
         let cursor = document.getElementById("cursor");
-        console.log(getComputedStyle(document.querySelector(".info")).height);
         // donc si notre div a un height de 0, on monte le marqueur
         // pour qu'il soit toujours visible
         if (divHeight == '0px') {

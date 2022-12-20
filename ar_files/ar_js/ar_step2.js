@@ -193,6 +193,5 @@ function renderPlaces(places) {
                 pinText.setAttribute('scale', '6 6 0');
             });
         }
-        
     });
 };

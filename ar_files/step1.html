@@ -40,14 +40,14 @@
       gesture-detector
     >
 
-    <a-assets>
-      <a-asset-item id="molasse" src="ar_gltf/step1/molasse/molasse.glb"></a-asset-item>
-      <a-asset-item id="calcaire" src="ar_gltf/step1/calcaire/calcaire.glb"></a-asset-item>
-      <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
-      <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio>
+      <a-assets>
+        <a-asset-item id="molasse" src="ar_gltf/step1/molasse/molasse.glb"></a-asset-item>
+        <a-asset-item id="calcaire" src="ar_gltf/step1/calcaire/calcaire.glb"></a-asset-item>
+        <a-asset-item id="gneiss-texture" src="ar_gltf/step1/gneiss/gneiss.glb"></a-asset-item>
+        <audio id="click-sound" src="ar_assets/sounds/click.ogg"></audio>
 
-    </a-assets>
-    
+      </a-assets>
+      
       <a-camera>
         <!-- on ajoute un curseur pour intéragir avec les objets.-->
         <a-cursor
@@ -77,9 +77,9 @@
       <div id="top"></div>
       <div id="middle"></div>
       <div id="bottom"></div>
-  </div>
-  <div id="box">
-      <div id="items">
+    </div>
+    <div id="box">
+        <div id="items">
           <div class="item"><b>Étape 1</b></div>
           <br>
           <div class="item" id="home-menu">Itinéraire</div>
@@ -87,28 +87,28 @@
           <div class="item" id="inst-menu">Instructions</div>
           <hr/>
           <div class="item" id="begin-menu">Retour au départ</div>
+        </div>
+    </div>
+    <div id="inst-tab" class="inst-tab">
+      Bienvenue dans l'étape 1 ! <br><br>
+      Vous découvrirez ici les différentes roches utilisées dans la plupart des constructions à Lausanne, surtout ici, à la Cité.
+      Les matériaux de construction de la plupart des édifices de la Cité proviennent
+      des carrières de molasse lausannoise, dite molasse grise de Lausanne. Ces carrières ont été
+      exploitées par le passé autour du vieux bourg et des vallées du Flon et de la Louve.
+      <br>
+      <p>
+        Vous découvrirez, en fermant cette fenêtre, les trois roches les plus utilisées pour les constructions à Lausanne.
+        Le but de cette étape est de vous informez quant à ces trois roches, en visant chacune d'elle pour afficher plus d'informations.
+        Une fois que vous pensez être assez informés, cliquez sur "Jouer au jeu !" et partez à la recherche de ces trois roches autours de la Cathédrale.
+        Bonne chance !
+      </p>
+      <div class="jeu-btn">
+        <button id="jeu-btn" class="itin-btn">C'est parti !</button>
       </div>
-  </div>
-  <div id="inst-tab" class="inst-tab">
-    Bienvenue dans l'étape 1 ! <br><br>
-    Vous découvrirez ici les différentes roches utilisées dans la plupart des constructions à Lausanne, surtout ici, à la Cité.
-    Les matériaux de construction de la plupart des édifices de la Cité proviennent
-    des carrières de molasse lausannoise, dite molasse grise de Lausanne. Ces carrières ont été
-    exploitées par le passé autour du vieux bourg et des vallées du Flon et de la Louve.
-    <br>
-    <p>
-      Vous découvrirez, en fermant cette fenêtre, les trois roches les plus utilisées pour les constructions à Lausanne.
-      Le but de cette étape est de vous informez quant à ces trois roches, en visant chacune d'elle pour afficher plus d'informations.
-      Une fois que vous pensez être assez informés, cliquez sur "Jouer au jeu !" et partez à la recherche de ces trois roches autours de la Cathédrale.
-      Bonne chance !
-    </p>
-    <div class="jeu-btn">
-      <button id="jeu-btn" class="itin-btn">C'est parti !</button>
+      <div class="sentier-btn">
+        <button id="sentier-btn" id="itin-btn">Retour à l'itinéraire</button>
+      </div>
     </div>
-    <div class="sentier-btn">
-      <button id="sentier-btn" id="itin-btn">Retour à l'itinéraire</button>
-    </div>
-  </div>
     <script src="../js/menu.js"></script>
   </body>
 </html>

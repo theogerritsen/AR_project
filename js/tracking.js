@@ -1,5 +1,5 @@
 var path = window.location.pathname;
-console.log(path);
+
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
     minZoom: 10,
@@ -37,7 +37,6 @@ let coords_dict = [];
 // on va chercher à quel étape le user est si il a choisi le mode jeu
 // pour montrer uniquement le bon nombre de marqueur d'étape
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
-console.log(stepNumber);
 
 // on itère à travers tous les arrêts
 for (const feature of arret.features){
@@ -121,21 +120,17 @@ mymap.on('locationfound', function(evt){
     currentPos = [JSON.stringify(Math.round(evt.latlng.lat*10000)/10000), JSON.stringify(Math.round(evt.latlng.lng*10000)/10000)];
  
     let userPosition = '[' + currentPos[0] + ',' + currentPos[1] + ']';
-    //console.log("user position1: ", userPosition);
-    
-    
+
     for (var value in coords_dict) {
 
         markerPosition = '[' + JSON.stringify(Math.round(coords_dict[value].value[0]*10000)/10000) + ',' + JSON.stringify(Math.round(coords_dict[value].value[1]*10000)/10000) + ']';
 
-        //console.log("positions: ", userPosition, markerPosition)
         if (userPosition == markerPosition) {
             
             $("#itin-rdv #go-ar-btn").remove();
             $("#itin-rdv #rdv-btn").remove();
             
             $divAR.append("<button class='itin-btn' id='go-ar-btn'>Commencer le tour en réalité augmentée</button>");
-            //console.log("its a match");
             
             $(function(){
                 $("#go-ar-btn").click(function(){
@@ -184,7 +179,6 @@ mymap.on('locationfound', function(evt){
             $("#itin-rdv #rdv-btn").remove();
             
             $divAR.append("<button class='itin-btn' id='rdv-btn' disabled>Rendez-vous à la prochaine étape</button>");
-            //console.log("its not a match");
         };
     };
 });

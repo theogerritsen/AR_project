@@ -1,5 +1,3 @@
-<!-- CE STEP EST UN EXEMPLE POUR LE NFT-->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,15 +49,15 @@
     renderer="logarithmicDepthBuffer: true;"
     >
 
-    <a-assets>
-      <a-asset-item id="river" src="ar_gltf/river/FINAL_LOWPOLY_RIVER2.glb"></a-asset-item>
-      <a-asset-item id="pin" src="ar_gltf/step1/pin.glb"></a-asset-item>
-      <img id="info1" src="ar_assets/img/info1_etape2.png">
-      <img id="info2" src="ar_assets/img/info2_etape2.png">
-      <img id="info3" src="ar_assets/img/info3_etape2.png">
-      <img id="info4" src="ar_assets/img/info4_etape2.png">
+      <a-assets>
+        <a-asset-item id="river" src="ar_gltf/river/FINAL_LOWPOLY_RIVER2.glb"></a-asset-item>
+        <a-asset-item id="pin" src="ar_gltf/step1/pin.glb"></a-asset-item>
+        <img id="info1" src="ar_assets/img/info1_etape2.png">
+        <img id="info2" src="ar_assets/img/info2_etape2.png">
+        <img id="info3" src="ar_assets/img/info3_etape2.png">
+        <img id="info4" src="ar_assets/img/info4_etape2.png">
 
-    </a-assets>
+      </a-assets>
       
       
       <!-- pour le nft, il faut aller cherhcher le lien directement en ligne, ne charge pas sinon-->
@@ -67,14 +65,15 @@
       
       <!-- smoothing factor à 1 pour par que ça bug -->
       <a-camera gps-camera rotation-reader look-controls-enabled='false'
-    arjs-look-controls="smoothingFactor: 1">
-    <a-cursor
-          id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
-          event-set__mouseenter="_event: mouseenter; color: springgreen" 
-          event-set__mouseleave="_event: mouseleave; color: grey"
-          color="grey"></a-cursor>
+      arjs-look-controls="smoothingFactor: 1">
+        <a-cursor
+              id="cursor"
+              animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" 
+              animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150" 
+              event-set__mouseenter="_event: mouseenter; color: springgreen" 
+              event-set__mouseleave="_event: mouseleave; color: grey"
+              color="grey">
+        </a-cursor>
       </a-camera>
     </a-scene>
     <div class="centered">
@@ -117,6 +116,6 @@
           <button id="sentier-btn" class="itin-btn">Retour à l'itinéraire</button>
       </div>
     </div>
-  <script src="../js/menu.js">  </script>
+    <script src="../js/menu.js">  </script>
   </body>
 </html>

@@ -27,7 +27,7 @@ $(function(){
         window.location.href = "https://igd.unil.ch/geoguidelsne/"
     });
     // changer si github ou pas
-    if (path == "/ar_files/step1.html") {
+    if (path == "/AR_project/ar_files/step1.html") {
         $("#home-menu").click(function(){
         window.location.href = "tracking.html"
         });
