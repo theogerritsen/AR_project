@@ -38,6 +38,8 @@ let coords_dict = [];
 // pour montrer uniquement le bon nombre de marqueur d'étape
 let stepNumber = Number(sessionStorage.getItem("stepNum"));
 
+let path_info;
+
 // on itère à travers tous les arrêts
 for (const feature of arret.features){
     n++;
@@ -57,6 +59,16 @@ for (const feature of arret.features){
     
     let path = '../assets/marqueurs_etapes/etape' + n + '.png';
     let path_arjs = '../ar_files/step' + n + '.html';
+
+    if (n == 1) {
+        path_info = 'https://igd.unil.ch/geoguidelsne/#stop8';
+    }
+    if (n == 2) {
+        path_info = 'https://igd.unil.ch/geoguidelsne/#stop9';
+    }
+    if (n == 3) {
+        path_info = 'https://igd.unil.ch/geoguidelsne/#stop10';
+    }
     let lat = feature.geometry.coordinates[0];
     let long = feature.geometry.coordinates[1];
     let coords = [long, lat];
@@ -77,7 +89,7 @@ for (const feature of arret.features){
 
     let marqueur = L.marker(coords, {icon: marqueur_etape}).addTo(mymap);
 
-    let popupContent = "<b><a href=" + path_arjs + ">Trigger AR</a></b> <br><br> <b>Show info</b>";
+    let popupContent = "<b><a href=" + path_arjs + ">Commencer l'AR</a></b> <br><br> <b><a href=" + path_info + ">Information</a></b>";
 
     marqueur.bindPopup(popupContent);
 
