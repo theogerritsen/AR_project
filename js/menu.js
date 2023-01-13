@@ -46,7 +46,6 @@ $(function(){
         $("#begin-menu").click(function(){
             window.location.href = "../index.html"
         });
-        alert("step2")
     }
     if (path == "/AR_project/ar_files/ar_games/step1_game.html") {
         $("#home-menu").click(function() {

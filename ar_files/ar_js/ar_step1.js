@@ -231,9 +231,9 @@ function renderPlaces(places) {
             instructions.setAttribute('position', '-2 3.1 -5');
 
 
-        scene.appendChild(molasse_txt);
-        scene.appendChild(gneiss_txt);
-        scene.appendChild(calcaire_txt);
+        // scene.appendChild(molasse_txt);
+        // scene.appendChild(gneiss_txt);
+        // scene.appendChild(calcaire_txt);
         scene.appendChild(molasse);
         scene.appendChild(gneiss);
         scene.appendChild(calcaire);
