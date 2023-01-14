@@ -136,7 +136,7 @@ infoPlane3.setAttribute('height', '1');
 infoPlane3.setAttribute('width', '1');
 infoPlane3.setAttribute('id', 'info3');
 infoPlane3.setAttribute('position', '-20 30 0');
-infoPlane3.setAttribute('scale', '5 5 5');
+infoPlane3.setAttribute('scale', '10 10 10');
 infoPlane3.setAttribute('rotation', '-100 0 0');
 infoPlane3.setAttribute('src', '#info3');
 infoPlane3.setAttribute('look-at', '[gps-camera]');
