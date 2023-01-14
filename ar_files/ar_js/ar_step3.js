@@ -135,7 +135,7 @@ const infoPlane3 = document.createElement('a-plane');
 infoPlane3.setAttribute('height', '1');
 infoPlane3.setAttribute('width', '1');
 infoPlane3.setAttribute('id', 'info3');
-infoPlane3.setAttribute('position', '0 30 0');
+infoPlane3.setAttribute('position', '-20 30 0');
 infoPlane3.setAttribute('scale', '50 50 50');
 infoPlane3.setAttribute('rotation', '-100 0 0');
 infoPlane3.setAttribute('src', '#info3');
