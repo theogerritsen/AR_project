@@ -11,7 +11,7 @@ sessionStorage.setItem("stepNum","1");
 let mymap = L.map('map', {
     center: [46.520009, 6.629357],
     minZoom: 10,
-	maxZoom: 20,
+	maxZoom: 18,
 	zoom: 18
 });
 
